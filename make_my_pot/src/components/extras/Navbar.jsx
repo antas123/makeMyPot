@@ -14,6 +14,8 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
+import { Link } from "react-router-dom";
+import { pageToRoute } from "../../constant";
 
 const pages = ["Home", "Your financials", "Financial dashboard"];
 const settings = ["Profile", "Logout"];
@@ -95,7 +97,18 @@ const Navbar = () => {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                    <Typography textAlign="center">
+                      <Link
+                        to={`/${pageToRoute[page]}`}
+                        style={{
+                          textDecoration: "none",
+                          color: "black",
+                          fontSize: "16px",
+                        }}
+                      >
+                        {page}
+                      </Link>
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -124,13 +137,20 @@ const Navbar = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, display: "block" }}
-                >
-                  {page}
-                </Button>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <Link
+                      to={`/${pageToRoute[page]}`}
+                      style={{
+                        textDecoration: "none",
+                        color: "black",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {page}
+                    </Link>
+                  </Typography>
+                </MenuItem>
               ))}
             </Box>
 
