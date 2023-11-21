@@ -64,13 +64,13 @@ const routes = {
 };
 
 function App() {
+  //If u got this, consider u have all my changes as of 21st nov..........
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Navbar />
 
       <div
         style={{
-          marginTop: "60px",
           display: "flex",
         }}
       >
