@@ -2,7 +2,7 @@ import "./App.css";
 import Navbar from "./components/extras/Navbar";
 import Scene from "./scenes/Scene";
 import Sidebar from "./components/extras/Sidebar";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 import YourFinancials from "./scenes/yourFinancial/YourFinancials";
 import Home from "./scenes/home/Home";
