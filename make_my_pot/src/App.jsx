@@ -18,7 +18,7 @@ const routes = {
   yourFinancials: {
     menuItems: [
       {
-        link: "/yourFinancials/1",
+        link: "/yourFinancials",
         component: <h1>F1</h1>,
       },
       {
@@ -81,6 +81,7 @@ function App() {
     };
   }, []);
 
+  //If u got this, consider u have all my changes as of 21st nov..........
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
    
