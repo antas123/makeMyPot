@@ -66,17 +66,27 @@ const routes = {
 function App() {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
+   
+      <div>
       <Navbar />
+      </div>
 
       <div
         style={{
-          marginTop: "60px",
           display: "flex",
+          flexDirection:"row",
+          width:"100vw"
         }}
       >
-        <Sidebar />
-        <Scene />
+      <div style={{flex:"1",height:"90vh"}}>
+      <Sidebar />
       </div>
+       <div style={{flex:"4", height:"90vh"}}>
+       <Scene />
+       </div>
+       
+      </div>
+
     </div>
   );
 }

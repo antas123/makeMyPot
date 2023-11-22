@@ -11,12 +11,11 @@ const Sidebar = () => {
     <div
       className="m"
       style={{
-        height: "calc(100vh - 100px)",
-        flex: 1,
-        marginTop: "80px",
+        height: "50%",
+        marginTop:"50px",
+        padding:"5px"
       }}
-    >
-      <Container>
+      >
         {yourFinancials.map((fin, ind) => (
           <div
             style={{
@@ -38,7 +37,6 @@ const Sidebar = () => {
             </Typography>
           </div>
         ))}
-      </Container>
     </div>
   );
 };

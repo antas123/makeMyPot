@@ -2,7 +2,7 @@ import React from "react";
 
 const Scene = () => {
   return (
-    <div className="m" style={{ height: "400px", flex: 4 }}>
+    <div className="m" style={{ height: "400px", height:"100%" }}>
       Scene
     </div>
   );
