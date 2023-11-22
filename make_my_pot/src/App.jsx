@@ -2,6 +2,8 @@ import "./App.css";
 import Navbar from "./components/extras/Navbar";
 import Scene from "./scenes/Scene";
 import Sidebar from "./components/extras/Sidebar";
+import TempDrawer from "./components/extras/TempDrawer";
+import { useState, useEffect } from "react";
 
 const routes = {
   home: {
@@ -64,6 +66,21 @@ const routes = {
 };
 
 function App() {
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 900);
+  };
+  useEffect(() => {
+    // Add event listener to update isMobile on window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
    
@@ -78,8 +95,8 @@ function App() {
           width:"100vw"
         }}
       >
-      <div style={{flex:"1",height:"90vh"}}>
-      <Sidebar />
+      <div style={{flex:"1",height:"90vh",  position: isMobile?"absolute":"relative"}}>
+      {isMobile ? <TempDrawer /> : <Sidebar />}
       </div>
        <div style={{flex:"4", height:"90vh"}}>
        <Scene />
