@@ -16,49 +16,6 @@ import Sidebar from './Sidebar';
 function TempDrawer () {
   const [isOpen, setIsOpen] =useState(formGroupClasses);
 
-  // const toggleDrawer = (anchor, open) => (event) => {
-  //   if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-  //     return;
-  //   }
-
-  //   setState({ ...state, [anchor]: open });
-  // };
-
-  // const list = (anchor) => (
-  //   <Box
-  //     sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
-  //     role="presentation"
-  //     onClick={toggleDrawer(anchor, false)}
-  //     onKeyDown={toggleDrawer(anchor, false)}
-  //   >
-  //     <List>
-  //       {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-  //         <ListItem key={text} disablePadding>
-  //           <ListItemButton>
-  //             <ListItemIcon>
-  //               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-  //             </ListItemIcon>
-  //             <ListItemText primary={text} />
-  //           </ListItemButton>
-  //         </ListItem>
-  //       ))}
-  //     </List>
-  //     <Divider />
-  //     <List>
-  //       {['All mail', 'Trash', 'Spam'].map((text, index) => (
-  //         <ListItem key={text} disablePadding>
-  //           <ListItemButton>
-  //             <ListItemIcon>
-  //               {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-  //             </ListItemIcon>
-  //             <ListItemText primary={text} />
-  //           </ListItemButton>
-  //         </ListItem>
-  //       ))}
-  //     </List>
-  //   </Box>
-  // );
-
   return (
  <>
   <Button size='large' edge='start' onClick={()=>setIsOpen(true)} style={{position:"absolute",bottom:"350px"}} >
