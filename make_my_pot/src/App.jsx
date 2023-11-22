@@ -2,10 +2,8 @@ import "./App.css";
 import Navbar from "./components/extras/Navbar";
 import Scene from "./scenes/Scene";
 import Sidebar from "./components/extras/Sidebar";
-import { Route, Routes } from "react-router-dom";
-import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
-import YourFinancials from "./scenes/yourFinancial/YourFinancials";
-import Home from "./scenes/home/Home";
+import TempDrawer from "./components/extras/TempDrawer";
+import { useState, useEffect } from "react";
 
 const routes = {
   home: {
@@ -68,47 +66,45 @@ const routes = {
 };
 
 function App() {
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 900);
+  };
+  useEffect(() => {
+    // Add event listener to update isMobile on window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   //If u got this, consider u have all my changes as of 21st nov..........
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
+   
+      <div>
       <Navbar />
+      </div>
 
       <div
         style={{
           display: "flex",
+          flexDirection:"row",
+          width:"100vw"
         }}
       >
-        <Sidebar />
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <Scene>
-                <Home />
-              </Scene>
-            }
-          />
-          <Route
-            exact
-            path="/yourFinancials"
-            element={
-              <Scene>
-                <YourFinancials />
-              </Scene>
-            }
-          />
-          <Route
-            exact
-            path="/financialDashboard"
-            element={
-              <Scene>
-                <FinancialDashboard />
-              </Scene>
-            }
-          />
-        </Routes>
+      <div style={{flex:"1",height:"90vh",  position: isMobile?"absolute":"relative"}}>
+      {isMobile ? <TempDrawer /> : <Sidebar />}
       </div>
+       <div style={{flex:"4", height:"90vh"}}>
+       <Scene />
+       </div>
+       
+      </div>
+
     </div>
   );
 }
