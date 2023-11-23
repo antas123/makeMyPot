@@ -11,10 +11,11 @@ import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
-  const [activePage, setActivePage] = useState("Your Financials");
+  const [activePage, setActivePage] = useState("Home");
   const handleResize = () => {
     setIsMobile(window.innerWidth < 900);
   };
+  console.log(activePage);
   useEffect(() => {
     // Add event listener to update isMobile on window resize
     window.addEventListener("resize", handleResize);
@@ -31,7 +32,10 @@ function App() {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div>
-        <Navbar updateActivePage={updateActivePageHandler} />
+        <Navbar
+          activePage={activePage}
+          updateActivePage={updateActivePageHandler}
+        />
       </div>
 
       <div

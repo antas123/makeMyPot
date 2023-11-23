@@ -1,12 +1,13 @@
 export const sideBarOptions = {
-  yourFinanicals: [
+  Home: ["Profile", "About Us"],
+  "Your financials": [
     "Your income post tax",
     "Your expenses/month",
     "Your fixed Assets",
     "Your financial Assets",
     "Your liablities",
   ],
-  financialDashboard: [
+  "Financial dashboard": [
     "Financial dashboard",
     "Income and expenses report",
     "Net worth analysis report",

@@ -1,13 +1,11 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
-import { sideBarOptions } from "../../constant";
+import { pageToRoute, sideBarOptions } from "../../constant";
 import NumberIcon from "../NumberIcon";
 import styles from "./extras.module.css";
 
-const yourFinancials = [...sideBarOptions.financialDashboard];
-console.log(yourFinancials);
-
-const Sidebar = () => {
+const Sidebar = ({ activePage }) => {
+  const activePageOptions = [...(sideBarOptions[activePage] || [])];
   return (
     <div
       className="m"
@@ -17,7 +15,7 @@ const Sidebar = () => {
         padding: "5px",
       }}
     >
-      {yourFinancials.map((fin, ind) => (
+      {activePageOptions.map((fin, ind) => (
         <div key={fin} className={styles.mainbox}>
           <div className={styles.menuNumber}>
             <NumberIcon number={ind + 1} />

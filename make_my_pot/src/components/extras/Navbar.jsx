@@ -18,10 +18,9 @@ import { pageToRoute } from "../../constant";
 const pages = ["Home", "Your financials", "Financial dashboard"];
 const settings = ["Profile", "Logout"];
 
-function Navbar({ updateActivePage }) {
+function Navbar({ activePage, updateActivePage }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const [activeTab, setActiveTab] = React.useState("Home");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -61,7 +60,7 @@ function Navbar({ updateActivePage }) {
               textDecoration: "none",
             }}
           >
-            LOGO
+            MAKEMYPOT
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -98,7 +97,7 @@ function Navbar({ updateActivePage }) {
                   key={page}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    backgroundColor: activeTab === page ? "orange" : "white",
+                    backgroundColor: activePage === page ? "orange" : "white",
                     padding: "5px",
                     opacity: 0.65,
                   }}
@@ -111,7 +110,7 @@ function Navbar({ updateActivePage }) {
                         color: "black",
                         fontSize: "16px",
                       }}
-                      onClick={() => setActiveTab(page)}
+                      onClick={() => updateActivePage(page)}
                     >
                       {page}
                     </Link>
@@ -136,7 +135,7 @@ function Navbar({ updateActivePage }) {
               textDecoration: "none",
             }}
           >
-            LOGO
+            MAKEMYPOT
           </Typography>
           <Box
             sx={{
@@ -151,7 +150,7 @@ function Navbar({ updateActivePage }) {
                 <Typography
                   textAlign="center"
                   sx={{
-                    backgroundColor: activeTab === page ? "orange" : "white",
+                    backgroundColor: activePage === page ? "orange" : "white",
                     padding: "5px",
                     opacity: 0.75,
                   }}
@@ -163,7 +162,7 @@ function Navbar({ updateActivePage }) {
                       color: "black",
                       fontSize: "16px",
                     }}
-                    onClick={() => setActiveTab(page)}
+                    onClick={() => updateActivePage(page)}
                   >
                     {page}
                   </Link>
