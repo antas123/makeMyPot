@@ -4,7 +4,7 @@ import { sideBarOptions } from "../../constant";
 import NumberIcon from "../NumberIcon";
 import styles from "./extras.module.css";
 
-const yourFinancials = [...sideBarOptions.yourFinanicals];
+const yourFinancials = [...sideBarOptions.financialDashboard];
 console.log(yourFinancials);
 
 const Sidebar = () => {
@@ -28,7 +28,7 @@ const Sidebar = () => {
               sx={{
                 color: "black",
                 fontSize: "18px",
-                fontFamily: 'Roboto',
+                fontFamily: "Roboto",
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
               }}
               key={fin}

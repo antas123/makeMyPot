@@ -4,107 +4,95 @@ import Scene from "./scenes/Scene";
 import Sidebar from "./components/extras/Sidebar";
 import TempDrawer from "./components/extras/TempDrawer";
 import { useState, useEffect } from "react";
-
-const routes = {
-  home: {
-    menuItems: [
-      {
-        link: "/",
-        path: "/",
-        component: <h1>Home</h1>,
-      },
-    ],
-  },
-  yourFinancials: {
-    menuItems: [
-      {
-        link: "/yourFinancials",
-        component: <h1>F1</h1>,
-      },
-      {
-        link: "/yourFinancials/2",
-        component: <h1>F2</h1>,
-      },
-      {
-        link: "/yourFinancials/3",
-        component: <h1>F3</h1>,
-      },
-      {
-        link: "/yourFinancials/4",
-        component: <h1>F4</h1>,
-      },
-      {
-        link: "/yourFinancials/1",
-        component: <h1>F5</h1>,
-      },
-    ],
-  },
-  financialDashboard: {
-    menuItems: [
-      {
-        link: "/financialDashboard/1",
-        component: <h1>FD1</h1>,
-      },
-      {
-        link: "/financialDashboard/2",
-        component: <h1>FD2</h1>,
-      },
-      {
-        link: "/financialDashboard/3",
-        component: <h1>FD3</h1>,
-      },
-      {
-        link: "/financialDashboard/4",
-        component: <h1>FD4</h1>,
-      },
-      {
-        link: "/financialDashboard/1",
-        component: <h1>FD5</h1>,
-      },
-    ],
-  },
-};
+import { Route, Routes } from "react-router-dom";
+import Home from "./scenes/home/Home";
+import YourFinancials from "./scenes/yourFinancial/YourFinancials";
+import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 
 function App() {
-
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
+  const [activePage, setActivePage] = useState("Your Financials");
   const handleResize = () => {
     setIsMobile(window.innerWidth < 900);
   };
   useEffect(() => {
     // Add event listener to update isMobile on window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup the event listener on component unmount
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const updateActivePageHandler = (page) => setActivePage(page);
 
   //If u got this, consider u have all my changes as of 21st nov..........
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-   
       <div>
-      <Navbar />
+        <Navbar updateActivePage={updateActivePageHandler} />
       </div>
 
       <div
         style={{
           display: "flex",
-          flexDirection:"row",
-          width:"100vw"
+          flexDirection: "row",
+          width: "100vw",
         }}
       >
-      <div style={{flex:"1",height:"90vh",  position: isMobile?"absolute":"relative"}}>
-      {isMobile ? <TempDrawer /> : <Sidebar />}
-      </div>
-       <div style={{flex:"4", height:"90vh"}}>
-       <Scene />
-       </div>
-       
-      </div>
+        <div
+          style={{
+            flex: "1",
+            minWidth: "max-content",
+            height: "90vh",
+            position: isMobile ? "absolute" : "relative",
+          }}
+        >
+          {isMobile ? (
+            <TempDrawer activePage={activePage} />
+          ) : (
+            <Sidebar activePage={activePage} />
+          )}
+        </div>
 
+        <div
+          style={{
+            flex: "4",
+            height: "90vh",
+          }}
+        >
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <Scene>
+                  <Home />
+                </Scene>
+              }
+            />
+            <Route
+              exact
+              path="/yourFinancials"
+              element={
+                <Scene>
+                  <YourFinancials />
+                </Scene>
+              }
+            />
+            <Route
+              exact
+              path="/financialDashboard"
+              element={
+                <Scene>
+                  <FinancialDashboard />
+                </Scene>
+              }
+            />
+          </Routes>
+        </div>
+      </div>
     </div>
   );
 }
