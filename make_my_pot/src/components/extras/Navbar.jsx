@@ -18,7 +18,7 @@ import { pageToRoute } from "../../constant";
 const pages = ["Home", "Your financials", "Financial dashboard"];
 const settings = ["Profile", "Logout"];
 
-function Navbar() {
+function Navbar({ updateActivePage }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [activeTab, setActiveTab] = React.useState("Home");
