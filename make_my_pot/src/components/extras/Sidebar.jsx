@@ -4,8 +4,9 @@ import { pageToRoute, sideBarOptions } from "../../constant";
 import NumberIcon from "../NumberIcon";
 import styles from "./extras.module.css";
 
-const Sidebar = ({ activePage }) => {
+const Sidebar = ({ activePage, activeTabOption, setActiveTabOption }) => {
   const activePageOptions = [...(sideBarOptions[activePage] || [])];
+
   return (
     <div
       style={{
@@ -14,8 +15,14 @@ const Sidebar = ({ activePage }) => {
         padding: "5px",
       }}
     >
-      {activePageOptions.map((fin, ind) => (
-        <div key={fin} className={styles.mainbox}>
+      {activePageOptions.map((option, ind) => (
+        <div
+          key={option}
+          className={`${styles.mainbox} ${
+            ind + 1 === activeTabOption ? styles.activeBox : ""
+          }`}
+          onClick={() => setActiveTabOption(ind + 1)}
+        >
           <div className={styles.menuNumber}>
             <NumberIcon number={ind + 1} />
           </div>
@@ -28,9 +35,9 @@ const Sidebar = ({ activePage }) => {
                 fontFamily: "Roboto",
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
               }}
-              key={fin}
+              key={option}
             >
-              {fin}
+              {option}
             </Typography>
           </div>
         </div>

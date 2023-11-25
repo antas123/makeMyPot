@@ -12,6 +12,7 @@ const NumberIcon = ({ number }) => {
     opacity: 0.75,
     justifyContent: "center",
     alignItems: "center",
+    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
   };
 
   const textStyle = {
