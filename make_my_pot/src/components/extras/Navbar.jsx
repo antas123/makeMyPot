@@ -7,8 +7,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
@@ -40,7 +39,12 @@ function Navbar({ activePage, updateActivePage }) {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: "white", justifyContent: "space-around" }}
+      sx={{
+        backgroundColor: "white",
+        justifyContent: "space-around",
+        boxShadow: "none",
+        borderBottom: "1px solid orange",
+      }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -174,7 +178,13 @@ function Navbar({ activePage, updateActivePage }) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <PermIdentityIcon
+                  style={{
+                    border: "2px solid orange",
+                    borderColor: "orange",
+                    borderRadius: "10%",
+                  }}
+                />
                 <Typography variant="h6" sx={{ ml: 2, display: "block" }}>
                   {" "}
                   Arush Bhatia{" "}

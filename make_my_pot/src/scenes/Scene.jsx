@@ -2,7 +2,7 @@ import React from "react";
 
 const Scene = ({ children }) => {
   return (
-    <div  style={{ height: "400px", height: "100%" }}>
+    <div style={{ height: "400px", height: "100%", padding: "0 20px" }}>
       {children}
     </div>
   );
