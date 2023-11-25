@@ -8,7 +8,6 @@ const Sidebar = ({ activePage }) => {
   const activePageOptions = [...(sideBarOptions[activePage] || [])];
   return (
     <div
-      className="m"
       style={{
         height: "50%",
         marginTop: "50px",

@@ -1,0 +1,33 @@
+.lineChart{
+    height: 100%;
+}
+
+.lineChartBox{
+    height: 65%;
+    width: 70vw;
+    padding: 20px;
+    background-color: #F5F7F8;
+}
+
+/* =========thought============= */
+.thought{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    padding: 10px;
+}
+.thoughtBox{
+    width: 70vw;
+    padding: 20px;
+    background-color: #F5F7F8;
+    margin-top: 20px;
+}
+.thoughtText{
+    font-size: 18px;
+    font-family: sans-serif;
+    color: #9ADE7B;
+    width: 100%;
+    margin-left: 20px;
+}
