@@ -8,7 +8,7 @@ const SceneHeader = () => {
       style={{
         display: "flex",
         justifyContent: "space-between",
-        paddingRight: "50px",
+        paddingRight: "30px",
         alignItems: "center",
       }}
     >
@@ -21,7 +21,7 @@ const SceneHeader = () => {
       >
         <LocalAtmIcon
           style={{
-            fontSize: "30px",
+            fontSize: "40px",
             opacity: 0.75,
             marginRight: "20px",
           }}
