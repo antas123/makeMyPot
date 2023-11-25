@@ -25,7 +25,7 @@ export default function ControlledAccordions() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "10px", paddingBottom: "5px" }}>
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -269,20 +269,8 @@ export default function ControlledAccordions() {
                   }}
                 >
                   <TextCell />
-                  <Typography
-                    sx={{
-                      flex: 1,
-                      fontSize: "20px",
-                      fontFamily: "sans-serif",
-                      fontWeight: "lighter",
-                      marginLeft: "20px",
-                      border: "1px solid black", // Add margin if needed
-                    }}
-                  >
-                    <div style={{ padding: "5px", textAlign: "center" }}>
-                      table 2
-                    </div>
-                  </Typography>
+                  <AmountTable />
+                  <TextCell />
                 </div>
               </Grid>
               <Grid item md={4}>
