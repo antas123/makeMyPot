@@ -122,140 +122,35 @@ export default function ControlledAccordions() {
               height: "50px",
             }}
           >
-            {/* <Grid container>
-              <Grid item md={8}>
-                <div style={{ display: "flex", height: "50px" }}>
-                  <Typography
-                    sx={{
-                      flex: 1,
-                      fontSize: "20px",
-                      fontFamily: "sans-serif",
-                      fontWeight: "lighter",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <div style={{ padding: "2px", height: "90%" }}>table 1</div>
-                  </Typography>
-                  <Typography
-                    sx={{
-                      flex: 1,
-                      fontSize: "20px",
-                      fontFamily: "sans-serif",
-                      fontWeight: "lighter",
-                    }}
-                  >
-                    table 2
-                  </Typography>
-                </div>
-              </Grid>
-              <Grid item md={4}>
-                <div
-                  style={{
-                    display: "flex",
-                    height: "50px",
-                    padding: 0,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      width: "70px",
-                      border: "1px solid gray",
-                      alignContent: "center",
-                      justifyContent: "center",
-                      fontSize: "20px",
-                      textAlign: "center",
-                    }}
-                  >
-                    Rs
-                  </Typography>
-                  <Typography
-                    sx={{
-                      width: "max-content",
-                      padding: "0 50px",
-                      border: "1px solid gray",
-                      borderLeft: "none",
-                      fontSize: "20px",
-                      alignContent: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    5,46,788.00
-                  </Typography>
-                </div>
-              </Grid>
-            </Grid> */}
-            {/* <Grid container>
+            <Grid container>
               <Grid item md={8}>
                 <div
                   style={{
                     display: "flex",
                     height: "50px",
-                    alignItems: "center", // Vertical center alignment
-                    justifyContent: "center", // Horizontal center alignment
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginLeft: "20px", // Add left spacing
+                    marginRight: "20px", // Add right spacing
                   }}
                 >
-                  <Typography
-                    sx={{
-                      fontSize: "20px",
-                      fontFamily: "sans-serif",
-                      fontWeight: "lighter",
-                    }}
-                  >
-                    <div style={{ padding: "2px" }}>table 1</div>
-                  </Typography>
-                  <Typography
-                    sx={{
-                      fontSize: "20px",
-                      fontFamily: "sans-serif",
-                      fontWeight: "lighter",
-                      marginLeft: "20px", // Add margin if needed
-                    }}
-                  >
-                    table 2
-                  </Typography>
+                  <TextCell />
+                  <AmountTable />
+                  <TextCell />
                 </div>
               </Grid>
               <Grid item md={4}>
-                <div
-                  style={{
-                    display: "flex",
-                    height: "50px",
-                    padding: 0,
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      width: "70px",
-                      border: "1px solid gray",
-                      alignContent: "center",
-                      justifyContent: "center",
-                      fontSize: "20px",
-                      textAlign: "center",
-                    }}
-                  >
-                    Rs
-                  </Typography>
-                  <Typography
-                    sx={{
-                      width: "max-content",
-                      padding: "0 50px",
-                      border: "1px solid gray",
-                      borderLeft: "none",
-                      fontSize: "20px",
-                      alignContent: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    5,46,788.00
-                  </Typography>
-                </div>
+                <AmountTable />
               </Grid>
-            </Grid> */}
+            </Grid>
+          </div>
+          <div
+            style={{
+              backgroundColor: "white",
+              paddingRight: "46px",
+              height: "50px",
+            }}
+          >
             <Grid container>
               <Grid item md={8}>
                 <div

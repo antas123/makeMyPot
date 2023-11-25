@@ -11,8 +11,8 @@ const YourFinancials = () => {
           backgroundColor: "#EEEEEE",
           height: "400px",
           overflow: "auto",
-          marginTop: "5px",
-          marginBottom: "5px",
+          marginTop: "10px",
+          marginBottom: "10px",
         }}
       >
         <ControlledAccordions />
