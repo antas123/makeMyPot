@@ -2,27 +2,24 @@ import React from "react";
 import SceneHeader from "../../components/scene/SceneHeader";
 import ControlledAccordions from "../../components/Accordion";
 import ThoughtBox from "../financialDashboard/ThoughtBox";
+import MainContentWrapper from "../../components/wrappers/MainContentWrapper";
+import FooterContentWrapper from "../../components/wrappers/FooterContentWrapper";
 
 const YourFinancials = () => {
   return (
     <>
       <SceneHeader />
-      <div
-        style={{
-          height: "350px",
-          backgroundColor: "#F5F7F8",
-          overflow: "auto",
-          marginTop: "10px",
-          marginBottom: "10px",
-        }}
-      >
+      <MainContentWrapper>
         <ControlledAccordions />
         <ControlledAccordions />
         <ControlledAccordions />
         <ControlledAccordions />
         <ControlledAccordions />
-      </div>
-      <ThoughtBox />
+      </MainContentWrapper>
+
+      <FooterContentWrapper>
+        <ThoughtBox />
+      </FooterContentWrapper>
     </>
   );
 };

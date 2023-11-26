@@ -6,6 +6,8 @@ import styles from "./dashboard.module.css";
 import ThoughtBox from "./ThoughtBox";
 import SceneHeader from "../../components/scene/SceneHeader";
 import BasicSelect from "./BasicSelect";
+import MainContentWrapper from "../../components/wrappers/MainContentWrapper";
+import FooterContentWrapper from "../../components/wrappers/FooterContentWrapper";
 
 const FinancialDashboard = () => {
   const [lineData, setLineData] = useState({
@@ -59,17 +61,13 @@ const FinancialDashboard = () => {
   return (
     <>
       <SceneHeader />
-      <div className={styles.lineChart}>
-        <div className={styles.lineChartBox}>
-          <div>
-            <BasicSelect />
-          </div>
-          <div style={{ width: "70vw", height: "70%", marginTop: "50px" }}>
-            <Line data={lineData} options={options} />
-          </div>
-        </div>
-      </div>
-      <ThoughtBox />
+      <MainContentWrapper>
+        <Line data={lineData} options={options} />
+      </MainContentWrapper>
+
+      <FooterContentWrapper>
+        <ThoughtBox />
+      </FooterContentWrapper>
     </>
   );
 };
