@@ -68,7 +68,7 @@ export default function ControlledAccordions() {
               </div>
             </Grid>
             <Grid item md={4}>
-              <div
+              {/* <div
                 style={{
                   display: "flex",
                   padding: 0,
@@ -81,13 +81,13 @@ export default function ControlledAccordions() {
                   sx={{
                     width: "70px",
                     border: "1px solid gray",
-                    alignContent: "center",
+                    textAlign: "center",
                     backgroundColor: "#DDDDDD",
                     justifyContent: "center",
                     fontSize: "20px",
                   }}
                 >
-                  Rs
+                  <div style={{ padding: "5px", textAlign: "center" }}>Rs</div>
                 </Typography>
                 <Typography
                   sx={{
@@ -101,9 +101,12 @@ export default function ControlledAccordions() {
                     justifyContent: "center",
                   }}
                 >
-                  5,46,788.00
+                  <div style={{ padding: "5px", textAlign: "center" }}>
+                    5,28,800
+                  </div>
                 </Typography>
-              </div>
+              </div> */}
+              <AmountTable onHead />
             </Grid>
           </Grid>
         </AccordionSummary>
