@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
-import { moneyData } from "./DataForChart";
+import { moneyData } from "../../constants/DataForChart";
 import { Chart as ChartJS } from "chart.js/auto";
 import styles from "./dashboard.module.css";
 import ThoughtBox from "./ThoughtBox";
@@ -64,7 +64,7 @@ const FinancialDashboard = () => {
           <div>
             <BasicSelect />
           </div>
-          <div style={{width:"70vw", height:"70%", marginTop:"50px"}}>
+          <div style={{ width: "70vw", height: "70%", marginTop: "50px" }}>
             <Line data={lineData} options={options} />
           </div>
         </div>
