@@ -1,6 +1,7 @@
 /* =============sidebar css=========================== */
 .activeBox {
   border: 1px solid black;
+  background-color: #f5f7f8;
 }
 
 .mainbox {

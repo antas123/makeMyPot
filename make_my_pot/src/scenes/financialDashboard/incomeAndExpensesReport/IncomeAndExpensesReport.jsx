@@ -3,6 +3,7 @@ import MainContentWrapper from "../../../components/wrappers/MainContentWrapper"
 import FooterContentWrapper from "../../../components/wrappers/FooterContentWrapper";
 import ThoughtBox from "../ThoughtBox";
 import SceneHeader from "../../../components/scene/SceneHeader";
+import SceneFooter from "../../../components/scene/SceneFooter";
 
 const IncomeAndExpensesReport = () => {
   return (
@@ -12,6 +13,7 @@ const IncomeAndExpensesReport = () => {
       <FooterContentWrapper>
         <ThoughtBox />
       </FooterContentWrapper>
+      <SceneFooter />
     </>
   );
 };

@@ -4,6 +4,7 @@ import ControlledAccordions from "../../components/Accordion";
 import ThoughtBox from "../financialDashboard/ThoughtBox";
 import MainContentWrapper from "../../components/wrappers/MainContentWrapper";
 import FooterContentWrapper from "../../components/wrappers/FooterContentWrapper";
+import SceneFooter from "../../components/scene/SceneFooter";
 
 const YourFinancials = () => {
   return (
@@ -15,11 +16,17 @@ const YourFinancials = () => {
         <ControlledAccordions />
         <ControlledAccordions />
         <ControlledAccordions />
+        <ControlledAccordions />
       </MainContentWrapper>
 
       <FooterContentWrapper>
         <ThoughtBox />
+        <ThoughtBox />
+        <ThoughtBox />
+        <ThoughtBox />
+        <ThoughtBox />
       </FooterContentWrapper>
+      <SceneFooter />
     </>
   );
 };

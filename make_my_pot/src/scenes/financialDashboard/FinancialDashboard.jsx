@@ -8,6 +8,7 @@ import SceneHeader from "../../components/scene/SceneHeader";
 import BasicSelect from "./BasicSelect";
 import MainContentWrapper from "../../components/wrappers/MainContentWrapper";
 import FooterContentWrapper from "../../components/wrappers/FooterContentWrapper";
+import SceneFooter from "../../components/scene/SceneFooter";
 
 const FinancialDashboard = () => {
   const [lineData, setLineData] = useState({
@@ -68,6 +69,7 @@ const FinancialDashboard = () => {
       <FooterContentWrapper>
         <ThoughtBox />
       </FooterContentWrapper>
+      <SceneFooter />
     </>
   );
 };

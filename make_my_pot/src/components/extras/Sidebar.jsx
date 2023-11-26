@@ -18,7 +18,7 @@ const Sidebar = ({ activePage, activeTabOption, setActiveTabOption }) => {
     <div
       style={{
         height: "50%",
-        marginTop: "50px",
+        marginTop: "70px",
         padding: "5px",
       }}
     >
