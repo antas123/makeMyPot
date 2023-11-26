@@ -110,7 +110,7 @@ export default function ControlledAccordions() {
 
         <AccordionDetails
           sx={{
-            backgroundColor: "#EEEEEE",
+            backgroundColor: "#F5F7F8",
             paddingRight: 0,
             paddingLeft: "70px",
           }}
