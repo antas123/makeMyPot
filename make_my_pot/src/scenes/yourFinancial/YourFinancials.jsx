@@ -1,6 +1,7 @@
 import React from "react";
 import SceneHeader from "../../components/scene/SceneHeader";
 import ControlledAccordions from "../../components/Accordion";
+import ThoughtBox from "../financialDashboard/ThoughtBox";
 
 const YourFinancials = () => {
   return (
@@ -9,7 +10,7 @@ const YourFinancials = () => {
       <div
         style={{
           backgroundColor: "#EEEEEE",
-          height: "400px",
+          height: "350px",
           overflow: "auto",
           marginTop: "10px",
           marginBottom: "10px",
@@ -21,6 +22,7 @@ const YourFinancials = () => {
         <ControlledAccordions />
         <ControlledAccordions />
       </div>
+      <ThoughtBox />
     </>
   );
 };
