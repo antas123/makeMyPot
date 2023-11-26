@@ -17,8 +17,13 @@ export const sideBarOptions = {
   ],
 };
 
-export const pageToRoute = {
-  Home: "",
-  "Your financials": "yourFinancials",
-  "Financial dashboard": "financialDashboard",
+export const pageToRoute = (page) => {
+  if (page === "Home") return "home";
+  else if (page === "Your financials") return "yourFinancials";
+  else return "financialDashboard";
+};
+
+export const tabOptionToRoute = (page) => {
+  if (page === "Home") return 2;
+  else return 5;
 };

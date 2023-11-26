@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./scenes/home/Home";
 import YourFinancials from "./scenes/yourFinancial/YourFinancials";
 import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
+import IncomeAndExpensesReport from "./scenes/financialDashboard/incomeAndExpensesReport/IncomeAndExpensesReport";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
@@ -32,6 +33,8 @@ function App() {
     };
   }, []);
 
+  console.log("trigerred");
+
   const updateActivePageHandler = (page) => setActivePage(page);
 
   //If u got this, consider u have all my changes as of 21st nov..........
@@ -41,6 +44,7 @@ function App() {
         <Navbar
           activePage={activePage}
           updateActivePage={updateActivePageHandler}
+          updateTabOption={() => setActiveTabOption(1)}
         />
       </div>
 
@@ -82,8 +86,7 @@ function App() {
         >
           <Routes>
             <Route
-              exact
-              path="/"
+              path="home/1"
               element={
                 <Scene>
                   <Home />
@@ -92,7 +95,7 @@ function App() {
             />
             <Route
               exact
-              path="/yourFinancials"
+              path="/yourFinancials/1"
               element={
                 <Scene>
                   <YourFinancials />
@@ -101,10 +104,19 @@ function App() {
             />
             <Route
               exact
-              path="/financialDashboard"
+              path="/financialDashboard/1"
               element={
                 <Scene>
                   <FinancialDashboard />
+                </Scene>
+              }
+            />
+            <Route
+              exact
+              path="/financialDashboard/2"
+              element={
+                <Scene>
+                  <IncomeAndExpensesReport />
                 </Scene>
               }
             />
