@@ -9,8 +9,8 @@ const YourFinancials = () => {
       <SceneHeader />
       <div
         style={{
-          backgroundColor: "#EEEEEE",
           height: "350px",
+          backgroundColor: "#F5F7F8",
           overflow: "auto",
           marginTop: "10px",
           marginBottom: "10px",

@@ -4,63 +4,73 @@ import { moneyData } from "./DataForChart";
 import { Chart as ChartJS } from "chart.js/auto";
 import styles from "./dashboard.module.css";
 import ThoughtBox from "./ThoughtBox";
+import SceneHeader from "../../components/scene/SceneHeader";
+import BasicSelect from "./BasicSelect";
 
 const FinancialDashboard = () => {
   const [lineData, setLineData] = useState({
     labels: moneyData.map((item) => item.year),
     datasets: [
       {
-        backgroundColor: '#99B080',
-        borderColor: '#F9B572',
+        backgroundColor: "#99B080",
+        borderColor: "#F9B572",
         data: moneyData.map((item) => item.money),
-        borderSkipped: 'start', 
+        borderSkipped: "start",
       },
     ],
   });
 
   const options = {
-    maintainAspectRatio: false, 
-    
+    maintainAspectRatio: false,
+
     plugins: {
       legend: {
         display: false,
       },
       title: {
-        display: false, 
+        display: false,
       },
     },
     elements: {
       line: {
-        borderWidth: 1, 
+        borderWidth: 1,
       },
       point: {
-        radius: 10, 
+        radius: 10,
       },
     },
     scales: {
       x: {
         grid: {
-          display: false, 
+          display: false,
         },
       },
       y: {
         grid: {
-          display: false, 
+          display: false,
         },
         ticks: {
-          display: false, 
+          display: false,
         },
       },
     },
   };
 
   return (
-    <div className={styles.lineChart}>
-      <div className={styles.lineChartBox}>
-        <Line data={lineData} options={options} />
+    <>
+      <SceneHeader />
+      <div className={styles.lineChart}>
+        <div className={styles.lineChartBox}>
+          <div>
+            <BasicSelect />
+          </div>
+          <div style={{width:"70vw", height:"70%", marginTop:"50px"}}>
+            <Line data={lineData} options={options} />
+          </div>
+        </div>
       </div>
-      <ThoughtBox/>
-    </div>
+      <ThoughtBox />
+    </>
   );
 };
 
