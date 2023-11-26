@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import { pageToRoute, sideBarOptions } from "../../constant";
+import { pageToRoute, sideBarOptions } from "../../constants/NavigationData";
 import NumberIcon from "../NumberIcon";
 import styles from "./extras.module.css";
 
