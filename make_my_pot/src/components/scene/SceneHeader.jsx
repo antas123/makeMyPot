@@ -10,7 +10,7 @@ const SceneHeader = () => {
         justifyContent: "space-between",
         paddingRight: "30px",
         alignItems: "center",
-        height:"65px"
+        height: "65px",
       }}
     >
       <div

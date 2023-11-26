@@ -12,12 +12,12 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
-import { pageToRoute } from "../../constant";
+import { pageToRoute } from "../../constants/NavigationData";
 
 const pages = ["Home", "Your financials", "Financial dashboard"];
 const settings = ["Profile", "Logout"];
 
-function Navbar({ activePage, updateActivePage }) {
+const Navbar = ({ activePage, updateActivePage, updateTabOption }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -34,6 +34,14 @@ function Navbar({ activePage, updateActivePage }) {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleUpdatePageAndTab = (page) => {
+    if (page === activePage) {
+      updateTabOption();
+    } else {
+      updateActivePage(page);
+    }
   };
 
   return (
@@ -55,7 +63,7 @@ function Navbar({ activePage, updateActivePage }) {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/home/1"
             sx={{
               mr: 2,
               fontWeight: "lighter",
@@ -106,15 +114,17 @@ function Navbar({ activePage, updateActivePage }) {
                     opacity: 0.65,
                   }}
                 >
-                  <Typography textAlign="center">
+                  <Typography
+                    textAlign="center"
+                    onClick={() => handleUpdatePageAndTab(page)}
+                  >
                     <Link
-                      to={`/${pageToRoute[page]}`}
+                      to={`/${pageToRoute(page)}`}
                       style={{
                         textDecoration: "none",
                         color: "black",
                         fontSize: "16px",
                       }}
-                      onClick={() => updateActivePage(page)}
                     >
                       {page}
                     </Link>
@@ -130,7 +140,7 @@ function Navbar({ activePage, updateActivePage }) {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/home/1"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -166,10 +176,10 @@ function Navbar({ activePage, updateActivePage }) {
                     padding: "5px",
                     opacity: 0.75,
                   }}
-                  onClick={() => updateActivePage(page)}
+                  onClick={() => handleUpdatePageAndTab(page)}
                 >
                   <Link
-                    to={`/${pageToRoute[page]}`}
+                    to={`/${pageToRoute(page)}/1`}
                     style={{
                       textDecoration: "none",
                       color: "black",
@@ -226,5 +236,5 @@ function Navbar({ activePage, updateActivePage }) {
       </Container>
     </AppBar>
   );
-}
+};
 export default Navbar;
