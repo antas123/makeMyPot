@@ -150,7 +150,15 @@ function Navbar({ activePage, updateActivePage }) {
             }}
           >
             {pages.map((page) => (
-              <MenuItem key={page} onClick={handleCloseNavMenu}>
+              <MenuItem
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{
+                  "&:hover": {
+                    backgroundColor: "white", // Set the desired color for hover
+                  },
+                }}
+              >
                 <Typography
                   textAlign="center"
                   sx={{
@@ -158,6 +166,7 @@ function Navbar({ activePage, updateActivePage }) {
                     padding: "5px",
                     opacity: 0.75,
                   }}
+                  onClick={() => updateActivePage(page)}
                 >
                   <Link
                     to={`/${pageToRoute[page]}`}
@@ -166,7 +175,6 @@ function Navbar({ activePage, updateActivePage }) {
                       color: "black",
                       fontSize: "16px",
                     }}
-                    onClick={() => updateActivePage(page)}
                   >
                     {page}
                   </Link>

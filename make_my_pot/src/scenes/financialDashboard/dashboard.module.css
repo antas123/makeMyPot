@@ -1,34 +1,34 @@
-.lineChart{
-    height: 60%;
-    background-color: white;
+.lineChart {
+  height: 350px;
+  background-color: white;
 }
 
-.lineChartBox{
-    height: 100%;
-    width: 74vw;
-    padding: 20px;
-    background-color: #F5F7F8;
+.lineChartBox {
+  height: 100%;
+  width: 74vw;
+  padding: 20px;
+  background-color: #f5f7f8;
 }
 
 /* =========thought============= */
-.thought{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: white;
-    align-items: center;
-    padding: 5px;
+.thought {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  align-items: center;
+  padding: 5px;
 }
-.thoughtBox{
-    width: 74vw;
-    padding: 10px 20px 10px 20px;
-    background-color: #F5F7F8;
-    margin-top: 50px;
+.thoughtBox {
+  width: 74vw;
+  padding: 10px 20px 10px 20px;
+  background-color: #f5f7f8;
+  margin-top: 50px;
 }
-.thoughtText{
-    font-size: 1.2em;
-    font-family: sans-serif;
-    color: #9ADE7B;
-    width: 100%;
-    margin-left: 20px;
+.thoughtText {
+  font-size: 1.2em;
+  font-family: sans-serif;
+  color: #9ade7b;
+  width: 100%;
+  margin-left: 20px;
 }

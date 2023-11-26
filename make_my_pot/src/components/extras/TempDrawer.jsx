@@ -6,7 +6,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { formGroupClasses } from "@mui/material";
 import Sidebar from "./Sidebar";
 
-function TempDrawer({ activePage }) {
+function TempDrawer({ activePage, activeTabOption, setActiveTabOption }) {
   const [isOpen, setIsOpen] = useState(formGroupClasses);
 
   return (
@@ -33,7 +33,11 @@ function TempDrawer({ activePage }) {
       <div style={{ position: "absolute" }}>
         <Drawer anchor="left" open={isOpen} onClose={() => setIsOpen(false)}>
           <Box p={2} width="250px" textAlign="center">
-            <Sidebar activePage={activePage} />
+            <Sidebar
+              activePage={activePage}
+              activeTabOption={activeTabOption}
+              setActiveTabOption={setActiveTabOption}
+            />
           </Box>
         </Drawer>
       </div>

@@ -9,8 +9,8 @@ const YourFinancials = () => {
       <SceneHeader />
       <div
         style={{
+          height: "350px",
           backgroundColor: "#F5F7F8",
-          height: "400px",
           overflow: "auto",
           marginTop: "10px",
           marginBottom: "10px",
@@ -22,7 +22,7 @@ const YourFinancials = () => {
         <ControlledAccordions />
         <ControlledAccordions />
       </div>
-      <ThoughtBox/>
+      <ThoughtBox />
     </>
   );
 };

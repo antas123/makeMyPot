@@ -12,6 +12,12 @@ import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [activePage, setActivePage] = useState("Home");
+  const [activeTabOption, setActiveTabOption] = useState(1);
+
+  useEffect(() => {
+    setActiveTabOption(1);
+  }, [activePage]);
+
   const handleResize = () => {
     setIsMobile(window.innerWidth < 900);
   };
@@ -54,9 +60,17 @@ function App() {
           }}
         >
           {isMobile ? (
-            <TempDrawer activePage={activePage} />
+            <TempDrawer
+              activePage={activePage}
+              activeTabOption={activeTabOption}
+              setActiveTabOption={(option) => setActiveTabOption(option)}
+            />
           ) : (
-            <Sidebar activePage={activePage} />
+            <Sidebar
+              activePage={activePage}
+              activeTabOption={activeTabOption}
+              setActiveTabOption={(option) => setActiveTabOption(option)}
+            />
           )}
         </div>
 
