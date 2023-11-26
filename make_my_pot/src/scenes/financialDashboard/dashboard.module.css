@@ -1,5 +1,5 @@
 .lineChart {
-  height: 350px;
+  height: "400px";
   background-color: white;
 }
 
@@ -17,13 +17,12 @@
   justify-content: space-between;
   background-color: white;
   align-items: center;
-  padding: 5px;
+  padding: 10px;
 }
 .thoughtBox {
-  width: 74vw;
-  padding: 10px 20px 10px 20px;
+  padding: 10px;
   background-color: #f5f7f8;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .thoughtText {
   font-size: 1.2em;
@@ -31,4 +30,5 @@
   color: #9ade7b;
   width: 100%;
   margin-left: 20px;
+  text-align: justify;
 }
