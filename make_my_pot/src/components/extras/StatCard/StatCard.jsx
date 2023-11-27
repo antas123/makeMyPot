@@ -1,57 +1,26 @@
 import { Typography } from "@mui/material";
 import React from "react";
-import MonetizationOnTwoToneIcon from "@mui/icons-material/MonetizationOnTwoTone";
+import styles from "./StatCard.module.css";
 
 const StatCard = ({ title, IconComponent, data, content, extraInfo }) => {
   return (
-    <div
-      style={{
-        padding: "3px",
-        backgroundColor: "white",
-        margin: "10px",
-        marginTop: "15px",
-        height: "175px",
-      }}
-    >
+    <div className={styles.statCardContainer}>
       <Typography sx={{ fontSize: "18px", fontWeight: "lighter" }}>
         {title}
       </Typography>
-      <div style={{ margin: "8px", height: "100px" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignContent: "baseline",
-          }}
-        >
-          <div
-            style={{ textAlign: "center", color: "green", fontWeight: "light" }}
-          >
-            {IconComponent}
-          </div>
-          <div style={{ textAlign: "center", color: "green" }}>
+      <div className={styles.statCardInfoContainer}>
+        <div className={styles.statCardInfoSubcontainer}>
+          <div className={styles.statCardIcon}>{IconComponent}</div>
+          <div className={styles.statcardData}>
             <Typography sx={{ fontSize: "48px" }}>{data}</Typography>
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "-10px",
-          }}
-        >
+        <div className={styles.statCardExtraInfo}>
           <Typography>{extraInfo}</Typography>
         </div>
       </div>
       <hr />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          paddingBottom: "1px",
-          fontSize: "18px",
-        }}
-      >
+      <div className={styles.statCardContent}>
         <Typography>{content}</Typography>
       </div>
     </div>

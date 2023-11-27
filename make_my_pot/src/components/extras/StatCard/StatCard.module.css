@@ -1,29 +1,43 @@
-/* .statcardContainer {
-  padding: "3px";
-  background-color: "white";
-  margin: "10px";
-  margin-top: "15px";
-  height: "175px";
+.statCardExtraInfo {
+  display: flex;
+  justify-content: center;
+  margin-top: -5px;
+  color: red;
 }
 
-.statcard-data {
-  text-align: "center";
-  color: "green";
+.statCardContent {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1px;
+  font-size: 18px;
 }
 
-.statcardDataContainer {
-  margin: "8px";
-  height: "100px";
+.statCardContainer {
+  padding: 3px;
+  background-color: white;
+  margin: 10px;
+  margin-top: 15px;
+  height: 175px;
 }
 
-.statcard-icon {
-  text-align: "center";
-  color: "green";
-  font-weight: "light";
+.statcardData {
+  text-align: center;
+  color: green;
 }
 
-.statcardInfoSubcontainer {
-  display: "flex";
-  justify-content: "center";
-  align-content: "baseline";
-} */
+.statCardInfoContainer {
+  margin: 8px;
+  height: 100px;
+}
+
+.statCardIcon {
+  text-align: center;
+  color: green;
+  font-weight: light;
+}
+
+.statCardInfoSubcontainer {
+  display: flex;
+  justify-content: center;
+  align-content: baseline;
+}
