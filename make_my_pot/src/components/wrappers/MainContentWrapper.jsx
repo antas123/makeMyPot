@@ -4,7 +4,7 @@ const MainContentWrapper = ({ children }) => {
   return (
     <div
       style={{
-        height: "350px",
+        height: "400px",
         backgroundColor: "#F5F7F8",
         overflow: "auto",
         marginTop: "10px",
