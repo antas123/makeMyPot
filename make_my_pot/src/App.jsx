@@ -11,6 +11,7 @@ import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 import IncomeAndExpensesReport from "./scenes/financialDashboard/incomeAndExpensesReport/IncomeAndExpensesReport";
 import DonutChart from "./components/DonutChart";
 import NetWorthAnalysisReport from "./scenes/financialDashboard/NetWorthAnalysisReport/NetWorthAnalysisReport";
+import ManageLoans from "./scenes/financialDashboard/ManageYourLoans/ManageLoans";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
@@ -128,6 +129,15 @@ function App() {
               element={
                 <Scene>
                   <NetWorthAnalysisReport />
+                </Scene>
+              }
+            />
+            <Route
+              exact
+              path="/financialDashboard/4"
+              element={
+                <Scene>
+                  <ManageLoans />
                 </Scene>
               }
             />

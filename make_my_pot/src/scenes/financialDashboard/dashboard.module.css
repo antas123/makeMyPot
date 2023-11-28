@@ -1,11 +1,6 @@
-.lineChart {
-  height: "400px";
-  background-color: white;
-}
+
 
 .lineChartBox {
-  height: 100%;
-  width: 74vw;
   padding: 20px;
   background-color: #f5f7f8;
 }

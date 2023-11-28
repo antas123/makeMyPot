@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-const AmountTable = ({ onHead }) => {
+const AmountTable = ({ onHead, text }) => {
   return (
     <div
       style={{
@@ -37,7 +37,7 @@ const AmountTable = ({ onHead }) => {
           justifyContent: "center",
         }}
       >
-        <div style={{ padding: "5px", textAlign: "center" }}>5,28,800</div>
+        <div style={{ padding: "5px", textAlign: "center" }}>{text}</div>
       </Typography>
     </div>
   );
