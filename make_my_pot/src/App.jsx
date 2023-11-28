@@ -9,6 +9,8 @@ import Home from "./scenes/home/Home";
 import YourFinancials from "./scenes/yourFinancial/YourFinancials";
 import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 import IncomeAndExpensesReport from "./scenes/financialDashboard/incomeAndExpensesReport/IncomeAndExpensesReport";
+import DonutChart from "./components/DonutChart";
+import NetWorthAnalysisReport from "./scenes/financialDashboard/NetWorthAnalysisReport/NetWorthAnalysisReport";
 import ManageLoans from "./scenes/financialDashboard/ManageYourLoans/ManageLoans";
 
 function App() {
@@ -121,12 +123,21 @@ function App() {
                 </Scene>
               }
             />
-             <Route
+            <Route
+              exact
+              path="/financialDashboard/3"
+              element={
+                <Scene>
+                  <NetWorthAnalysisReport />
+                </Scene>
+              }
+            />
+            <Route
               exact
               path="/financialDashboard/4"
               element={
                 <Scene>
-                  <ManageLoans/>
+                  <ManageLoans />
                 </Scene>
               }
             />

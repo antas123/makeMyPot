@@ -9,9 +9,14 @@ import RatioCard from "../../../components/extras/RatioCard/RatioCard";
 import SplitMoneyIcon from "../../../assets/splitMoney.png";
 import MoneyBoxImage from "../../../assets/moneyBox.png";
 import AboutImage from "../../../assets/about.png";
+import MoneyBagRupeeImage from "../../../assets/moneyBagRupee.png";
+import InlandImage from "../../../assets/inland.png";
+import CoinsImage from "../../../assets/coins.png";
+import CashImage from "../../../assets/cash.png";
+import SirenImage from "../../../assets/siren.png";
 import PieChartWithCenterLabel from "../../../components/PieChartHollow";
 
-const IncomeAndExpensesReport = () => {
+const NetWorthAnalysisReport = () => {
   return (
     <>
       <SceneHeader />
@@ -20,17 +25,18 @@ const IncomeAndExpensesReport = () => {
           <Grid container sx={{ height: "100%" }}>
             <Grid item md={4}>
               <StatCard
-                title="Total Income"
-                IconComponent={SplitMoneyIcon}
+                title="Net-Worth"
+                IconComponent={MoneyBagRupeeImage}
                 data="1.32 Cr"
-                content="Your income post tax per year"
+                content="Difference of what you own and what you owe"
                 color="green"
               />
             </Grid>
             <Grid item md={4}>
               <StatCard
-                title="Total expenses"
-                IconComponent={SplitMoneyIcon}
+                title="Total assets"
+                IconComponent={InlandImage}
+                IconComponent2={CoinsImage}
                 data="18.34 L"
                 content="Total expenses computed per year"
                 color="gold"
@@ -49,35 +55,48 @@ const IncomeAndExpensesReport = () => {
           <Grid container sx={{ height: "100%" }}>
             <Grid item md={4}>
               <RatioCard
-                title="Essential expenses ratio"
+                title="Financial assets ratio"
                 IconComponent={AboutImage}
-                content="Portion of income going for essentials"
-                pp={98}
+                content="% of assets can be easily converted to cash"
+                pp={39}
               />
             </Grid>
             <Grid item md={4}>
-              <StatCard />
+              <StatCard
+                title="Financial Assets"
+                IconComponent={CashImage}
+                data="34.25 L"
+                color="gray"
+                content="Total assets can be easily converted to cash"
+              />
             </Grid>
             <Grid item md={4}>
-              <RatioCard
-                title="Savings Ratio"
-                IconComponent={AboutImage}
-                content="Indicator to build wealth and save future"
-                pp={20}
+              <StatCard
+                title="Fixed Assets"
+                IconComponent={InlandImage}
+                data="87.64 L"
+                color="gray"
+                content="Total assets can be easily converted to cash"
               />
             </Grid>
           </Grid>
           <Grid container sx={{ height: "100%" }}>
             <Grid item md={4}>
-              <RatioCard
-                title="Debt to Income Ratio"
-                IconComponent={AboutImage}
-                content="Indicator to build wealth and save future"
-                pp={40}
+              <StatCard
+                title="Emergency funds"
+                IconComponent={SirenImage}
+                data="2.15 L"
+                color="green"
+                content="Indicator for handling financial emergencies"
               />
             </Grid>
             <Grid item md={4}>
-              <StatCard />
+              <RatioCard
+                title="Debt to net worth ratio"
+                IconComponent={AboutImage}
+                content="Level of debt relative to net worth"
+                pp={78}
+              />
             </Grid>
             <Grid item md={4}>
               <PieChartWithCenterLabel />
@@ -92,4 +111,4 @@ const IncomeAndExpensesReport = () => {
   );
 };
 
-export default IncomeAndExpensesReport;
+export default NetWorthAnalysisReport;

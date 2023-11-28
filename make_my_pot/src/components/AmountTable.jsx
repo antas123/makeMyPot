@@ -1,12 +1,12 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-const AmountTable = ({text}) => {
+const AmountTable = ({ onHead, text }) => {
   return (
     <div
       style={{
         display: "flex",
-        height: "50px",
+        height: onHead ? "40px" : "50px",
         padding: 0,
         justifyContent: "center",
         alignItems: "center",
