@@ -10,6 +10,7 @@ import YourFinancials from "./scenes/yourFinancial/YourFinancials";
 import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 import IncomeAndExpensesReport from "./scenes/financialDashboard/incomeAndExpensesReport/IncomeAndExpensesReport";
 import DonutChart from "./components/DonutChart";
+import NetWorthAnalysisReport from "./scenes/financialDashboard/NetWorthAnalysisReport/NetWorthAnalysisReport";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
@@ -126,7 +127,7 @@ function App() {
               path="/financialDashboard/3"
               element={
                 <Scene>
-                  <DonutChart />
+                  <NetWorthAnalysisReport />
                 </Scene>
               }
             />

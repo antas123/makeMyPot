@@ -9,8 +9,9 @@ import RatioCard from "../../../components/extras/RatioCard/RatioCard";
 import SplitMoneyIcon from "../../../assets/splitMoney.png";
 import MoneyBoxImage from "../../../assets/moneyBox.png";
 import AboutImage from "../../../assets/about.png";
+import MoneyBagRupeeImage from "../../../assets/moneyBagRupee.png";
 
-const IncomeAndExpensesReport = () => {
+const NetWorthAnalysisReport = () => {
   return (
     <>
       <SceneHeader />
@@ -19,16 +20,16 @@ const IncomeAndExpensesReport = () => {
           <Grid container sx={{ height: "100%" }}>
             <Grid item md={4}>
               <StatCard
-                title="Total Income"
-                IconComponent={SplitMoneyIcon}
+                title="Net-Worth"
+                IconComponent={MoneyBagRupeeImage}
                 data="1.32 Cr"
-                content="Your income post tax per year"
+                content="Difference of what you own and what you owe"
                 color="green"
               />
             </Grid>
             <Grid item md={4}>
               <StatCard
-                title="Total expenses"
+                title="Total assets"
                 IconComponent={SplitMoneyIcon}
                 data="18.34 L"
                 content="Total expenses computed per year"
@@ -91,4 +92,4 @@ const IncomeAndExpensesReport = () => {
   );
 };
 
-export default IncomeAndExpensesReport;
+export default NetWorthAnalysisReport;

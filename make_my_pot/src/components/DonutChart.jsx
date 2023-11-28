@@ -26,7 +26,7 @@ ChartJS.register({
     const cx = width / 2;
     const cy = height / 2;
 
-    ctx.translate(cx, cy + 40);
+    ctx.translate(cx, cy + 30);
     ctx.rotate(angle);
     ctx.beginPath();
     ctx.moveTo(0, -2);
@@ -38,28 +38,29 @@ ChartJS.register({
     // ctx.translate(-cx, -cy);
 
     ctx.beginPath();
-    ctx.arc(cx, cy + 40, 5, 0, 10);
+    ctx.arc(cx, cy + 30, 5, 0, 10);
     ctx.fill();
     ctx.restore();
 
     ctx.font = "20px Helvetica";
     ctx.fillStyle = "#444";
-    ctx.fillText(needleValue + "%", cx, cy + 60);
+    ctx.fillText(needleValue + "%", cx, cy + 50);
     ctx.textAlign = "center";
     ctx.restore();
   },
 });
 
-const DonutChart = () => {
+const DonutChart = ({ percentage }) => {
   const data = {
     labels: ["red", "yellow", "green"],
     datasets: [
       {
         label: "Shop 1",
         data: [50, 25, 25],
-        needleValue: 40,
+        needleValue: percentage,
         backgroundColor: ["red", "yellow", "green"],
-        borderColor: ["gray", "black", "black"],
+        borderColor: ["black", "black", "black"],
+        borderRadius: "10%",
         cutout: "50%",
         circumference: 180,
         rotation: 270,
@@ -87,13 +88,8 @@ const DonutChart = () => {
   };
 
   return (
-    <div>
-      <SceneHeader></SceneHeader>
-      <MainContentWrapper>
-        <div style={{ width: "150px", height: "120px", padding: "5px" }}>
-          <Doughnut data={data} options={options} />
-        </div>
-      </MainContentWrapper>
+    <div style={{ width: "120px", height: "100px", marginTop: 0 }}>
+      <Doughnut data={data} options={options} />
     </div>
   );
 };
