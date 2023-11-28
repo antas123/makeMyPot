@@ -1,7 +1,12 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import { Typography, Input } from "@mui/material";
 
-const AmountTable = ({ onHead, text }) => {
+const AmountTable = ({
+  onHead,
+  text = "Enter the amount...",
+  value,
+  changeValue,
+}) => {
   return (
     <div
       style={{
@@ -10,8 +15,8 @@ const AmountTable = ({ onHead, text }) => {
         padding: 0,
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: "20px", // Add left spacing
-        marginRight: "20px", // Add right spacing
+        marginLeft: "20px",
+        marginRight: "20px",
       }}
     >
       <Typography
@@ -24,21 +29,23 @@ const AmountTable = ({ onHead, text }) => {
           textAlign: "center",
         }}
       >
-        <div style={{ padding: "5px", textAlign: "center" }}>Rs</div>
+        <div style={{ padding: "4px", textAlign: "center" }}>Rs</div>
       </Typography>
-      <Typography
+      <Input
+        placeholder={text}
         sx={{
           width: "max-content",
-          padding: "0 50px",
+          padding: "0 20px",
           border: "1px solid gray",
           borderLeft: "none",
           fontSize: "20px",
           alignContent: "center",
           justifyContent: "center",
+          textAlign: "center",
         }}
-      >
-        <div style={{ padding: "5px", textAlign: "center" }}>{text}</div>
-      </Typography>
+        value={value}
+        onChange={(e) => changeValue(e.target.value)}
+      />
     </div>
   );
 };

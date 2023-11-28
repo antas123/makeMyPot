@@ -13,7 +13,7 @@ const ManageLoans = () => {
     <>
       <SceneHeader />
 
-      <MainContentWrapper>
+      <MainContentWrapper isDashboard>
         <div style={{ padding: "10px" }}>
           <BasicSelect width={"60%"} text={"Select the loan to evaluate"} />
 
@@ -25,10 +25,27 @@ const ManageLoans = () => {
               height: "90%",
             }}
           >
-            <div style={{ flex: "2", marginRight:"40px"}}>
-              <TableComponent heading={"Prepay partial amount to reduce interest paid and loan term"} gap={10} symbol={['Rs', 'Rs']} />
-              <TableComponent heading={"Choose step-up EMI, where you increase EMI amount every year"} gap={10} or={"or"} symbol={['Rs', '%']}/>
-              <TableComponent heading={"Swich to loan with lesser interest rate"} gap={10} symbol={['Rs', '%']}/>
+            <div style={{ flex: "2", marginRight: "40px" }}>
+              <TableComponent
+                heading={
+                  "Prepay partial amount to reduce interest paid and loan term"
+                }
+                gap={10}
+                symbol={["Rs", "Rs"]}
+              />
+              <TableComponent
+                heading={
+                  "Choose step-up EMI, where you increase EMI amount every year"
+                }
+                gap={10}
+                or={"or"}
+                symbol={["Rs", "%"]}
+              />
+              <TableComponent
+                heading={"Swich to loan with lesser interest rate"}
+                gap={10}
+                symbol={["Rs", "%"]}
+              />
             </div>
             <div
               style={{

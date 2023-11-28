@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-const TextCell = () => {
+const TextCell = ({ text }) => {
   return (
     <Typography
       sx={{
@@ -12,7 +12,7 @@ const TextCell = () => {
         border: "1px solid black",
       }}
     >
-      <div style={{ padding: "5px", textAlign: "center" }}>table 1</div>
+      <div style={{ padding: "4px", paddingLeft: "20px" }}>{text}</div>
     </Typography>
   );
 };

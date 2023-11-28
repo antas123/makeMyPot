@@ -12,8 +12,6 @@ import { Link } from "react-router-dom";
 const Sidebar = ({ activePage, activeTabOption, setActiveTabOption }) => {
   const activePageOptions = [...(sideBarOptions[activePage] || [])];
 
-  console.log(activePage, pageToRoute(activePage), tabOptionToRoute.activePage);
-
   return (
     <div
       style={{
