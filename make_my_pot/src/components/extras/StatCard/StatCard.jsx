@@ -5,6 +5,7 @@ import styles from "./StatCard.module.css";
 const StatCard = ({
   title,
   IconComponent,
+  IconComponent2 = undefined,
   data,
   content,
   extraInfo,
@@ -18,21 +19,28 @@ const StatCard = ({
       </Typography>
       <div className={styles.statCardInfoContainer}>
         <div className={styles.statCardInfoSubcontainer}>
-          <div className={styles.statCardIcon}>
-            {/* {images.length === 1 && ( */}
-            <img
-              src={IconComponent}
-              alt="aa"
-              style={{ height: "60px", width: "65px" }}
-            />
-            {/* // )} */}
-            {/* {images.length === 2 && (
-              <>
-                <img src="image1.jpg" alt="Image 1" class="image1" />
-                <img src="image2.jpg" alt="Image 2" class="image2" />
-              </>
-            )} */}
-          </div>
+          {!IconComponent2 ? (
+            <div className={styles.statCardIcon}>
+              <img
+                src={IconComponent}
+                alt="aa"
+                style={{ height: "60px", width: "65px" }}
+              />
+            </div>
+          ) : (
+            <div className={styles.imageContainer2}>
+              <img
+                src={IconComponent}
+                alt="Image 1"
+                className={styles.image1}
+              />
+              <img
+                src={IconComponent2}
+                alt="Image 2"
+                className={styles.image2}
+              />
+            </div>
+          )}
           <div className={styles.statcardData}>
             <Typography sx={{ fontSize: "48px", color: color }}>
               {data}

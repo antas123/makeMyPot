@@ -9,6 +9,7 @@ import RatioCard from "../../../components/extras/RatioCard/RatioCard";
 import SplitMoneyIcon from "../../../assets/splitMoney.png";
 import MoneyBoxImage from "../../../assets/moneyBox.png";
 import AboutImage from "../../../assets/about.png";
+import PieChartWithCenterLabel from "../../../components/PieChartHollow";
 
 const IncomeAndExpensesReport = () => {
   return (
@@ -79,7 +80,7 @@ const IncomeAndExpensesReport = () => {
               <StatCard />
             </Grid>
             <Grid item md={4}>
-              <StatCard />
+              <PieChartWithCenterLabel />
             </Grid>
           </Grid>
         </Typography>
