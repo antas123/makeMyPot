@@ -3,7 +3,6 @@ import brain from "./imagesDashboard/Brain.png";
 import styles from "./dashboard.module.css";
 
 const ThoughtBox = ({ text }) => {
-  console.log("test", text);
   return (
     <div className={styles.thoughtBox}>
       <div className={styles.thought}>

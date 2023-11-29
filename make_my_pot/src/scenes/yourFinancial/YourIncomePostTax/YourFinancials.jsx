@@ -1,37 +1,36 @@
 import React, { useEffect, useState } from "react";
-import SceneHeader from "../../components/scene/SceneHeader";
-import ControlledAccordions from "../../components/Accordion";
-import ThoughtBox from "../financialDashboard/ThoughtBox";
-import MainContentWrapper from "../../components/wrappers/MainContentWrapper";
-import FooterContentWrapper from "../../components/wrappers/FooterContentWrapper";
-import SceneFooter from "../../components/scene/SceneFooter";
-import ManWithMoney from "../../assets/manWithMoney.png";
-import CashInHand from "../../assets/CashInHand.png";
-import MoneyBagRupeeOrange from "../../assets/moneyBagRupeeOrange.png";
+import SceneHeader from "../../../components/scene/SceneHeader";
+import ControlledAccordions from "../../../components/Accordion";
+import ThoughtBox from "../../financialDashboard/ThoughtBox";
+import MainContentWrapper from "../../../components/wrappers/MainContentWrapper";
+import FooterContentWrapper from "../../../components/wrappers/FooterContentWrapper";
+import SceneFooter from "../../../components/scene/SceneFooter";
+import ManWithMoney from "../../../assets/manWithMoney.png";
+import CashInHand from "../../../assets/CashInHand.png";
+import MoneyBagRupeeOrange from "../../../assets/moneyBagRupeeOrange.png";
 
-const YourFinancials = ({ data }) => {
+const YourFinancials = ({ data, changeTotalIncome }) => {
   const [baseSalary, setBaseSalary] = useState("");
   const [annualBonus, setAnnualBonus] = useState("");
   const [otherSourceIncome, setOtherSourceIncome] = useState("");
   const [summary, setSummary] = useState("Initial summary");
   const [comment, setComment] = useState("Initial comment");
 
-  console.log(data);
+  const sum =
+    12 * (Number(baseSalary) + Number(otherSourceIncome)) + Number(annualBonus);
 
   useEffect(() => {
-    const sum =
-      12 * (Number(baseSalary) + Number(otherSourceIncome)) +
-      Number(annualBonus);
-    const desiredSalaryRange = data.filter(
-      (d) => d.min <= sum && (d.max || Infinity) >= sum
+    changeTotalIncome(sum);
+    const desiredSalaryRange = data?.filter(
+      (d) => d.min <= sum && (d.max ?? Infinity) >= sum
     );
-    setComment(desiredSalaryRange[0].comment);
-    setSummary(desiredSalaryRange[0].summary);
+    setComment(desiredSalaryRange[0]?.comment);
+    setSummary(desiredSalaryRange[0]?.summary);
   }, [baseSalary, otherSourceIncome, annualBonus]);
 
   return (
     <>
-      <SceneHeader />
+      <SceneHeader title="Please provide your Income post tax" />
       <MainContentWrapper>
         <ControlledAccordions
           title="Family take home salary / month"
@@ -57,8 +56,8 @@ const YourFinancials = ({ data }) => {
       </MainContentWrapper>
 
       <FooterContentWrapper>
+        <ThoughtBox text={summary?.replace("{{totalIncome}}", sum)} />
         <ThoughtBox text={comment} />
-        <ThoughtBox text={summary} />
       </FooterContentWrapper>
       <SceneFooter />
     </>
