@@ -23,6 +23,17 @@ export const pageToRoute = (page) => {
   else return "financialDashboard";
 };
 
+export const getPageFromPath = (path) => {
+  if (path.includes("home")) return "Home";
+  else if (path.includes("yourFinancials")) return "Your financials";
+  else if (path.includes("financialDashboard")) return "Financial dashboard";
+};
+
+export const getActiveTabFromPath = (path) => {
+  const pathArray = path.split("/");
+  return Number(pathArray[pathArray.length - 1]);
+};
+
 export const tabOptionToRoute = (page) => {
   if (page === "Home") return 2;
   else return 5;

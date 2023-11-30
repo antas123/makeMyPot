@@ -3,26 +3,41 @@ import Navbar from "./components/extras/Navbar";
 import Scene from "./scenes/Scene";
 import Sidebar from "./components/extras/Sidebar";
 import TempDrawer from "./components/extras/TempDrawer";
-import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./scenes/home/Home";
 import YourFinancials from "./scenes/yourFinancial/YourIncomePostTax/YourFinancials";
 import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 import IncomeAndExpensesReport from "./scenes/financialDashboard/incomeAndExpensesReport/IncomeAndExpensesReport";
-import DonutChart from "./components/DonutChart";
 import NetWorthAnalysisReport from "./scenes/financialDashboard/NetWorthAnalysisReport/NetWorthAnalysisReport";
 import ManageLoans from "./scenes/financialDashboard/ManageYourLoans/ManageLoans";
 import axios from "axios";
 import YourExpenses from "./scenes/yourFinancial/YourExpenses/YourExpenses";
+import {
+  getActiveTabFromPath,
+  getPageFromPath,
+} from "./constants/NavigationData";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
-  const [activePage, setActivePage] = useState("Home");
-  const [activeTabOption, setActiveTabOption] = useState(1);
   const [globalData, setGlobalData] = useState({});
   const [totalIncome, setTotalIncome] = useState("");
+  const [activePage, setActivePage] = useState(
+    getPageFromPath(window.location.pathname)
+  );
+  const [activeTabOption, setActiveTabOption] = useState(
+    getActiveTabFromPath(window.location.pathname)
+  );
+
+  console.log(globalData);
+  const initialRender = useRef(true);
 
   useEffect(() => {
+    if (initialRender.current) {
+      // Skip the effect on the initial render
+      initialRender.current = false;
+      return;
+    }
     setActiveTabOption(1);
   }, [activePage]);
 
@@ -98,8 +113,8 @@ function App() {
           }}
         >
           <Routes>
+            <Route path="" element={<Navigate to="/home/1" replace />} />
             <Route
-              exact
               path="home/1"
               element={
                 <Scene>

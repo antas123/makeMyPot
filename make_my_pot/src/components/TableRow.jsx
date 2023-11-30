@@ -11,12 +11,12 @@ const TableRow = ({ subtitle }) => {
             display: "flex",
             height: "50px",
             alignItems: "center",
-            justifyContent: "center",
-            marginLeft: "20px", // Add left spacing
-            marginRight: "20px", // Add right spacing
+            marginLeft: "20px", 
+            marginRight: "20px", 
           }}
         >
           <TextCell text={subtitle} />
+          {/* <AmountTable /> */}
         </div>
       </Grid>
       <Grid item md={4}>
