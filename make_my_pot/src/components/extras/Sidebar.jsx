@@ -21,7 +21,10 @@ const Sidebar = ({ activePage, activeTabOption, setActiveTabOption }) => {
       }}
     >
       {activePageOptions.map((option, ind) => (
-        <Link to={`${pageToRoute(activePage)}/${ind + 1}`}>
+        <Link
+          to={`${pageToRoute(activePage)}/${ind + 1}`}
+          style={{ textDecoration: "none" }}
+        >
           <div
             key={option}
             className={`${styles.mainbox} ${
@@ -38,8 +41,6 @@ const Sidebar = ({ activePage, activeTabOption, setActiveTabOption }) => {
                 sx={{
                   color: "black",
                   fontSize: "18px",
-                  fontFamily: "Roboto",
-                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
                 }}
                 key={option}
               >

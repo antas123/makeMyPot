@@ -19,7 +19,7 @@ const StyledText = styled("text")(({ theme }) => ({
   fill: "purple",
   textAnchor: "middle",
   dominantBaseline: "central",
-  fontSize: 12,
+  fontSize: 14,
   fontWeight: "bold",
 }));
 
