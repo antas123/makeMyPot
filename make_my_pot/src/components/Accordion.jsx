@@ -10,6 +10,9 @@ import MonetizationOnTwoToneIcon from "@mui/icons-material/MonetizationOnTwoTone
 import AmountTable from "./AmountTable";
 import TextCell from "./TextCell";
 import TableRow from "./TableRow";
+import TableRow2 from "./TableRow2";
+import TableRow3 from "./TableRow3";
+import TableRow4 from "./TableRow4";
 
 const Item = styled(Paper)(() => ({
   //   ...theme.typography.body2,
@@ -91,7 +94,15 @@ export default function ControlledAccordions({
               height: "50px",
             }}
           >
-            <TableRow subtitle={subtitle} />
+            {subtitle.length === 2 ? (
+              <TableRow subtitle={[...subtitle]} />
+            ) : subtitle.length === 3 ? (
+              <TableRow2 subtitle={[...subtitle]} />
+            ) : subtitle.length === 4 ? (
+              <TableRow4 subtitle={[...subtitle]} />
+            ) : (
+              <TableRow3 topRow subtitle={[...subtitle]} />
+            )}
           </div>
           <div
             style={{
@@ -100,7 +111,15 @@ export default function ControlledAccordions({
               height: "50px",
             }}
           >
-            <TableRow subtitle={subtitle} />
+            {subtitle.length === 2 ? (
+              <TableRow subtitle={[...subtitle]} />
+            ) : subtitle.length === 3 ? (
+              <TableRow2 subtitle={[...subtitle]} />
+            ) : subtitle.length === 4 ? (
+              <TableRow4 subtitle={[...subtitle]} />
+            ) : (
+              <TableRow3 topRow subtitle={[...subtitle]} />
+            )}
           </div>
         </AccordionDetails>
       </Accordion>

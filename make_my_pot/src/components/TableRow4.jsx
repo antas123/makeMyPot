@@ -2,7 +2,7 @@ import { Grid } from "@mui/material";
 import TextCell from "./TextCell";
 import AmountTable from "./AmountTable";
 
-const TableRow = ({ subtitle }) => {
+const TableRow4 = ({ subtitle }) => {
   return (
     <Grid container>
       <Grid item md={8}>
@@ -11,18 +11,20 @@ const TableRow = ({ subtitle }) => {
             display: "flex",
             height: "50px",
             alignItems: "center",
-            marginLeft: "20px",
-            marginRight: "20px",
+            marginLeft: "10px",
+            marginRight: "10px",
           }}
         >
           <TextCell text={subtitle[0]} />
+          <TextCell text={subtitle[1]} />
+          <AmountTable text={subtitle[2]} />
         </div>
       </Grid>
       <Grid item md={4}>
-        <AmountTable text={subtitle[1]} />
+        <AmountTable text={subtitle[3]} />
       </Grid>
     </Grid>
   );
 };
 
-export default TableRow;
+export default TableRow4;

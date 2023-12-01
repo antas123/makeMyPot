@@ -8,6 +8,7 @@ import SceneFooter from "../../../components/scene/SceneFooter";
 import ManWithMoney from "../../../assets/manWithMoney.png";
 import CashInHand from "../../../assets/CashInHand.png";
 import MoneyBagRupeeOrange from "../../../assets/moneyBagRupeeOrange.png";
+import { PlaceholderData } from "../../../constants/PlaceholderData";
 
 const YourFinancials = ({ data, changeTotalIncome }) => {
   const [baseSalary, setBaseSalary] = useState("");
@@ -15,6 +16,8 @@ const YourFinancials = ({ data, changeTotalIncome }) => {
   const [otherSourceIncome, setOtherSourceIncome] = useState("");
   const [summary, setSummary] = useState("Initial summary");
   const [comment, setComment] = useState("Initial comment");
+
+  const { yourIncomePostTax } = PlaceholderData;
 
   const sum =
     12 * (Number(baseSalary) + Number(otherSourceIncome)) + Number(annualBonus);
@@ -30,25 +33,25 @@ const YourFinancials = ({ data, changeTotalIncome }) => {
 
   return (
     <>
-      <SceneHeader title="Please provide your Income post tax" />
+      <SceneHeader title={yourIncomePostTax.accordionTitle} />
       <MainContentWrapper>
         <ControlledAccordions
           title="Family take home salary / month"
-          subtitle="(Optional) Family member name"
+          subtitle={[...yourIncomePostTax.tabs.baseSalary]}
           icon={CashInHand}
           value={baseSalary}
           changeValue={(val) => setBaseSalary(val)}
         />
         <ControlledAccordions
           title="Annual bonus / year"
-          subtitle="(Optional) Family member name"
+          subtitle={[...yourIncomePostTax.tabs.annualBonus]}
           icon={MoneyBagRupeeOrange}
           value={annualBonus}
           changeValue={(val) => setAnnualBonus(val)}
         />
         <ControlledAccordions
           title="Other sources of income Eg: Rentals, Dividents per month"
-          subtitle="(Optional) Source reference"
+          subtitle={[...yourIncomePostTax.tabs.otherSourceIncome]}
           icon={ManWithMoney}
           value={otherSourceIncome}
           changeValue={(val) => setOtherSourceIncome(val)}

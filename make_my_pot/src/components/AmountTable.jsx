@@ -15,17 +15,16 @@ const AmountTable = ({
         padding: 0,
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: "20px",
-        marginRight: "20px",
+        marginLeft: "10px",
       }}
     >
       <Typography
         sx={{
-          width: "70px",
+          width: "50px",
           border: "1px solid gray",
           alignContent: "center",
           justifyContent: "center",
-          fontSize: "20px",
+          fontSize: "18px",
           textAlign: "center",
         }}
       >
@@ -38,7 +37,7 @@ const AmountTable = ({
           padding: "0 20px",
           border: "1px solid gray",
           borderLeft: "none",
-          fontSize: "20px",
+          fontSize: "18px",
           alignContent: "center",
           justifyContent: "center",
           textAlign: "center",

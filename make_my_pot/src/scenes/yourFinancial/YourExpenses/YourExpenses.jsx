@@ -5,17 +5,18 @@ import ThoughtBox from "../../financialDashboard/ThoughtBox";
 import MainContentWrapper from "../../../components/wrappers/MainContentWrapper";
 import FooterContentWrapper from "../../../components/wrappers/FooterContentWrapper";
 import SceneFooter from "../../../components/scene/SceneFooter";
-import ManWithMoney from "../../../assets/manWithMoney.png";
 import CashInHand from "../../../assets/CashInHand.png";
-import MoneyBagRupeeOrange from "../../../assets/moneyBagRupeeOrange.png";
 import HeavyImage from "../../../assets/heavy.png";
 import HolidayImage from "../../../assets/holiday.png";
+import { PlaceholderData } from "../../../constants/PlaceholderData";
 
 const YourExpenses = ({ data, annualIncome }) => {
   const [essentialExpenses, setEssentialExpenses] = useState("");
   const [lifestyleExpenses, setLifestyleExpenses] = useState("");
   const [loanEMI, setLoanEMI] = useState("");
   const [summary, setSummary] = useState("Initial summary");
+
+  const { yourExpenses } = PlaceholderData;
 
   const totalAnnualExpense =
     12 *
@@ -38,25 +39,25 @@ const YourExpenses = ({ data, annualIncome }) => {
 
   return (
     <>
-      <SceneHeader title="Please provide your expenses per month" />
+      <SceneHeader title={yourExpenses.accordionTitle} />
       <MainContentWrapper>
         <ControlledAccordions
           title="Essential expenses / month"
-          subtitle="(Optional) Expenses name for your reference"
+          subtitle={[...yourExpenses.tabs.essentialExpenses]}
           icon={CashInHand}
           value={essentialExpenses}
           changeValue={(val) => setEssentialExpenses(val)}
         />
         <ControlledAccordions
           title="Lifestyle Expenses / month"
-          subtitle="(Optional) Expense name for your reference"
+          subtitle={[...yourExpenses.tabs.lifestyleExpenses]}
           icon={HolidayImage}
           value={lifestyleExpenses}
           changeValue={(val) => setLifestyleExpenses(val)}
         />
         <ControlledAccordions
           title="Loan EMIs / month"
-          subtitle="(Optional) Loan EMI name for your reference"
+          subtitle={[...yourExpenses.tabs.loanEMI]}
           icon={HeavyImage}
           value={loanEMI}
           changeValue={(val) => setLoanEMI(val)}

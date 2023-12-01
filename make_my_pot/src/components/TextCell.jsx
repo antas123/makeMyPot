@@ -6,12 +6,13 @@ const TextCell = ({ text, ...props }) => {
     <Input
       sx={{
         flex: 1,
-        fontSize: "15px",
+        fontSize: "14px",
         fontFamily: "sans-serif",
         fontWeight: "lighter",
         border: "1px solid black",
         padding: "4px",
-        paddingLeft: "20px",
+        paddingLeft: "10px",
+        margin: "0 6px",
       }}
       {...props}
       placeholder={text}

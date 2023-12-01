@@ -17,6 +17,9 @@ import {
   getActiveTabFromPath,
   getPageFromPath,
 } from "./constants/NavigationData";
+import YourFixedAssets from "./scenes/yourFinancial/YourFixedAssets/YourFixedAssets";
+import YourFinancialAssets from "./scenes/yourFinancial/YourFinancialAssets/YourFinancialAssets";
+import YourLiabilities from "./scenes/yourFinancial/YourLiabilities/YourLiabilities";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
@@ -145,6 +148,46 @@ function App() {
                         []),
                     ]}
                     annualIncome={totalIncome}
+                  />
+                </Scene>
+              }
+            />
+            <Route
+              exact
+              path="/yourFinancials/3"
+              element={
+                <Scene>
+                  <YourFixedAssets
+                    data={[
+                      ...(globalData?.FixedAssetsGenericInformation || []),
+                    ]}
+                    // annualIncome={totalIncome}
+                  />
+                </Scene>
+              }
+            />
+            <Route
+              exact
+              path="/yourFinancials/4"
+              element={
+                <Scene>
+                  <YourFinancialAssets
+                    data={[
+                      ...(globalData?.FinancialAssetsClassification || []),
+                    ]}
+                  />
+                </Scene>
+              }
+            />
+            <Route
+              exact
+              path="/yourFinancials/5"
+              element={
+                <Scene>
+                  <YourLiabilities
+                    data={[
+                      ...(globalData?.DebtToIncomeRatioClassification || []),
+                    ]}
                   />
                 </Scene>
               }
