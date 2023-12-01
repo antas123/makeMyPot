@@ -17,6 +17,7 @@
     "@mui/material": "^5.14.18",
     "@mui/x-charts": "^6.18.2",
     "antd": "^5.11.2",
+    "axios": "^1.6.2",
     "chart.js": "^4.4.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "chartjs-plugin-zoom": "^2.0.1",

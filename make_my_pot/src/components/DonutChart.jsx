@@ -21,7 +21,6 @@ ChartJS.register({
     const dataTotal = data.datasets[0].data.reduce((a, b) => a + b, 0);
     const needleValue = data.datasets[0].needleValue;
     const angle = Math.PI + (1 / dataTotal) * needleValue * Math.PI;
-    console.log(angle);
 
     const cx = width / 2;
     const cy = height / 2;
