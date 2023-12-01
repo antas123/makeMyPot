@@ -41,8 +41,6 @@ const Sidebar = ({ activePage, activeTabOption, setActiveTabOption }) => {
                 sx={{
                   color: "black",
                   fontSize: "18px",
-                  fontFamily: "Roboto",
-                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
                 }}
                 key={option}
               >

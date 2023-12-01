@@ -10,6 +10,7 @@ import SplitMoneyIcon from "../../../assets/splitMoney.png";
 import MoneyBoxImage from "../../../assets/moneyBox.png";
 import AboutImage from "../../../assets/about.png";
 import PieChartWithCenterLabel from "../../../components/PieChartHollow";
+import TableCard from "../../../components/extras/TableCard/TableCard";
 
 const IncomeAndExpensesReport = () => {
   return (
@@ -56,7 +57,35 @@ const IncomeAndExpensesReport = () => {
               />
             </Grid>
             <Grid item md={4}>
-              <StatCard />
+              <TableCard
+                title="Income sources"
+                data={[
+                  {
+                    title: "Take Home Salary",
+                    value: 289999,
+                  },
+                  {
+                    title: "Annual Bonus",
+                    value: 289999,
+                  },
+                  {
+                    title: "Rental Income",
+                    value: 289999,
+                  },
+                  {
+                    title: "Income from dividents",
+                    value: 289999,
+                  },
+                  {
+                    title: "Income from ...",
+                    value: 289999,
+                  },
+                  {
+                    title: "Income from ...",
+                    value: 289999,
+                  },
+                ]}
+              />
             </Grid>
             <Grid item md={4}>
               <RatioCard
@@ -77,7 +106,31 @@ const IncomeAndExpensesReport = () => {
               />
             </Grid>
             <Grid item md={4}>
-              <StatCard />
+              <TableCard
+                title="Expenses"
+                data={[
+                  {
+                    title: "Household expenses",
+                    value: 2999,
+                  },
+                  {
+                    title: "Lifestyle expenses",
+                    value: 28909,
+                  },
+                  {
+                    title: "Dependant expenses",
+                    value: 899,
+                  },
+                  {
+                    title: "Insurance expenses",
+                    value: 28969,
+                  },
+                  {
+                    title: "Other expenses",
+                    value: 28999,
+                  },
+                ]}
+              />
             </Grid>
             <Grid item md={4}>
               <PieChartWithCenterLabel />
