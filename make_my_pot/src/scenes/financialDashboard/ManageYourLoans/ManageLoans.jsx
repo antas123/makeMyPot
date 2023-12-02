@@ -7,7 +7,6 @@ import BasicSelect from "../BasicSelect";
 import AmountTable from "../../../components/AmountTable";
 import TableComponent from "./TableComponent";
 import SidepieChart from "./SidepieChart";
-import ManageYourLoansBarChart from "./ManageYourLoansBarChart";
 import Barchart from "./Barchart";
 
 const ManageLoans = () => {
