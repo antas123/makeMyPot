@@ -75,6 +75,8 @@ function App() {
 
   const updateActivePageHandler = (page) => setActivePage(page);
 
+  const renderScene = (element) => <Scene>{element}</Scene>;
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div>
@@ -123,116 +125,78 @@ function App() {
         >
           <Routes>
             <Route path="" element={<Navigate to="/home/1" replace />} />
-            <Route
-              path="home/1"
-              element={
-                <Scene>
-                  <Home />
-                </Scene>
-              }
-            />
+            <Route path="home/1" element={renderScene(<Home />)} />
             <Route
               exact
               path="/yourFinancials/1"
-              element={
-                <Scene>
-                  <YourFinancials
-                    data={[...(globalData?.IncomeClassification || [])]}
-                    changeTotalIncome={(income) => setTotalIncome(income)}
-                  />
-                </Scene>
-              }
+              element={renderScene(
+                <YourFinancials
+                  data={[...(globalData?.IncomeClassification || [])]}
+                  changeTotalIncome={(income) => setTotalIncome(income)}
+                />
+              )}
             />
             <Route
               exact
               path="/yourFinancials/2"
-              element={
-                <Scene>
-                  <YourExpenses
-                    data={[
-                      ...(globalData?.EssentialExpenseRatioClassification ||
-                        []),
-                    ]}
-                    annualIncome={totalIncome}
-                  />
-                </Scene>
-              }
+              element={renderScene(
+                <YourExpenses
+                  data={[
+                    ...(globalData?.EssentialExpenseRatioClassification || []),
+                  ]}
+                  annualIncome={totalIncome}
+                />
+              )}
             />
             <Route
               exact
               path="/yourFinancials/3"
-              element={
-                <Scene>
-                  <YourFixedAssets
-                    data={[
-                      ...(globalData?.FixedAssetsGenericInformation || []),
-                    ]}
-                    // annualIncome={totalIncome}
-                  />
-                </Scene>
-              }
+              element={renderScene(
+                <YourFixedAssets
+                  data={[...(globalData?.FixedAssetsGenericInformation || [])]}
+                  // annualIncome={totalIncome}
+                />
+              )}
             />
             <Route
               exact
               path="/yourFinancials/4"
-              element={
-                <Scene>
-                  <YourFinancialAssets
-                    data={[
-                      ...(globalData?.FinancialAssetsClassification || []),
-                    ]}
-                  />
-                </Scene>
-              }
+              element={renderScene(
+                <YourFinancialAssets
+                  data={[...(globalData?.FinancialAssetsClassification || [])]}
+                />
+              )}
             />
             <Route
               exact
               path="/yourFinancials/5"
-              element={
-                <Scene>
-                  <YourLiabilities
-                    data={[
-                      ...(globalData?.DebtToIncomeRatioClassification || []),
-                    ]}
-                  />
-                </Scene>
-              }
+              element={renderScene(
+                <YourLiabilities
+                  data={[
+                    ...(globalData?.DebtToIncomeRatioClassification || []),
+                  ]}
+                />
+              )}
             />
             <Route
               exact
               path="/financialDashboard/1"
-              element={
-                <Scene>
-                  <FinancialDashboard />
-                </Scene>
-              }
+              element={renderScene(<FinancialDashboard />)}
             />
             <Route
               exact
               path="/financialDashboard/2"
-              element={
-                <Scene>
-                  <IncomeAndExpensesReport />
-                </Scene>
-              }
+              element={renderScene(<IncomeAndExpensesReport />)}
             />
             <Route
               exact
               path="/financialDashboard/3"
-              element={
-                <Scene>
-                  <NetWorthAnalysisReport />
-                </Scene>
-              }
+              element={renderScene(<NetWorthAnalysisReport />)}
             />
             <Route
               exact
               path="/financialDashboard/4"
-              element={
-                <Scene>
-                  <ManageLoans />
-                </Scene>
-              }
+              element={renderScene(<ManageLoans />)}
             />
           </Routes>
         </div>
