@@ -1,44 +1,50 @@
-import { Typography } from "@mui/material";
 import React from "react";
+import { Typography, Input } from "@mui/material";
 
-const AmountTable = ({text}) => {
+const AmountTable = ({
+  onHead,
+  text = "Enter the amount...",
+  value,
+  changeValue,
+}) => {
   return (
     <div
       style={{
         display: "flex",
-        height: "50px",
+        height: onHead ? "40px" : "50px",
         padding: 0,
         justifyContent: "center",
         alignItems: "center",
-        marginLeft: "20px", // Add left spacing
-        marginRight: "20px", // Add right spacing
+        marginLeft: "10px",
       }}
     >
       <Typography
         sx={{
-          width: "70px",
+          width: "50px",
           border: "1px solid gray",
           alignContent: "center",
           justifyContent: "center",
-          fontSize: "20px",
+          fontSize: "18px",
           textAlign: "center",
         }}
       >
-        <div style={{ padding: "5px", textAlign: "center" }}>Rs</div>
+        <div style={{ padding: "4px", textAlign: "center" }}>Rs</div>
       </Typography>
-      <Typography
+      <Input
+        placeholder={text}
         sx={{
           width: "max-content",
-          padding: "0 50px",
+          padding: "0 20px",
           border: "1px solid gray",
           borderLeft: "none",
-          fontSize: "20px",
+          fontSize: "18px",
           alignContent: "center",
           justifyContent: "center",
+          textAlign: "center",
         }}
-      >
-        <div style={{ padding: "5px", textAlign: "center" }}>{text}</div>
-      </Typography>
+        value={value}
+        onChange={(e) => changeValue(e.target.value)}
+      />
     </div>
   );
 };

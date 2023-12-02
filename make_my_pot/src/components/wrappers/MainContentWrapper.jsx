@@ -1,10 +1,10 @@
 import React from "react";
 
-const MainContentWrapper = ({ children }) => {
+const MainContentWrapper = ({ children, isDashboard }) => {
   return (
     <div
       style={{
-        height: "400px",
+        height: isDashboard ? "400px" : "350px",
         backgroundColor: "#F5F7F8",
         overflow: "auto",
         marginTop: "10px",

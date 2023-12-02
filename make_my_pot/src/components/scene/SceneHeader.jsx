@@ -2,7 +2,7 @@ import React from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import LocalAtmIcon from "@mui/icons-material/LocalAtm";
 
-const SceneHeader = () => {
+const SceneHeader = ({ title }) => {
   return (
     <div
       style={{
@@ -34,7 +34,7 @@ const SceneHeader = () => {
             fontWeight: "lighter",
           }}
         >
-          Please provide your Income post tax
+          {title}
         </p>
       </div>
 

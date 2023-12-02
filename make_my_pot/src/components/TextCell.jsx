@@ -1,19 +1,22 @@
-import { Typography } from "@mui/material";
+import { Input, Typography } from "@mui/material";
 import React from "react";
 
-const TextCell = () => {
+const TextCell = ({ text, ...props }) => {
   return (
-    <Typography
+    <Input
       sx={{
         flex: 1,
-        fontSize: "20px",
+        fontSize: "14px",
         fontFamily: "sans-serif",
         fontWeight: "lighter",
         border: "1px solid black",
+        padding: "4px",
+        paddingLeft: "10px",
+        margin: "0 6px",
       }}
-    >
-      <div style={{ padding: "5px", textAlign: "center" }}>table 1</div>
-    </Typography>
+      {...props}
+      placeholder={text}
+    />
   );
 };
 
