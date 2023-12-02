@@ -1,14 +1,15 @@
 import React from "react";
+import { getHeightForComponent } from "../../utils/helpers";
 
-const MainContentWrapper = ({ children, isDashboard }) => {
+const MainContentWrapper = ({ children, thoughtCount, component }) => {
+  const height = getHeightForComponent(thoughtCount, component);
   return (
     <div
       style={{
-        height: isDashboard ? "400px" : "350px",
-        backgroundColor: "#F5F7F8",
-        overflow: "auto",
-        marginTop: "10px",
+        backgroundColor: "#f5f7f8",
+        height,
         marginBottom: "10px",
+        overflow: "auto",
       }}
     >
       {children}

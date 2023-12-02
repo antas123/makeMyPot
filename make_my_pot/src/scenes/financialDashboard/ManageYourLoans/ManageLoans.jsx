@@ -7,13 +7,14 @@ import BasicSelect from "../BasicSelect";
 import TableComponent from "./TableComponent";
 import SidepieChart from "./SidepieChart";
 import Barchart from "./Barchart";
+import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 
 const ManageLoans = () => {
   return (
     <>
-      <SceneHeader />
+      <SceneHeader title={FinancialDashboardTitles.manageYourLoans} />
 
-      <MainContentWrapper>
+      <MainContentWrapper thoughtCount={1} component="main">
         <div style={{ padding: "10px" }}>
           <BasicSelect width={"60%"} text={"Select the loan to evaluate"} />
 
@@ -108,7 +109,7 @@ const ManageLoans = () => {
         </div>
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox />
       </FooterContentWrapper>
     </>

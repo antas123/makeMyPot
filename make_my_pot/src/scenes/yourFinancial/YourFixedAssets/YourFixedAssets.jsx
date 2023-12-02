@@ -23,7 +23,7 @@ const YourFixedAssets = ({ data }) => {
   return (
     <>
       <SceneHeader title={yourFixedAssets.accordionTitle} />
-      <MainContentWrapper>
+      <MainContentWrapper thoughtCount={1} component="main">
         <ControlledAccordions
           title="Real estate (Home/Land) - For personal use"
           subtitle={[...yourFixedAssets.tabs.personalRealEstate]}
@@ -47,7 +47,7 @@ const YourFixedAssets = ({ data }) => {
         />
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox text={summary?.replace("{{totalIncome}}", "")} />
       </FooterContentWrapper>
       <SceneFooter />

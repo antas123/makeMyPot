@@ -34,7 +34,7 @@ const YourFinancialAssets = ({ data }) => {
   return (
     <>
       <SceneHeader title={yourFinancialAssets.accordionTitle} />
-      <MainContentWrapper>
+      <MainContentWrapper thoughtCount={1} component="main">
         <ControlledAccordions
           title="Account balance / Liquid funds"
           subtitle={[...yourFinancialAssets.tabs.accBalanceAndLiquidFunds]}
@@ -83,7 +83,7 @@ const YourFinancialAssets = ({ data }) => {
         />
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox text={summary?.replace("{{totalIncome}}", "")} />
       </FooterContentWrapper>
       <SceneFooter />

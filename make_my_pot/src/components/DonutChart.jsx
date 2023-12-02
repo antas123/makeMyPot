@@ -2,8 +2,6 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import SceneHeader from "./scene/SceneHeader";
-import MainContentWrapper from "./wrappers/MainContentWrapper";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

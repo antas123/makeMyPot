@@ -34,7 +34,7 @@ const YourFinancials = ({ data, changeTotalIncome }) => {
   return (
     <>
       <SceneHeader title={yourIncomePostTax.accordionTitle} />
-      <MainContentWrapper>
+      <MainContentWrapper thoughtCount={2} component="main">
         <ControlledAccordions
           title="Family take home salary / month"
           subtitle={[...yourIncomePostTax.tabs.baseSalary]}
@@ -58,7 +58,7 @@ const YourFinancials = ({ data, changeTotalIncome }) => {
         />
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={2} component="footer">
         <ThoughtBox text={summary?.replace("{{totalIncome}}", sum)} />
         <ThoughtBox text={comment} />
       </FooterContentWrapper>

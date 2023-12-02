@@ -11,12 +11,13 @@ import MoneyBoxImage from "../../../assets/moneyBox.png";
 import AboutImage from "../../../assets/about.png";
 import PieChartWithCenterLabel from "../../../components/PieChartHollow";
 import TableCard from "../../../components/extras/TableCard/TableCard";
+import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 
 const IncomeAndExpensesReport = () => {
   return (
     <>
-      <SceneHeader />
-      <MainContentWrapper isDashboard>
+      <SceneHeader title={FinancialDashboardTitles.incomeAndExpensesReport} />
+      <MainContentWrapper thoughtCount={1} component="main">
         <Typography>
           <Grid container sx={{ height: "100%" }}>
             <Grid item md={4}>
@@ -138,7 +139,7 @@ const IncomeAndExpensesReport = () => {
           </Grid>
         </Typography>
       </MainContentWrapper>
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox />
       </FooterContentWrapper>
     </>

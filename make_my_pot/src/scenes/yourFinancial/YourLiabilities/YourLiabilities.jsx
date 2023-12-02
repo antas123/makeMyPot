@@ -21,7 +21,7 @@ const YourLiabilities = ({ data }) => {
   return (
     <>
       <SceneHeader title={yourLiabilities.accordionTitle} />
-      <MainContentWrapper>
+      <MainContentWrapper thoughtCount={1} component="main">
         <ControlledAccordions
           title="Family take home salary / month"
           subtitle={[...yourLiabilities.tabs.personalLoansAndEMI]}
@@ -45,7 +45,7 @@ const YourLiabilities = ({ data }) => {
         />
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox text={summary?.replace("{{totalIncome}}", "")} />
       </FooterContentWrapper>
       <SceneFooter />

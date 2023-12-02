@@ -40,7 +40,7 @@ const YourExpenses = ({ data, annualIncome }) => {
   return (
     <>
       <SceneHeader title={yourExpenses.accordionTitle} />
-      <MainContentWrapper>
+      <MainContentWrapper thoughtCount={1} component="main">
         <ControlledAccordions
           title="Essential expenses / month"
           subtitle={[...yourExpenses.tabs.essentialExpenses]}
@@ -64,7 +64,7 @@ const YourExpenses = ({ data, annualIncome }) => {
         />
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox
           text={summary?.replace(
             "{{essentialExpenseRatio}}",

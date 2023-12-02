@@ -1,10 +1,12 @@
 import React from "react";
+import { getHeightForComponent } from "../../utils/helpers";
 
-const FooterContentWrapper = ({ children }) => {
+const FooterContentWrapper = ({ children, thoughtCount, component }) => {
+  const height = getHeightForComponent(thoughtCount, component);
   return (
     <div
       style={{
-        height: "150px",
+        height,
         overflow: "auto",
         paddingBottom: "5px",
         backgroundColor: "#f5f7f8",
