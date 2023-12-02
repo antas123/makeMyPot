@@ -103,7 +103,7 @@ const Goals = () => {
           <p style={{ fontSize: "18px", color: "grey", marginBottom: "30px" }}>
             How retirement corpus is used post retirement?
           </p>
-          <Barchart />
+          <Barchart isTrimmed />
         </div>
       </MainContentWrapper>
 

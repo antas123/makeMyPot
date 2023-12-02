@@ -10,7 +10,7 @@ import {
 
 ChartJS.register(BarElement, CategoryScale, Tooltip, Legend);
 
-const Barchart = () => {
+const Barchart = ({ isTrimmed = false }) => {
   const data = {
     labels: [
       "2021",
@@ -109,6 +109,11 @@ const Barchart = () => {
       },
     },
   };
+
+  if (!isTrimmed)
+    return (
+      <Bar height={"350px"} width={"900px"} data={data} options={options} />
+    );
 
   return (
     <div style={{ backgroundColor: "#f5f7f8", width: "80%", margin: "0 auto" }}>
