@@ -11,6 +11,7 @@ import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 import IncomeAndExpensesReport from "./scenes/financialDashboard/incomeAndExpensesReport/IncomeAndExpensesReport";
 import NetWorthAnalysisReport from "./scenes/financialDashboard/NetWorthAnalysisReport/NetWorthAnalysisReport";
 import ManageLoans from "./scenes/financialDashboard/ManageYourLoans/ManageLoans";
+import Goals from "./scenes/financialDashboard/EvaluateAndPlanGoals/Goals";
 import axios from "axios";
 import YourExpenses from "./scenes/yourFinancial/YourExpenses/YourExpenses";
 import {
@@ -197,6 +198,11 @@ function App() {
               exact
               path="/financialDashboard/4"
               element={renderScene(<ManageLoans />)}
+            />
+            <Route
+              exact
+              path="/financialDashboard/6"
+              element={renderScene(<Goals />)}
             />
           </Routes>
         </div>
