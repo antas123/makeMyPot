@@ -36,11 +36,17 @@ const Goals = () => {
         <div
           style={{ display: "flex", flexDirection: "column", padding: "10px" }}
         >
-          <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "20px",
+            }}
+          >
             <h3>Financial Freedom</h3>
             <div
               style={{
-                backgroundColor: "lightgreen",
+                backgroundColor: "#94A684",
                 padding: "5px",
                 height: "20px",
                 marginTop: "15px",
@@ -74,7 +80,7 @@ const Goals = () => {
           style={{
             display: "flex",
             marginBottom: "30px",
-            width: "80%",
+            width: "100%",
             flexDirection: "column",
             margin: "auto",
           }}
@@ -89,12 +95,12 @@ const Goals = () => {
           style={{
             padding: "10px",
             display: "flex",
-            width: "80%",
+            width: "100%",
             margin: "auto",
             flexDirection: "column",
           }}
         >
-          <p style={{ fontSize: "18px", color: "grey" }}>
+          <p style={{ fontSize: "18px", color: "grey", marginBottom: "30px" }}>
             How retirement corpus is used post retirement?
           </p>
           <Barchart />

@@ -15,3 +15,8 @@ export const getHeightForComponent = (thoughtCount, component) => {
     }
   }
 };
+
+export const isHomePage = () => {
+  const isHome = window.location.pathname.includes("home");
+  return isHome;
+};

@@ -21,11 +21,13 @@ import {
 import YourFixedAssets from "./scenes/yourFinancial/YourFixedAssets/YourFixedAssets";
 import YourFinancialAssets from "./scenes/yourFinancial/YourFinancialAssets/YourFinancialAssets";
 import YourLiabilities from "./scenes/yourFinancial/YourLiabilities/YourLiabilities";
+import { isHomePage } from "./utils/helpers";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [globalData, setGlobalData] = useState({});
   const [totalIncome, setTotalIncome] = useState("");
+  const [appUserData, setAppUserData] = useState({});
   const [activePage, setActivePage] = useState(
     getPageFromPath(window.location.pathname)
   );
@@ -95,28 +97,30 @@ function App() {
           width: "100vw",
         }}
       >
-        <div
-          style={{
-            flex: "1",
-            minWidth: "max-content",
-            height: "90vh",
-            position: isMobile ? "absolute" : "relative",
-          }}
-        >
-          {isMobile ? (
-            <TempDrawer
-              activePage={activePage}
-              activeTabOption={activeTabOption}
-              setActiveTabOption={(option) => setActiveTabOption(option)}
-            />
-          ) : (
-            <Sidebar
-              activePage={activePage}
-              activeTabOption={activeTabOption}
-              setActiveTabOption={(option) => setActiveTabOption(option)}
-            />
-          )}
-        </div>
+        {!isHomePage() && (
+          <div
+            style={{
+              flex: "1",
+              minWidth: "max-content",
+              height: "90vh",
+              position: isMobile ? "absolute" : "relative",
+            }}
+          >
+            {isMobile ? (
+              <TempDrawer
+                activePage={activePage}
+                activeTabOption={activeTabOption}
+                setActiveTabOption={(option) => setActiveTabOption(option)}
+              />
+            ) : (
+              <Sidebar
+                activePage={activePage}
+                activeTabOption={activeTabOption}
+                setActiveTabOption={(option) => setActiveTabOption(option)}
+              />
+            )}
+          </div>
+        )}
 
         <div
           style={{

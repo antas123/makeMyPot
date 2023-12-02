@@ -111,9 +111,9 @@ const Barchart = () => {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "#f5f7f8", width: "80%", margin: "0 auto" }}>
       <Bar height={"350px"} width={"900px"} data={data} options={options} />
-    </>
+    </div>
   );
 };
 

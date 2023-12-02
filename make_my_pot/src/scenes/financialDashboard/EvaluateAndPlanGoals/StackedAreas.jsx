@@ -49,7 +49,9 @@ const UKGDPperCapita = [
 
 export default function StackedAreas() {
   return (
-    <div>
+    <div
+      style={{ width: "80%", margin: "10px auto", backgroundColor: "#f5f7f8" }}
+    >
       <LineChart
         xAxis={[
           {
