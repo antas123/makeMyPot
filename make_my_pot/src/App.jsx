@@ -35,6 +35,12 @@ function App() {
   console.log(globalData);
   const initialRender = useRef(true);
 
+  // expect inconsistency then see here
+  useEffect(() => {
+    setActivePage(getPageFromPath(window.location.pathname));
+    setActiveTabOption(getActiveTabFromPath(window.location.pathname));
+  }, [window.location.pathname]);
+
   useEffect(() => {
     if (initialRender.current) {
       // Skip the effect on the initial render
