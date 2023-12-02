@@ -15,7 +15,7 @@ const ManageLoans = () => {
       <SceneHeader title={FinancialDashboardTitles.manageYourLoans} />
 
       <MainContentWrapper thoughtCount={1} component="main">
-        <div style={{ padding: "10px" }}>
+        <div>
           <BasicSelect width={"60%"} text={"Select the loan to evaluate"} />
 
           <div
@@ -51,7 +51,7 @@ const ManageLoans = () => {
             <div
               style={{
                 flex: "1",
-                backgroundColor: "#E3F4F4",
+                backgroundColor: "#f5f7f8",
                 textAlign: "center",
               }}
             >
@@ -60,7 +60,12 @@ const ManageLoans = () => {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <div style={{ border: "1px solid black", padding: "5px" }}>
+            <div
+              style={{
+                border: "1px solid black",
+                padding: "5px",
+              }}
+            >
               <Barchart />
             </div>
             <div

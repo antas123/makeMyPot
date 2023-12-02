@@ -27,6 +27,7 @@ export default function ControlledAccordions({
   icon,
   value,
   changeValue,
+  special = false,
 }) {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -82,7 +83,7 @@ export default function ControlledAccordions({
 
         <AccordionDetails
           sx={{
-            backgroundColor: "#F5F7F8",
+            backgroundColor: special ? "white" : "#F5F7F8",
             paddingRight: 0,
             paddingLeft: "70px",
           }}
