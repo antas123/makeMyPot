@@ -59,6 +59,8 @@ const YourExpenses = ({
           changeValue={(val) =>
             changeAppUserData("expense", "essentialExpenses", val)
           }
+          name={"essentialExpenses"}
+          tab={"expense"}
         />
         <ControlledAccordions
           title="Lifestyle Expenses / month"
@@ -68,6 +70,8 @@ const YourExpenses = ({
           changeValue={(val) =>
             changeAppUserData("expense", "lifestyleExpenses", val)
           }
+          name={"lifestyleExpenses"}
+          tab={"expense"}
         />
         <ControlledAccordions
           title="Loan EMIs / month"
@@ -75,6 +79,8 @@ const YourExpenses = ({
           icon={HeavyImage}
           value={loanEMI}
           changeValue={(val) => changeAppUserData("expense", "loanEMI", val)}
+          name={"loanEMI"}
+          tab={"expense"}
         />
       </MainContentWrapper>
 

@@ -33,6 +33,8 @@ const YourFixedAssets = ({ data, fixedAssetDetails, changeAppUserData }) => {
           changeValue={(val) =>
             changeAppUserData("fixedAsset", "personalRealEstate", val)
           }
+          name="personalRealEstate"
+          tab="fixedAsset"
         />
         <ControlledAccordions
           title="Real estate (Home/Land/Shop) - For investment purpose"
@@ -42,6 +44,8 @@ const YourFixedAssets = ({ data, fixedAssetDetails, changeAppUserData }) => {
           changeValue={(val) =>
             changeAppUserData("fixedAsset", "investmentRealEstate", val)
           }
+          name="investmentRealEstate"
+          tab="fixedAsset"
         />
         <ControlledAccordions
           title="Physical gold and other precious metals"
@@ -51,6 +55,8 @@ const YourFixedAssets = ({ data, fixedAssetDetails, changeAppUserData }) => {
           changeValue={(val) =>
             changeAppUserData("fixedAsset", "physicalGoldAndOthers", val)
           }
+          name="physicalGoldAndOthers"
+          tab="fixedAsset"
         />
       </MainContentWrapper>
 

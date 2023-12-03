@@ -64,6 +64,8 @@ const YourLiabilities = ({
           changeValue={(val) =>
             changeAppUserData("liabilities", "personalLoansAndEMI", val)
           }
+          name="personalLoansAndEMI"
+          tab="liabilities"
         />
         <ControlledAccordions
           title="Home Loan"
@@ -73,6 +75,8 @@ const YourLiabilities = ({
           changeValue={(val) =>
             changeAppUserData("liabilities", "homeLoan", val)
           }
+          name="homeLoan"
+          tab="liabilities"
         />
         <ControlledAccordions
           title="Debt to others"
@@ -82,6 +86,8 @@ const YourLiabilities = ({
           changeValue={(val) =>
             changeAppUserData("liabilities", "debtToOthers", val)
           }
+          name="debtToOthers"
+          tab="liabilities"
         />
       </MainContentWrapper>
 

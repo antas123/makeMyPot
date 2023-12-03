@@ -39,7 +39,7 @@ export const calculateEssentialExpenseRatio = (
   monthlyEssentialExpense,
   annualIncome
 ) => {
-  return (monthlyEssentialExpense * 12 * 100) / annualIncome;
+  return (Number(monthlyEssentialExpense) * 12 * 100) / annualIncome;
 };
 
 export const calculateSavingsRatio = (annualSavings, annualIncome) => {

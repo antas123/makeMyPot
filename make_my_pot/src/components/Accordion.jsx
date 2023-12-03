@@ -11,6 +11,8 @@ import TableRow from "./TableRow";
 import TableRow2 from "./TableRow2";
 import TableRow3 from "./TableRow3";
 import TableRow4 from "./TableRow4";
+import PlusIcon from "../assets/plus.png";
+import { UserContext } from "../App";
 
 const Item = styled(Paper)(() => ({
   //   ...theme.typography.body2,
@@ -19,7 +21,7 @@ const Item = styled(Paper)(() => ({
   color: "black",
 }));
 
-const AccordionRow = ({ subtitle, isSpecial = false }) => {
+const AccordionRow = ({ subtitle, isSpecial = false, name, tab, index }) => {
   return (
     <div
       style={{
@@ -29,13 +31,37 @@ const AccordionRow = ({ subtitle, isSpecial = false }) => {
       }}
     >
       {subtitle.length === 2 ? (
-        <TableRow subtitle={[...subtitle]} />
+        <TableRow
+          icon={PlusIcon}
+          subtitle={[...subtitle]}
+          name={name}
+          tab={tab}
+          ind={index}
+        />
       ) : subtitle.length === 3 ? (
-        <TableRow2 subtitle={[...subtitle]} />
+        <TableRow2
+          icon={PlusIcon}
+          subtitle={[...subtitle]}
+          name={name}
+          tab={tab}
+          ind={index}
+        />
       ) : subtitle.length === 4 ? (
-        <TableRow4 subtitle={[...subtitle]} />
+        <TableRow4
+          icon={PlusIcon}
+          subtitle={[...subtitle]}
+          name={name}
+          tab={tab}
+          ind={index}
+        />
       ) : (
-        <TableRow3 subtitle={[...subtitle]} />
+        <TableRow3
+          icon={PlusIcon}
+          subtitle={[...subtitle]}
+          name={name}
+          tab={tab}
+          ind={index}
+        />
       )}
     </div>
   );
@@ -49,8 +75,12 @@ export default function ControlledAccordions({
   changeValue,
   special = false,
   isSpecialRow = false,
+  name,
+  tab,
 }) {
   const [expanded, setExpanded] = React.useState(false);
+
+  const { userInternalData } = React.useContext(UserContext);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -109,7 +139,15 @@ export default function ControlledAccordions({
             paddingLeft: "70px",
           }}
         >
-          <AccordionRow subtitle={[...subtitle]} isSpecial={isSpecialRow} />
+          {userInternalData[tab][name]?.map((data, ind) => (
+            <AccordionRow
+              subtitle={[...subtitle]}
+              isSpecial={isSpecialRow}
+              name={name}
+              tab={tab}
+              index={ind}
+            />
+          ))}
         </AccordionDetails>
       </Accordion>
     </div>

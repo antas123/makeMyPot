@@ -38,6 +38,8 @@ const YourFinancials = ({ data, changeAppUserData, incomeDetails }) => {
           icon={CashInHand}
           value={baseSalary}
           changeValue={(val) => changeAppUserData("income", "baseSalary", val)}
+          tab="income"
+          name="baseSalary"
         />
         <ControlledAccordions
           title="Annual bonus / year"
@@ -45,6 +47,8 @@ const YourFinancials = ({ data, changeAppUserData, incomeDetails }) => {
           icon={MoneyBagRupeeOrange}
           value={annualBonus}
           changeValue={(val) => changeAppUserData("income", "annualBonus", val)}
+          tab="income"
+          name="annualBonus"
         />
         <ControlledAccordions
           title="Other sources of income Eg: Rentals, Dividents per month"
@@ -54,6 +58,8 @@ const YourFinancials = ({ data, changeAppUserData, incomeDetails }) => {
           changeValue={(val) =>
             changeAppUserData("income", "otherSourceIncome", val)
           }
+          tab="income"
+          name="annualBonus"
         />
       </MainContentWrapper>
 

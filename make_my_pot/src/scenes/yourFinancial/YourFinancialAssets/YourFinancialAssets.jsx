@@ -40,6 +40,8 @@ const YourFinancialAssets = ({
           changeValue={(val) =>
             changeAppUserData("financialAsset", "accBalanceAndLiquidFunds", val)
           }
+          name="accBalanceAndLiquidFunds"
+          tab="financialAsset"
         />
         <ControlledAccordions
           title="Fixed deposits and bonds"
@@ -49,7 +51,8 @@ const YourFinancialAssets = ({
           changeValue={(val) =>
             changeAppUserData("financialAsset", "fdAndBonds", val)
           }
-          inputCount={3}
+          name="fdAndBonds"
+          tab="financialAsset"
         />
         <ControlledAccordions
           title="Employee provident fund"
@@ -58,6 +61,8 @@ const YourFinancialAssets = ({
           value={epf}
           changeValue={(val) => changeAppUserData("financialAsset", "epf", val)}
           isSpecialRow
+          name="epf"
+          tab="financialAsset"
         />
         <ControlledAccordions
           title="Real estate (Home/Land/Shop) - For investment purpose"
@@ -67,8 +72,9 @@ const YourFinancialAssets = ({
           changeValue={(val) =>
             changeAppUserData("financialAsset", "equityMFStocks", val)
           }
+          name="equityMFStocks"
+          tab="financialAsset"
         />
-        {/* Third ControlledAccordion */}
         <ControlledAccordions
           title="LIC & ULIP Plans"
           subtitle={[...yourFinancialAssets.tabs.LICAndUlipPlans]}
@@ -77,6 +83,8 @@ const YourFinancialAssets = ({
           changeValue={(val) =>
             changeAppUserData("financialAsset", "LICAndUlipPlans", val)
           }
+          name="LICAndUlipPlans"
+          tab="financialAsset"
         />
         <ControlledAccordions
           title="National pension scheme"
@@ -86,6 +94,8 @@ const YourFinancialAssets = ({
           changeValue={(val) =>
             changeAppUserData("financialAsset", "nationalPension", val)
           }
+          name="nationalPension"
+          tab="financialAsset"
         />
       </MainContentWrapper>
 

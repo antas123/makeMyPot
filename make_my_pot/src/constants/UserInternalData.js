@@ -1,4 +1,4 @@
-export default UserInternalData = {
+export const UserInternalData = {
   income: {
     baseSalary: [
       {
@@ -26,7 +26,7 @@ export default UserInternalData = {
         amount: "",
       },
     ],
-    lifeStyleExpenses: [
+    lifestyleExpenses: [
       {
         name: "",
         amount: "",
