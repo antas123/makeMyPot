@@ -28,13 +28,6 @@ const YourFinancialAssets = ({
 
   const { yourFinancialAssets } = PlaceholderData;
 
-  const updateFinancialAsset = (assetKey, value) => {
-    setFinancialAssets((prevAssets) => ({
-      ...prevAssets,
-      [assetKey]: value,
-    }));
-  };
-
   return (
     <>
       <SceneHeader title={yourFinancialAssets.accordionTitle} />
@@ -64,6 +57,7 @@ const YourFinancialAssets = ({
           icon={ManWithMoney}
           value={epf}
           changeValue={(val) => changeAppUserData("financialAsset", "epf", val)}
+          isSpecialRow
         />
         <ControlledAccordions
           title="Real estate (Home/Land/Shop) - For investment purpose"

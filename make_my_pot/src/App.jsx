@@ -35,6 +35,7 @@ function App() {
     getActiveTabFromPath(window.location.pathname)
   );
   const [error, setError] = useState("");
+  const [userInternalData, setUserInternalData] = useState({});
 
   console.log(globalData);
   const initialRender = useRef(true);
@@ -85,6 +86,8 @@ function App() {
       },
     }));
   };
+
+  const changeUserInternalDataHandler = () => {};
 
   const style = {
     position: "absolute",

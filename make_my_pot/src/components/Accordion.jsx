@@ -6,9 +6,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Grid, Paper } from "@mui/material";
 import styled from "@emotion/styled";
-import MonetizationOnTwoToneIcon from "@mui/icons-material/MonetizationOnTwoTone";
 import AmountTable from "./AmountTable";
-import TextCell from "./TextCell";
 import TableRow from "./TableRow";
 import TableRow2 from "./TableRow2";
 import TableRow3 from "./TableRow3";
@@ -21,6 +19,28 @@ const Item = styled(Paper)(() => ({
   color: "black",
 }));
 
+const AccordionRow = ({ subtitle, isSpecial = false }) => {
+  return (
+    <div
+      style={{
+        backgroundColor: "white",
+        paddingRight: "46px",
+        height: isSpecial ? "100px" : "50px",
+      }}
+    >
+      {subtitle.length === 2 ? (
+        <TableRow subtitle={[...subtitle]} />
+      ) : subtitle.length === 3 ? (
+        <TableRow2 subtitle={[...subtitle]} />
+      ) : subtitle.length === 4 ? (
+        <TableRow4 subtitle={[...subtitle]} />
+      ) : (
+        <TableRow3 subtitle={[...subtitle]} />
+      )}
+    </div>
+  );
+};
+
 export default function ControlledAccordions({
   title,
   subtitle,
@@ -28,6 +48,7 @@ export default function ControlledAccordions({
   value,
   changeValue,
   special = false,
+  isSpecialRow = false,
 }) {
   const [expanded, setExpanded] = React.useState(false);
 
@@ -88,40 +109,7 @@ export default function ControlledAccordions({
             paddingLeft: "70px",
           }}
         >
-          <div
-            style={{
-              backgroundColor: "white",
-              paddingRight: "46px",
-              height: "50px",
-            }}
-          >
-            {subtitle.length === 2 ? (
-              <TableRow subtitle={[...subtitle]} />
-            ) : subtitle.length === 3 ? (
-              <TableRow2 subtitle={[...subtitle]} />
-            ) : subtitle.length === 4 ? (
-              <TableRow4 subtitle={[...subtitle]} />
-            ) : (
-              <TableRow3 topRow subtitle={[...subtitle]} />
-            )}
-          </div>
-          <div
-            style={{
-              backgroundColor: "white",
-              paddingRight: "46px",
-              height: "50px",
-            }}
-          >
-            {subtitle.length === 2 ? (
-              <TableRow subtitle={[...subtitle]} />
-            ) : subtitle.length === 3 ? (
-              <TableRow2 subtitle={[...subtitle]} />
-            ) : subtitle.length === 4 ? (
-              <TableRow4 subtitle={[...subtitle]} />
-            ) : (
-              <TableRow3 topRow subtitle={[...subtitle]} />
-            )}
-          </div>
+          <AccordionRow subtitle={[...subtitle]} isSpecial={isSpecialRow} />
         </AccordionDetails>
       </Accordion>
     </div>
