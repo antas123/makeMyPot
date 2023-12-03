@@ -130,4 +130,7 @@ export const UserInternalData = {
       },
     ],
   },
+  retirementPlanning: {
+    expensesPostRetirement: [{ name: "", amount: "" }],
+  },
 };

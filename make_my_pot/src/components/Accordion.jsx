@@ -139,15 +139,16 @@ export default function ControlledAccordions({
             paddingLeft: "70px",
           }}
         >
-          {userInternalData[tab][name]?.map((data, ind) => (
-            <AccordionRow
-              subtitle={[...subtitle]}
-              isSpecial={isSpecialRow}
-              name={name}
-              tab={tab}
-              index={ind}
-            />
-          ))}
+          {userInternalData &&
+            userInternalData[tab][name]?.map((data, ind) => (
+              <AccordionRow
+                subtitle={[...subtitle]}
+                isSpecial={isSpecialRow}
+                name={name}
+                tab={tab}
+                index={ind}
+              />
+            ))}
         </AccordionDetails>
       </Accordion>
     </div>

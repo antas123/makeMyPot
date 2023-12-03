@@ -285,7 +285,14 @@ function App() {
               <Route
                 exact
                 path="/financialDashboard/6"
-                element={renderScene(<Goals />)}
+                element={renderScene(
+                  <Goals
+                    changeAppUserData={changeAppUserDataHandler}
+                    retirementPlanningDetails={
+                      appUserData?.retirementPlanning || {}
+                    }
+                  />
+                )}
               />
             </Routes>
           </div>

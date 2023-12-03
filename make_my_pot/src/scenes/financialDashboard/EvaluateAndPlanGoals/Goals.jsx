@@ -12,8 +12,7 @@ import Barchart from "../ManageYourLoans/Barchart";
 import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 import ControlledAccordions from "../../../components/Accordion";
 
-const Goals = () => {
-  const [ab, setAb] = useState("");
+const Goals = ({ changeAppUserData, retirementPlanningDetails }) => {
   return (
     <>
       <SceneHeader title={FinancialDashboardTitles.retirementPlanning} />
@@ -27,9 +26,17 @@ const Goals = () => {
               "Enter the amount...",
             ]}
             icon={moneyBag}
-            value={ab}
-            changeValue={(val) => setAb(val)}
+            value={retirementPlanningDetails?.expensesPostRetirement}
+            changeValue={(val) =>
+              changeAppUserData(
+                "retirementPlanning",
+                "expensesPostRetirement",
+                val
+              )
+            }
             special
+            tab="retirementPlanning"
+            name="expensesPostRetirement"
           />
         </div>
 
