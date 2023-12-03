@@ -48,13 +48,14 @@ ChartJS.register({
 });
 
 const DonutChart = ({ percentage }) => {
+  console.log(percentage);
   const data = {
     labels: ["red", "yellow", "green"],
     datasets: [
       {
         label: "Shop 1",
         data: [50, 25, 25],
-        needleValue: percentage,
+        needleValue: percentage.toFixed(2),
         backgroundColor: ["red", "yellow", "green"],
         borderColor: ["black", "black", "black"],
         borderRadius: "10%",

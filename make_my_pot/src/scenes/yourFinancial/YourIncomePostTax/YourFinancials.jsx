@@ -9,21 +9,18 @@ import ManWithMoney from "../../../assets/manWithMoney.png";
 import CashInHand from "../../../assets/CashInHand.png";
 import MoneyBagRupeeOrange from "../../../assets/moneyBagRupeeOrange.png";
 import { PlaceholderData } from "../../../constants/PlaceholderData";
+import { calculateTotalIncome } from "../../../utils/Calculations";
 
-const YourFinancials = ({ data, changeTotalIncome }) => {
-  const [baseSalary, setBaseSalary] = useState("");
-  const [annualBonus, setAnnualBonus] = useState("");
-  const [otherSourceIncome, setOtherSourceIncome] = useState("");
-  const [summary, setSummary] = useState("Initial summary");
-  const [comment, setComment] = useState("Initial comment");
+const YourFinancials = ({ data, changeAppUserData, incomeDetails }) => {
+  const { baseSalary, annualBonus, otherSourceIncome } = incomeDetails;
+  const [summary, setSummary] = useState("");
+  const [comment, setComment] = useState("");
 
   const { yourIncomePostTax } = PlaceholderData;
 
-  const sum =
-    12 * (Number(baseSalary) + Number(otherSourceIncome)) + Number(annualBonus);
+  const sum = calculateTotalIncome(incomeDetails);
 
   useEffect(() => {
-    changeTotalIncome(sum);
     const desiredSalaryRange = data?.filter(
       (d) => d.min <= sum && (d.max ?? Infinity) >= sum
     );
@@ -40,21 +37,23 @@ const YourFinancials = ({ data, changeTotalIncome }) => {
           subtitle={[...yourIncomePostTax.tabs.baseSalary]}
           icon={CashInHand}
           value={baseSalary}
-          changeValue={(val) => setBaseSalary(val)}
+          changeValue={(val) => changeAppUserData("income", "baseSalary", val)}
         />
         <ControlledAccordions
           title="Annual bonus / year"
           subtitle={[...yourIncomePostTax.tabs.annualBonus]}
           icon={MoneyBagRupeeOrange}
           value={annualBonus}
-          changeValue={(val) => setAnnualBonus(val)}
+          changeValue={(val) => changeAppUserData("income", "annualBonus", val)}
         />
         <ControlledAccordions
           title="Other sources of income Eg: Rentals, Dividents per month"
           subtitle={[...yourIncomePostTax.tabs.otherSourceIncome]}
           icon={ManWithMoney}
           value={otherSourceIncome}
-          changeValue={(val) => setOtherSourceIncome(val)}
+          changeValue={(val) =>
+            changeAppUserData("income", "otherSourceIncome", val)
+          }
         />
       </MainContentWrapper>
 

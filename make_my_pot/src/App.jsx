@@ -4,7 +4,7 @@ import Scene from "./scenes/Scene";
 import Sidebar from "./components/extras/Sidebar";
 import TempDrawer from "./components/extras/TempDrawer";
 import { useState, useEffect, useRef } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./scenes/home/Home";
 import YourFinancials from "./scenes/yourFinancial/YourIncomePostTax/YourFinancials";
 import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
@@ -22,11 +22,11 @@ import YourFixedAssets from "./scenes/yourFinancial/YourFixedAssets/YourFixedAss
 import YourFinancialAssets from "./scenes/yourFinancial/YourFinancialAssets/YourFinancialAssets";
 import YourLiabilities from "./scenes/yourFinancial/YourLiabilities/YourLiabilities";
 import { isHomePage } from "./utils/helpers";
+import { Box, Button, Modal, Typography } from "@mui/material";
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 900);
   const [globalData, setGlobalData] = useState({});
-  const [totalIncome, setTotalIncome] = useState("");
   const [appUserData, setAppUserData] = useState({});
   const [activePage, setActivePage] = useState(
     getPageFromPath(window.location.pathname)
@@ -34,11 +34,12 @@ function App() {
   const [activeTabOption, setActiveTabOption] = useState(
     getActiveTabFromPath(window.location.pathname)
   );
+  const [error, setError] = useState("");
 
   console.log(globalData);
   const initialRender = useRef(true);
+  const navigate = useNavigate();
 
-  // expect inconsistency then see here
   useEffect(() => {
     setActivePage(getPageFromPath(window.location.pathname));
     setActiveTabOption(getActiveTabFromPath(window.location.pathname));
@@ -57,10 +58,7 @@ function App() {
     setIsMobile(window.innerWidth < 900);
   };
   useEffect(() => {
-    // Add event listener to update isMobile on window resize
     window.addEventListener("resize", handleResize);
-
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -76,9 +74,38 @@ function App() {
     fetchGlobalConfigData();
   }, []);
 
+  console.log("test", globalData, appUserData);
+
+  const changeAppUserDataHandler = (tab, key, value) => {
+    setAppUserData((prev) => ({
+      ...prev,
+      [tab]: {
+        ...prev[tab],
+        [key]: value,
+      },
+    }));
+  };
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
   const updateActivePageHandler = (page) => setActivePage(page);
 
   const renderScene = (element) => <Scene>{element}</Scene>;
+
+  const navigateToIncomeHandler = () => {
+    navigate("/yourFinancials/1");
+    setError("");
+  };
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -121,6 +148,32 @@ function App() {
             )}
           </div>
         )}
+        <Modal
+          open={error}
+          onClose={navigateToIncomeHandler}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Income required!
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              {error}
+            </Typography>
+            <Button
+              type="primary"
+              sx={{
+                margin: "20px 0",
+                border: "1px solid orange",
+                color: "orange",
+              }}
+              onClick={navigateToIncomeHandler}
+            >
+              Add income
+            </Button>
+          </Box>
+        </Modal>
 
         <div
           style={{
@@ -137,7 +190,8 @@ function App() {
               element={renderScene(
                 <YourFinancials
                   data={[...(globalData?.IncomeClassification || [])]}
-                  changeTotalIncome={(income) => setTotalIncome(income)}
+                  changeAppUserData={changeAppUserDataHandler}
+                  incomeDetails={appUserData?.income || {}}
                 />
               )}
             />
@@ -149,7 +203,10 @@ function App() {
                   data={[
                     ...(globalData?.EssentialExpenseRatioClassification || []),
                   ]}
-                  annualIncome={totalIncome}
+                  changeAppUserData={changeAppUserDataHandler}
+                  incomeDetails={appUserData?.income || {}}
+                  setError={setError}
+                  expenseDetails={appUserData?.expense || {}}
                 />
               )}
             />
@@ -159,7 +216,8 @@ function App() {
               element={renderScene(
                 <YourFixedAssets
                   data={[...(globalData?.FixedAssetsGenericInformation || [])]}
-                  // annualIncome={totalIncome}
+                  fixedAssetDetails={appUserData?.fixedAsset || {}}
+                  changeAppUserData={changeAppUserDataHandler}
                 />
               )}
             />
@@ -169,6 +227,8 @@ function App() {
               element={renderScene(
                 <YourFinancialAssets
                   data={[...(globalData?.FinancialAssetsClassification || [])]}
+                  financialAssetDetails={appUserData?.financialAsset || {}}
+                  changeAppUserData={changeAppUserDataHandler}
                 />
               )}
             />
@@ -180,6 +240,10 @@ function App() {
                   data={[
                     ...(globalData?.DebtToIncomeRatioClassification || []),
                   ]}
+                  incomeDetails={appUserData?.income || {}}
+                  changeAppUserData={changeAppUserDataHandler}
+                  liabilityDetails={appUserData?.liabilities || {}}
+                  setError={setError}
                 />
               )}
             />
@@ -191,7 +255,9 @@ function App() {
             <Route
               exact
               path="/financialDashboard/2"
-              element={renderScene(<IncomeAndExpensesReport />)}
+              element={renderScene(
+                <IncomeAndExpensesReport appData={appUserData} />
+              )}
             />
             <Route
               exact

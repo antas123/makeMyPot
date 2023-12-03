@@ -150,7 +150,13 @@ const FinancialDashboard = () => {
               </div>
             </div>
           </div>
-          <div style={{ height: "270px", width: "800px", marginTop: "50px" }}>
+          <div
+            style={{
+              height: "270px",
+              width: "800px",
+              marginTop: "50px",
+            }}
+          >
             <Line
               data={lineData}
               options={options}

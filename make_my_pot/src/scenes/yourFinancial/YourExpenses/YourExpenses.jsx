@@ -9,22 +9,32 @@ import CashInHand from "../../../assets/CashInHand.png";
 import HeavyImage from "../../../assets/heavy.png";
 import HolidayImage from "../../../assets/holiday.png";
 import { PlaceholderData } from "../../../constants/PlaceholderData";
+import {
+  calculateExpenseRatio,
+  calculateAnnualExpense,
+  calculateTotalIncome,
+} from "../../../utils/Calculations";
 
-const YourExpenses = ({ data, annualIncome }) => {
-  const [essentialExpenses, setEssentialExpenses] = useState("");
-  const [lifestyleExpenses, setLifestyleExpenses] = useState("");
-  const [loanEMI, setLoanEMI] = useState("");
+const YourExpenses = ({
+  data,
+  incomeDetails,
+  setError,
+  expenseDetails,
+  changeAppUserData,
+}) => {
   const [summary, setSummary] = useState("Initial summary");
-
+  const { essentialExpenses, lifestyleExpenses, loanEMI } = expenseDetails;
   const { yourExpenses } = PlaceholderData;
 
-  const totalAnnualExpense =
-    12 *
-    (Number(essentialExpenses) + Number(lifestyleExpenses) + Number(loanEMI));
-  const annualSavings = annualIncome - totalAnnualExpense;
-  const expenseRatio = (annualSavings * 100) / annualIncome;
+  const annualIncome = calculateTotalIncome(incomeDetails);
+  if (annualIncome === 0) {
+    setError(
+      "Income is required for calculation of Expense Ratio. Please add your income."
+    );
+  }
 
-  console.log("data", data, expenseRatio);
+  const annualExpense = calculateAnnualExpense(expenseDetails);
+  const expenseRatio = calculateExpenseRatio(annualExpense, annualIncome);
 
   useEffect(() => {
     if (expenseRatio < 0) {
@@ -46,21 +56,25 @@ const YourExpenses = ({ data, annualIncome }) => {
           subtitle={[...yourExpenses.tabs.essentialExpenses]}
           icon={CashInHand}
           value={essentialExpenses}
-          changeValue={(val) => setEssentialExpenses(val)}
+          changeValue={(val) =>
+            changeAppUserData("expense", "essentialExpenses", val)
+          }
         />
         <ControlledAccordions
           title="Lifestyle Expenses / month"
           subtitle={[...yourExpenses.tabs.lifestyleExpenses]}
           icon={HolidayImage}
           value={lifestyleExpenses}
-          changeValue={(val) => setLifestyleExpenses(val)}
+          changeValue={(val) =>
+            changeAppUserData("expense", "lifestyleExpenses", val)
+          }
         />
         <ControlledAccordions
           title="Loan EMIs / month"
           subtitle={[...yourExpenses.tabs.loanEMI]}
           icon={HeavyImage}
           value={loanEMI}
-          changeValue={(val) => setLoanEMI(val)}
+          changeValue={(val) => changeAppUserData("expense", "loanEMI", val)}
         />
       </MainContentWrapper>
 

@@ -12,8 +12,29 @@ import AboutImage from "../../../assets/about.png";
 import PieChartWithCenterLabel from "../../../components/PieChartHollow";
 import TableCard from "../../../components/extras/TableCard/TableCard";
 import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
+import {
+  calculateAnnualDebt,
+  calculateAnnualExpense,
+  calculateDTIRatio,
+  calculateEssentialExpenseRatio,
+  calculateSavingsRatio,
+  calculateTotalIncome,
+} from "../../../utils/Calculations";
+import { formatAmount } from "../../../utils/helpers";
 
-const IncomeAndExpensesReport = () => {
+const IncomeAndExpensesReport = ({ appData }) => {
+  const { income, expense, liabilities } = appData;
+  console.log(appData);
+  const annualIncome = calculateTotalIncome(income || {});
+  const annualExpense = calculateAnnualExpense(expense || {});
+  const annualSavings = annualIncome - annualExpense;
+  const essentialExpenseRatio = calculateEssentialExpenseRatio(
+    expense?.essentialExpenses,
+    annualIncome
+  );
+  const savingsRatio = calculateSavingsRatio(annualSavings, annualIncome);
+  const annualDebt = calculateAnnualDebt(liabilities ?? {});
+  const DTIRatio = calculateDTIRatio(annualIncome, annualDebt);
   return (
     <>
       <SceneHeader title={FinancialDashboardTitles.incomeAndExpensesReport} />
@@ -24,7 +45,7 @@ const IncomeAndExpensesReport = () => {
               <StatCard
                 title="Total Income"
                 IconComponent={SplitMoneyIcon}
-                data="1.32 Cr"
+                data={formatAmount(annualIncome)}
                 content="Your income post tax per year"
                 color="green"
               />
@@ -33,7 +54,7 @@ const IncomeAndExpensesReport = () => {
               <StatCard
                 title="Total expenses"
                 IconComponent={SplitMoneyIcon}
-                data="18.34 L"
+                data={formatAmount(annualExpense)}
                 content="Total expenses computed per year"
                 color="gold"
               />
@@ -42,7 +63,7 @@ const IncomeAndExpensesReport = () => {
               <StatCard
                 title="Total savings"
                 IconComponent={MoneyBoxImage}
-                data="1.32 Cr"
+                data={formatAmount(annualSavings)}
                 content="Your in-hand savings per year"
                 color="green"
               />
@@ -54,38 +75,16 @@ const IncomeAndExpensesReport = () => {
                 title="Essential expenses ratio"
                 IconComponent={AboutImage}
                 content="Portion of income going for essentials"
-                pp={98}
+                pp={essentialExpenseRatio}
               />
             </Grid>
             <Grid item md={4}>
               <TableCard
                 title="Income sources"
-                data={[
-                  {
-                    title: "Take Home Salary",
-                    value: 289999,
-                  },
-                  {
-                    title: "Annual Bonus",
-                    value: 289999,
-                  },
-                  {
-                    title: "Rental Income",
-                    value: 289999,
-                  },
-                  {
-                    title: "Income from dividents",
-                    value: 289999,
-                  },
-                  {
-                    title: "Income from ...",
-                    value: 289999,
-                  },
-                  {
-                    title: "Income from ...",
-                    value: 289999,
-                  },
-                ]}
+                data={Object.keys(income ?? {})?.map((title) => ({
+                  title,
+                  value: income[title],
+                }))}
               />
             </Grid>
             <Grid item md={4}>
@@ -93,7 +92,7 @@ const IncomeAndExpensesReport = () => {
                 title="Savings Ratio"
                 IconComponent={AboutImage}
                 content="Indicator to build wealth and save future"
-                pp={20}
+                pp={savingsRatio}
               />
             </Grid>
           </Grid>
@@ -103,34 +102,16 @@ const IncomeAndExpensesReport = () => {
                 title="Debt to Income Ratio"
                 IconComponent={AboutImage}
                 content="Indicator to build wealth and save future"
-                pp={40}
+                pp={DTIRatio}
               />
             </Grid>
             <Grid item md={4}>
               <TableCard
                 title="Expenses"
-                data={[
-                  {
-                    title: "Household expenses",
-                    value: 2999,
-                  },
-                  {
-                    title: "Lifestyle expenses",
-                    value: 28909,
-                  },
-                  {
-                    title: "Dependant expenses",
-                    value: 899,
-                  },
-                  {
-                    title: "Insurance expenses",
-                    value: 28969,
-                  },
-                  {
-                    title: "Other expenses",
-                    value: 28999,
-                  },
-                ]}
+                data={Object.keys(expense ?? {})?.map((title) => ({
+                  title,
+                  value: expense[title],
+                }))}
               />
             </Grid>
             <Grid item md={4}>

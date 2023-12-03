@@ -20,3 +20,19 @@ export const isHomePage = () => {
   const isHome = window.location.pathname.includes("home");
   return isHome;
 };
+
+export const formatAmount = (amount) => {
+  const absoluteAmount = Math.abs(amount);
+
+  if (absoluteAmount < 1000) {
+    return `${amount >= 0 ? "" : "-"}${absoluteAmount.toFixed(2)}`;
+  } else if (absoluteAmount < 100000) {
+    return `${amount >= 0 ? "" : "-"}${(absoluteAmount / 1000).toFixed(2)} K`;
+  } else if (absoluteAmount < 10000000) {
+    return `${amount >= 0 ? "" : "-"}${(absoluteAmount / 100000).toFixed(2)} L`;
+  } else {
+    return `${amount >= 0 ? "" : "-"}${(absoluteAmount / 10000000).toFixed(
+      2
+    )} Cr`;
+  }
+};
