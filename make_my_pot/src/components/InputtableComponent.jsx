@@ -4,7 +4,7 @@ import { Input } from "@mui/material";
 const InputtableComponent = ({ text, width, symbol }) => {
   return (
     <div style={{ display: "flex", flexDirection: "row" }}>
-      <div
+      {symbol ? <div
         style={{
           height: "33px",
           width: "35px",
@@ -16,7 +16,7 @@ const InputtableComponent = ({ text, width, symbol }) => {
         }}
       >
         <p>{symbol}</p>
-      </div>
+      </div> : null}
       <Input
         placeholder={text}
         sx={{
@@ -24,6 +24,7 @@ const InputtableComponent = ({ text, width, symbol }) => {
           borderBottom: "0",
           width: width,
           textAlign: "center",
+          padding:"0 30px"
         }}
       />
     </div>
