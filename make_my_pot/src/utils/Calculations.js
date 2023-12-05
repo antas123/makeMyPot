@@ -72,3 +72,7 @@ export const calculateDebtToNetWorthRatio = (debt, netWorth) => {
   if (netWorth === 0) return 0;
   return (debt * 100) / netWorth;
 };
+
+export const calculateEmergencyFunds = (annualExpense) => {
+  return (annualExpense / 12) * 3.5;
+};

@@ -17,7 +17,9 @@ import HeavyImage from "../../../assets/heavy.png";
 import PieChartWithCenterLabel from "../../../components/PieChartHollow";
 import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 import {
+  calculateAnnualExpense,
   calculateDebtToNetWorthRatio,
+  calculateEmergencyFunds,
   calculateMonthlyDebt,
   calculateTotalAsset,
   calculateTotalIncome,
@@ -27,7 +29,7 @@ import { formatAmount } from "../../../utils/helpers";
 const NetWorthAnalysisReport = ({ appData, internalAppData }) => {
   const { income, expense, fixedAsset, financialAsset } = appData;
   const { liabilities } = internalAppData;
-  console.log(appData);
+  const annualExpense = calculateAnnualExpense(expense || {});
   const annualIncome = calculateTotalIncome(income || {});
   const totalFixedAssets = calculateTotalAsset(fixedAsset);
   const totalFinancialAssets = calculateTotalAsset(financialAsset);
@@ -37,6 +39,7 @@ const NetWorthAnalysisReport = ({ appData, internalAppData }) => {
     monthlyDebt * 12,
     netWorth
   );
+  const emergencyFund = calculateEmergencyFunds(annualExpense);
   console.log(internalAppData);
 
   return (
@@ -109,9 +112,10 @@ const NetWorthAnalysisReport = ({ appData, internalAppData }) => {
               <StatCard
                 title="Emergency funds"
                 IconComponent={SirenImage}
-                data="2.15 L"
+                data={formatAmount(emergencyFund)}
                 color="green"
                 content="Indicator for handling financial emergencies"
+                extraInfo="~ 3.5 times"
               />
             </Grid>
             <Grid item md={4}>

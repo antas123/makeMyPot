@@ -24,7 +24,7 @@ const YourFinancialAssets = ({
     nationalPension,
   } = financialAssetDetails;
 
-  const [summary, setSummary] = useState(data[0]?.summary ?? "Initial summary");
+  const thoughts = data?.map((datapoint) => datapoint?.summary);
 
   const { yourFinancialAssets } = PlaceholderData;
 
@@ -100,8 +100,9 @@ const YourFinancialAssets = ({
       </MainContentWrapper>
 
       <FooterContentWrapper thoughtCount={2} component="footer">
-        <ThoughtBox text={summary?.replace("{{totalIncome}}", "")} />
-        <ThoughtBox text={summary?.replace("{{totalIncome}}", "")} />
+        {thoughts?.map((thought) => (
+          <ThoughtBox text={thought?.replace("{{totalIncome}}", "")} />
+        ))}
       </FooterContentWrapper>
       <SceneFooter />
     </>

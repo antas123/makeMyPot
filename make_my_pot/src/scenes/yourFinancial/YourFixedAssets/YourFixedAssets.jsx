@@ -13,11 +13,7 @@ import { PlaceholderData } from "../../../constants/PlaceholderData";
 const YourFixedAssets = ({ data, fixedAssetDetails, changeAppUserData }) => {
   const { personalRealEstate, investmentRealEstate, physicalGoldAndOthers } =
     fixedAssetDetails;
-  const [summary, setSummary] = useState(
-    data[0]?.SummaryNotes ?? "Initial summary"
-  );
-
-  console.log(data, fixedAssetDetails);
+  const thoughts = data?.map((datapoint) => datapoint?.SummaryNotes);
 
   const { yourFixedAssets } = PlaceholderData;
 
@@ -61,8 +57,9 @@ const YourFixedAssets = ({ data, fixedAssetDetails, changeAppUserData }) => {
       </MainContentWrapper>
 
       <FooterContentWrapper thoughtCount={2} component="footer">
-        <ThoughtBox text={summary} />
-        <ThoughtBox text={summary} />
+        {thoughts?.map((thought) => (
+          <ThoughtBox text={thought} />
+        ))}
       </FooterContentWrapper>
       <SceneFooter />
     </>
