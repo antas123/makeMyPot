@@ -16,8 +16,17 @@ export const getHeightForComponent = (thoughtCount, component) => {
   }
 };
 
+export const isNotAuthenticated = () => {
+  const { pathname } = window.location;
+  const isHome = pathname === "/signin" || pathname === "/login";
+  return isHome;
+};
+
 export const isHomePage = () => {
-  const isHome = window.location.pathname.includes("home");
+  const { pathname } = window.location;
+  console.log("path", pathname);
+  const isHome =
+    pathname === "/signin" || pathname === "/login" || pathname === "/home";
   return isHome;
 };
 

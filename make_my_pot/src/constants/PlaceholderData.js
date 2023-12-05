@@ -109,4 +109,5 @@ export const FinancialDashboardTitles = {
   netWorthAnalysisReport: "Explore your financial position at the moment",
   manageYourLoans: "Explore strategies to pay your loan faster",
   retirementPlanning: "Explore your financial freedom",
+  evaluateAndPlanGoals: "Evaluate and plan your financial goals",
 };

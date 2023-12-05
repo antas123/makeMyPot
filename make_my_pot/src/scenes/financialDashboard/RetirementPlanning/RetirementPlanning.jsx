@@ -12,7 +12,10 @@ import Barchart from "../ManageYourLoans/Barchart";
 import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 import ControlledAccordions from "../../../components/Accordion";
 
-const Goals = ({ changeAppUserData, retirementPlanningDetails }) => {
+const RetirementPlanning = ({
+  changeAppUserData,
+  retirementPlanningDetails,
+}) => {
   return (
     <>
       <SceneHeader title={FinancialDashboardTitles.retirementPlanning} />
@@ -121,4 +124,4 @@ const Goals = ({ changeAppUserData, retirementPlanningDetails }) => {
   );
 };
 
-export default Goals;
+export default RetirementPlanning;

@@ -1,12 +1,12 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
-function BasicSelect({text, width}) {
-  const [age, setAge] = React.useState('');
+function BasicSelect({ text, width, style = {} }) {
+  const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -14,7 +14,7 @@ function BasicSelect({text, width}) {
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl style={{width: width}}  size='small'>
+      <FormControl style={{ width: width }} size="small">
         <InputLabel id="demo-simple-select-label">{text}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -23,10 +23,10 @@ function BasicSelect({text, width}) {
           label={text}
           onChange={handleChange}
           sx={{
-            '& .MuiSelect-icon': {
+            "& .MuiSelect-icon": {
               fontSize: 70,
-              color:"#A2B5BB"
-            }
+              color: "#A2B5BB",
+            },
           }}
         >
           <MenuItem value={10}>Ten</MenuItem>

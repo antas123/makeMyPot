@@ -63,7 +63,7 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption }) => {
             variant="h6"
             noWrap
             component="a"
-            href="/home/1"
+            href="/"
             sx={{
               mr: 2,
               fontWeight: "lighter",
@@ -119,7 +119,7 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption }) => {
                     onClick={() => handleUpdatePageAndTab(page)}
                   >
                     <Link
-                      to={`/${pageToRoute(page)}`}
+                      to={`/${pageToRoute(page)}${page === "Home" ? "" : "/1"}`}
                       style={{
                         textDecoration: "none",
                         color: "black",
@@ -140,7 +140,7 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption }) => {
             variant="h6"
             noWrap
             component="a"
-            href="/home/1"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -179,7 +179,7 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption }) => {
                   onClick={() => handleUpdatePageAndTab(page)}
                 >
                   <Link
-                    to={`/${pageToRoute(page)}/1`}
+                    to={`/${pageToRoute(page)}${page === "Home" ? "" : "/1"}`}
                     style={{
                       textDecoration: "none",
                       color: "black",

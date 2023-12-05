@@ -11,7 +11,7 @@ import FinancialDashboard from "./scenes/financialDashboard/FinancialDashboard";
 import IncomeAndExpensesReport from "./scenes/financialDashboard/incomeAndExpensesReport/IncomeAndExpensesReport";
 import NetWorthAnalysisReport from "./scenes/financialDashboard/NetWorthAnalysisReport/NetWorthAnalysisReport";
 import ManageLoans from "./scenes/financialDashboard/ManageYourLoans/ManageLoans";
-import Goals from "./scenes/financialDashboard/EvaluateAndPlanGoals/Goals";
+import Goals from "./scenes/financialDashboard/RetirementPlanning/RetirementPlanning";
 import axios from "axios";
 import YourExpenses from "./scenes/yourFinancial/YourExpenses/YourExpenses";
 import {
@@ -21,9 +21,13 @@ import {
 import YourFixedAssets from "./scenes/yourFinancial/YourFixedAssets/YourFixedAssets";
 import YourFinancialAssets from "./scenes/yourFinancial/YourFinancialAssets/YourFinancialAssets";
 import YourLiabilities from "./scenes/yourFinancial/YourLiabilities/YourLiabilities";
-import { isHomePage } from "./utils/helpers";
+import { isHomePage, isNotAuthenticated } from "./utils/helpers";
 import { Box, Button, Modal, Typography } from "@mui/material";
 import { UserInternalData } from "./constants/UserInternalData";
+import RetirementPlanning from "./scenes/financialDashboard/RetirementPlanning/RetirementPlanning";
+import EvaluateAndPlanGoals from "./scenes/financialDashboard/EvaluateAndPlanGoals/EvaluateAndPlanGoals";
+import Signin from "./scenes/Signin";
+import Login from "./scenes/Login";
 
 const UserContext = createContext();
 function App() {
@@ -43,6 +47,7 @@ function App() {
 
   const initialRender = useRef(true);
   const navigate = useNavigate();
+  console.log(window.location.pathname);
 
   useEffect(() => {
     setActivePage(getPageFromPath(window.location.pathname));
@@ -77,9 +82,6 @@ function App() {
     };
     fetchGlobalConfigData();
   }, []);
-
-  console.log("arrr", userInternalData);
-  console.log("test", globalData, appUserData);
 
   const changeAppUserDataHandler = (tab, key, value) => {
     setAppUserData((prev) => ({
@@ -117,13 +119,15 @@ function App() {
   return (
     <UserContext.Provider value={{ userInternalData, setUserInternalData }}>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <div>
-          <Navbar
-            activePage={activePage}
-            updateActivePage={updateActivePageHandler}
-            updateTabOption={() => setActiveTabOption(1)}
-          />
-        </div>
+        {!isNotAuthenticated() && (
+          <div>
+            <Navbar
+              activePage={activePage}
+              updateActivePage={updateActivePageHandler}
+              updateTabOption={() => setActiveTabOption(1)}
+            />
+          </div>
+        )}
 
         <div
           style={{
@@ -190,8 +194,10 @@ function App() {
             }}
           >
             <Routes>
-              <Route path="" element={<Navigate to="/home/1" replace />} />
-              <Route path="home/1" element={renderScene(<Home />)} />
+              <Route path="" element={<Navigate to="/signin" replace />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/home" element={renderScene(<Home />)} />
               <Route
                 exact
                 path="/yourFinancials/1"
@@ -284,9 +290,14 @@ function App() {
               />
               <Route
                 exact
+                path="/financialDashboard/5"
+                element={renderScene(<EvaluateAndPlanGoals />)}
+              />
+              <Route
+                exact
                 path="/financialDashboard/6"
                 element={renderScene(
-                  <Goals
+                  <RetirementPlanning
                     changeAppUserData={changeAppUserDataHandler}
                     retirementPlanningDetails={
                       appUserData?.retirementPlanning || {}
