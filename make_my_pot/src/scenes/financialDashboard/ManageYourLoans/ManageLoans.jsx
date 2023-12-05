@@ -8,6 +8,7 @@ import TableComponent from "./TableComponent";
 import SidepieChart from "./SidepieChart";
 import Barchart from "./Barchart";
 import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
+import { Typography } from "@mui/material";
 
 const ManageLoans = () => {
   return (
@@ -16,7 +17,11 @@ const ManageLoans = () => {
 
       <MainContentWrapper thoughtCount={1} component="main">
         <div>
-          <BasicSelect width={"60%"} text={"Select the loan to evaluate"} />
+          <BasicSelect
+            width={"60%"}
+            text={"Select the loan to evaluate"}
+            style={{ backgroundColor: "white" }}
+          />
 
           <div
             style={{
@@ -64,6 +69,7 @@ const ManageLoans = () => {
               style={{
                 border: "1px solid black",
                 padding: "5px",
+                width: "78%",
               }}
             >
               <Barchart />
@@ -81,33 +87,58 @@ const ManageLoans = () => {
                 style={{
                   borderBottom: "1px dashed grey",
                   width: "100%",
+                  height: "33%",
                   textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                <h4 style={{ color: "grey" }}>Loan EMI</h4>
-                <h1>Rs 55,333</h1>
+                <Typography sx={{ fontWeight: "400", color: "grey" }}>
+                  Loan EMI
+                </Typography>
+                <Typography sx={{ fontSize: "28px", fontWeight: "bolder" }}>
+                  Rs 55,333
+                </Typography>
               </div>
               <div
                 style={{
                   borderBottom: "1px dashed grey",
                   width: "100%",
+                  height: "33%",
                   textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                <h4 style={{ color: "grey" }}>Total Interest Payable</h4>
-                <h1>Rs 55,333</h1>
+                <Typography sx={{ fontWeight: "400", color: "grey" }}>
+                  Total interest payable
+                </Typography>
+                <Typography sx={{ fontSize: "28px", fontWeight: "bolder" }}>
+                  Rs 55,333
+                </Typography>
               </div>
               <div
                 style={{
                   borderBottom: "1px dashed grey",
                   width: "100%",
+                  height: "33%",
                   textAlign: "center",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                <h4 style={{ color: "grey" }}>
-                  Total Payment <br /> (Principal + Interest){" "}
-                </h4>
-                <h1>Rs 55,333</h1>
+                <Typography sx={{ fontWeight: "400", color: "grey" }}>
+                  Total payment <br /> (Principal + Interest)
+                </Typography>
+                <Typography sx={{ fontSize: "28px", fontWeight: "bolder" }}>
+                  Rs 55,333
+                </Typography>
               </div>
             </div>
           </div>

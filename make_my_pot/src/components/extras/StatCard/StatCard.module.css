@@ -33,6 +33,7 @@
   font-weight: light;
   display: flex;
   align-items: center;
+  margin: 5px 10px;
 }
 
 .statCardInfoSubcontainer {

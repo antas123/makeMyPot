@@ -45,6 +45,8 @@ function App() {
     ...UserInternalData,
   });
 
+  console.log("uee", userInternalData);
+
   const initialRender = useRef(true);
   const navigate = useNavigate();
   console.log(window.location.pathname);
@@ -281,7 +283,12 @@ function App() {
               <Route
                 exact
                 path="/financialDashboard/3"
-                element={renderScene(<NetWorthAnalysisReport />)}
+                element={renderScene(
+                  <NetWorthAnalysisReport
+                    appData={appUserData}
+                    internalAppData={userInternalData}
+                  />
+                )}
               />
               <Route
                 exact

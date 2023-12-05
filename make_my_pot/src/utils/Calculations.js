@@ -31,17 +31,44 @@ export const calculateAnnualDebt = (debtDetails) => {
   );
 };
 
-export const calculateDTIRatio = (annualIncome, annualDebt) => {
+export const calculateDTIRatio = (annualIncome = 0, annualDebt = 0) => {
+  if (annualIncome === 0) return 0;
   return (annualDebt * 100) / annualIncome;
 };
 
 export const calculateEssentialExpenseRatio = (
-  monthlyEssentialExpense,
-  annualIncome
+  monthlyEssentialExpense = 0,
+  annualIncome = 0
 ) => {
+  if (annualIncome === 0) return 0;
   return (Number(monthlyEssentialExpense) * 12 * 100) / annualIncome;
 };
 
-export const calculateSavingsRatio = (annualSavings, annualIncome) => {
+export const calculateSavingsRatio = (annualSavings = 0, annualIncome = 0) => {
+  if (annualIncome === 0) return 0;
   return (100 * annualSavings) / annualIncome;
+};
+
+export const calculateTotalAsset = (assetObj = {}) => {
+  let totalAmount = 0;
+  Object.keys(assetObj).forEach(
+    (asset) => (totalAmount += Number(assetObj[asset]))
+  );
+  return totalAmount;
+};
+
+export const calculateMonthlyDebt = (liabilities) => {
+  let totalDebt = 0;
+  console.log("uee", liabilities);
+  Object.keys(liabilities).forEach((debtType) => {
+    liabilities[debtType].map((debtDesc) => {
+      totalDebt += Number(debtDesc.amountPM);
+    });
+  });
+  return totalDebt;
+};
+
+export const calculateDebtToNetWorthRatio = (debt, netWorth) => {
+  if (netWorth === 0) return 0;
+  return (debt * 100) / netWorth;
 };

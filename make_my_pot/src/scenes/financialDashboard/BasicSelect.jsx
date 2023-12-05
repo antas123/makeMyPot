@@ -13,8 +13,8 @@ function BasicSelect({ text, width, style = {} }) {
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl style={{ width: width }} size="small">
+    <Box sx={{ minWidth: 120, padding: "5px 10px" }}>
+      <FormControl style={{ width: width, ...style }} size="small">
         <InputLabel id="demo-simple-select-label">{text}</InputLabel>
         <Select
           labelId="demo-simple-select-label"

@@ -69,7 +69,7 @@ const RetirementPlanning = ({
             style={{
               display: "flex",
               flexDirection: "row",
-              marginBottom: "70px",
+              marginBottom: "30px",
             }}
           >
             <MiddleSection
