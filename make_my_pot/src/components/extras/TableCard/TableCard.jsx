@@ -5,7 +5,9 @@ import styles from "./TableCard.module.css";
 const TableCard = ({ title, data, color }) => {
   return (
     <div className={styles.statCardContainer}>
-      <Typography sx={{ fontSize: "18px", fontWeight: "lighter" }}>
+      <Typography
+        sx={{ fontSize: "18px", fontWeight: "lighter", marginBottom: "20px" }}
+      >
         {title}
       </Typography>
       <div className={styles.statCardInfoContainer}>

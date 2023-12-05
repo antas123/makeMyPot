@@ -10,7 +10,7 @@ const SceneHeader = ({ title }) => {
         justifyContent: "space-between",
         paddingRight: "30px",
         alignItems: "center",
-        height: "65px",
+        height: "10%",
       }}
     >
       <div
@@ -29,7 +29,7 @@ const SceneHeader = ({ title }) => {
         />
         <p
           style={{
-            fontSize: "28px",
+            fontSize: "25px",
             fontFamily: "sans-serif",
             fontWeight: "lighter",
           }}

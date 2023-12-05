@@ -42,7 +42,7 @@ const StatCard = ({
             </div>
           )}
           <div className={styles.statcardData}>
-            <Typography sx={{ fontSize: "48px", color: color }}>
+            <Typography sx={{ fontSize: "45px", color: color }}>
               {data}
             </Typography>
           </div>
@@ -53,7 +53,7 @@ const StatCard = ({
       </div>
       <hr />
       <div className={styles.statCardContent}>
-        <Typography>{content}</Typography>
+        <Typography sx={{ fontSize: "14px" }}>{content}</Typography>
       </div>
     </div>
   );

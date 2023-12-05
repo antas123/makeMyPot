@@ -9,12 +9,13 @@ import BasicSelect from "./BasicSelect";
 import MainContentWrapper from "../../components/wrappers/MainContentWrapper";
 import FooterContentWrapper from "../../components/wrappers/FooterContentWrapper";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import settingicon from "./imagesDashboard/Settings.png"
-import arrowRight from "./imagesDashboard/arrowl.png"
-import arrowLeft from "./imagesDashboard/arrowr.png"
-import Zoomin from "./imagesDashboard/zoomin.png"
-import Zoomout from "./imagesDashboard/zoomout.png"
-import zoomPlugin from 'chartjs-plugin-zoom';
+import settingicon from "./imagesDashboard/Settings.png";
+import arrowRight from "./imagesDashboard/arrowl.png";
+import arrowLeft from "./imagesDashboard/arrowr.png";
+import Zoomin from "./imagesDashboard/zoomin.png";
+import Zoomout from "./imagesDashboard/zoomout.png";
+import zoomPlugin from "chartjs-plugin-zoom";
+import { FinancialDashboardTitles } from "../../constants/PlaceholderData";
 
 const FinancialDashboard = () => {
   const [lineData, setLineData] = useState({
@@ -39,25 +40,25 @@ const FinancialDashboard = () => {
       title: {
         display: false,
       },
-    
+
+      zoom: {
         zoom: {
-          zoom: {
-            wheel: {
-              enabled: true,
-            },
-            pinch: {
-              enabled: true
-            },
-            mode: 'xy',
-          }
+          wheel: {
+            enabled: true,
+          },
+          pinch: {
+            enabled: true,
+          },
+          mode: "xy",
         },
-      
+      },
+
       datalabels: {
         align: "end",
         anchor: "end",
         color: "#333",
         formatter: (value, context) => {
-          return value.toString().replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ' Cr';
+          return value.toString().replace(/\B(?=(\d{2})+(?!\d))/g, ",") + " Cr";
         },
       },
     },
@@ -90,26 +91,72 @@ const FinancialDashboard = () => {
 
   return (
     <>
-      <SceneHeader />
+      <SceneHeader title={FinancialDashboardTitles.finanacialDashboard} />
 
-      <MainContentWrapper isDashboard>
+      <MainContentWrapper thoughtCount={1} component="main" isDashboard>
         <div className={styles.lineChartBox}>
-          <div style={{ display: "flex", flexDirection: "row", justifyContent:"space-between" }}>  
-          <div style={{ display: "flex", flexDirection: "row", gap: "10px"}}>
-            <BasicSelect width={350} text={"Net worth over time"} />
-            <BasicSelect width={250} text={"Select label to view"}/>
-          </div>
-          <div style={{ display: "flex", flexDirection: "row", gap: "20px", alignItems:"center" }}>
-            <img style={{height:"28px",cursor:"pointer"}} src={settingicon} alt="" />
-            <div style={{ display: "flex", flexDirection: "row", gap: "10px", alignItems:"center" }}>
-              <img style={{height:"25px", cursor:"pointer"}} src={arrowLeft} alt="" />
-              <img style={{height:"25px",cursor:"pointer"}} src={Zoomin} alt="" />
-              <img style={{height:"25px",cursor:"pointer"}} src={Zoomout} alt="" />
-              <img style={{height:"25px",cursor:"pointer"}} src={arrowRight} alt="" />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+              <BasicSelect width={350} text={"Net worth over time"} />
+              <BasicSelect width={250} text={"Select label to view"} />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "20px",
+                alignItems: "center",
+              }}
+            >
+              <img
+                style={{ height: "28px", cursor: "pointer" }}
+                src={settingicon}
+                alt=""
+              />
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: "10px",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  style={{ height: "25px", cursor: "pointer" }}
+                  src={arrowLeft}
+                  alt=""
+                />
+                <img
+                  style={{ height: "25px", cursor: "pointer" }}
+                  src={Zoomin}
+                  alt=""
+                />
+                <img
+                  style={{ height: "25px", cursor: "pointer" }}
+                  src={Zoomout}
+                  alt=""
+                />
+                <img
+                  style={{ height: "25px", cursor: "pointer" }}
+                  src={arrowRight}
+                  alt=""
+                />
+              </div>
             </div>
           </div>
-          </div>
-          <div style={{ height:"270px", width: "800px", marginTop: "50px" }}>
+          <div
+            style={{
+              height: "270px",
+              width: "800px",
+              marginTop: "50px",
+            }}
+          >
             <Line
               data={lineData}
               options={options}
@@ -119,7 +166,7 @@ const FinancialDashboard = () => {
         </div>
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox />
       </FooterContentWrapper>
     </>
@@ -127,5 +174,3 @@ const FinancialDashboard = () => {
 };
 
 export default FinancialDashboard;
-
-

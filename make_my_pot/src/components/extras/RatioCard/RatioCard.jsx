@@ -18,7 +18,7 @@ const RatioCard = ({ title, IconComponent, content, pp }) => {
       </div>
       <hr />
       <div className={styles.ratioCardContent}>
-        <Typography>{content}</Typography>
+        <Typography sx={{ fontSize: "14px" }}>{content}</Typography>
       </div>
     </div>
   );

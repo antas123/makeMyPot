@@ -7,14 +7,15 @@ import BasicSelect from "../BasicSelect";
 import TableComponent from "./TableComponent";
 import SidepieChart from "./SidepieChart";
 import Barchart from "./Barchart";
+import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 
 const ManageLoans = () => {
   return (
     <>
-      <SceneHeader />
+      <SceneHeader title={FinancialDashboardTitles.manageYourLoans} />
 
-      <MainContentWrapper>
-        <div style={{ padding: "10px" }}>
+      <MainContentWrapper thoughtCount={1} component="main">
+        <div>
           <BasicSelect width={"60%"} text={"Select the loan to evaluate"} />
 
           <div
@@ -50,7 +51,7 @@ const ManageLoans = () => {
             <div
               style={{
                 flex: "1",
-                backgroundColor: "#E3F4F4",
+                backgroundColor: "#f5f7f8",
                 textAlign: "center",
               }}
             >
@@ -59,7 +60,12 @@ const ManageLoans = () => {
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "row" }}>
-            <div style={{ border: "1px solid black", padding: "5px" }}>
+            <div
+              style={{
+                border: "1px solid black",
+                padding: "5px",
+              }}
+            >
               <Barchart />
             </div>
             <div
@@ -108,7 +114,7 @@ const ManageLoans = () => {
         </div>
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox />
       </FooterContentWrapper>
     </>

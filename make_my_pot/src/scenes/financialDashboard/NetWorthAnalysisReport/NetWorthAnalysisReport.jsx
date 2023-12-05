@@ -15,12 +15,13 @@ import CoinsImage from "../../../assets/coins.png";
 import CashImage from "../../../assets/cash.png";
 import SirenImage from "../../../assets/siren.png";
 import PieChartWithCenterLabel from "../../../components/PieChartHollow";
+import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 
 const NetWorthAnalysisReport = () => {
   return (
     <>
-      <SceneHeader />
-      <MainContentWrapper isDashboard>
+      <SceneHeader title={FinancialDashboardTitles.netWorthAnalysisReport} />
+      <MainContentWrapper thoughtCount={1} component="main">
         <Typography>
           <Grid container sx={{ height: "100%" }}>
             <Grid item md={4}>
@@ -104,7 +105,7 @@ const NetWorthAnalysisReport = () => {
           </Grid>
         </Typography>
       </MainContentWrapper>
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={1} component="footer">
         <ThoughtBox />
       </FooterContentWrapper>
     </>

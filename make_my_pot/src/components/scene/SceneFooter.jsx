@@ -10,7 +10,7 @@ const SceneFooter = () => {
         justifyContent: "space-between",
         paddingRight: "30px",
         alignItems: "center",
-        height: "60px",
+        height: "10%",
       }}
     >
       <div

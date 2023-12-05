@@ -1,7 +1,7 @@
 import { Input, Typography } from "@mui/material";
 import React from "react";
 
-const TextCell = ({ text, ...props }) => {
+const TextCell = ({ text, value, updateVal, ...props }) => {
   return (
     <Input
       sx={{
@@ -16,6 +16,8 @@ const TextCell = ({ text, ...props }) => {
       }}
       {...props}
       placeholder={text}
+      value={value}
+      onChange={updateVal}
     />
   );
 };

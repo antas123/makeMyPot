@@ -10,80 +10,97 @@ import CashInHand from "../../../assets/CashInHand.png";
 import MoneyBagRupeeOrange from "../../../assets/moneyBagRupeeOrange.png";
 import { PlaceholderData } from "../../../constants/PlaceholderData";
 
-const YourFinancialAssets = ({ data }) => {
-  const [financialAssets, setFinancialAssets] = useState({
-    accBalanceAndLiquidFunds: "",
-    fdAndBonds: "",
-    equityMFStocks: "",
-    epf: "",
-    LICAndUlipPlans: "",
-    nationalPension: "",
-  });
+const YourFinancialAssets = ({
+  data,
+  financialAssetDetails,
+  changeAppUserData,
+}) => {
+  const {
+    accBalanceAndLiquidFunds,
+    fdAndBonds,
+    equityMFStocks,
+    epf,
+    LICAndUlipPlans,
+    nationalPension,
+  } = financialAssetDetails;
 
   const [summary, setSummary] = useState(data[0]?.summary ?? "Initial summary");
 
   const { yourFinancialAssets } = PlaceholderData;
 
-  const updateFinancialAsset = (assetKey, value) => {
-    setFinancialAssets((prevAssets) => ({
-      ...prevAssets,
-      [assetKey]: value,
-    }));
-  };
-
   return (
     <>
       <SceneHeader title={yourFinancialAssets.accordionTitle} />
-      <MainContentWrapper>
+      <MainContentWrapper thoughtCount={2} component="main">
         <ControlledAccordions
           title="Account balance / Liquid funds"
           subtitle={[...yourFinancialAssets.tabs.accBalanceAndLiquidFunds]}
           icon={CashInHand}
-          value={financialAssets.accBalanceAndLiquidFunds}
+          value={accBalanceAndLiquidFunds}
           changeValue={(val) =>
-            updateFinancialAsset("accBalanceAndLiquidFunds", val)
+            changeAppUserData("financialAsset", "accBalanceAndLiquidFunds", val)
           }
+          name="accBalanceAndLiquidFunds"
+          tab="financialAsset"
         />
         <ControlledAccordions
           title="Fixed deposits and bonds"
           subtitle={[...yourFinancialAssets.tabs.fdAndBonds]}
           icon={MoneyBagRupeeOrange}
-          value={financialAssets.fdAndBonds}
-          changeValue={(val) => updateFinancialAsset("fdAndBonds", val)}
-          inputCount={3}
+          value={fdAndBonds}
+          changeValue={(val) =>
+            changeAppUserData("financialAsset", "fdAndBonds", val)
+          }
+          name="fdAndBonds"
+          tab="financialAsset"
         />
         <ControlledAccordions
           title="Employee provident fund"
           subtitle={[...yourFinancialAssets.tabs.epf]}
           icon={ManWithMoney}
-          value={financialAssets.epf}
-          changeValue={(val) => updateFinancialAsset("epf", val)}
+          value={epf}
+          changeValue={(val) => changeAppUserData("financialAsset", "epf", val)}
+          isSpecialRow
+          name="epf"
+          tab="financialAsset"
         />
         <ControlledAccordions
           title="Real estate (Home/Land/Shop) - For investment purpose"
           subtitle={[...yourFinancialAssets.tabs.equityMFStocks]}
           icon={MoneyBagRupeeOrange}
-          value={financialAssets.equityMFStocks}
-          changeValue={(val) => updateFinancialAsset("equityMFStocks", val)}
+          value={equityMFStocks}
+          changeValue={(val) =>
+            changeAppUserData("financialAsset", "equityMFStocks", val)
+          }
+          name="equityMFStocks"
+          tab="financialAsset"
         />
-        {/* Third ControlledAccordion */}
         <ControlledAccordions
           title="LIC & ULIP Plans"
           subtitle={[...yourFinancialAssets.tabs.LICAndUlipPlans]}
           icon={ManWithMoney}
-          value={financialAssets.LICAndUlipPlans}
-          changeValue={(val) => updateFinancialAsset("LICAndUlipPlans", val)}
+          value={LICAndUlipPlans}
+          changeValue={(val) =>
+            changeAppUserData("financialAsset", "LICAndUlipPlans", val)
+          }
+          name="LICAndUlipPlans"
+          tab="financialAsset"
         />
         <ControlledAccordions
           title="National pension scheme"
           subtitle={[...yourFinancialAssets.tabs.nationalPension]}
           icon={ManWithMoney}
-          value={financialAssets.nationalPension}
-          changeValue={(val) => updateFinancialAsset("nationalPension", val)}
+          value={nationalPension}
+          changeValue={(val) =>
+            changeAppUserData("financialAsset", "nationalPension", val)
+          }
+          name="nationalPension"
+          tab="financialAsset"
         />
       </MainContentWrapper>
 
-      <FooterContentWrapper>
+      <FooterContentWrapper thoughtCount={2} component="footer">
+        <ThoughtBox text={summary?.replace("{{totalIncome}}", "")} />
         <ThoughtBox text={summary?.replace("{{totalIncome}}", "")} />
       </FooterContentWrapper>
       <SceneFooter />

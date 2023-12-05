@@ -2,8 +2,6 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import SceneHeader from "./scene/SceneHeader";
-import MainContentWrapper from "./wrappers/MainContentWrapper";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -50,13 +48,14 @@ ChartJS.register({
 });
 
 const DonutChart = ({ percentage }) => {
+  console.log(percentage);
   const data = {
     labels: ["red", "yellow", "green"],
     datasets: [
       {
         label: "Shop 1",
         data: [50, 25, 25],
-        needleValue: percentage,
+        needleValue: percentage.toFixed(2),
         backgroundColor: ["red", "yellow", "green"],
         borderColor: ["black", "black", "black"],
         borderRadius: "10%",

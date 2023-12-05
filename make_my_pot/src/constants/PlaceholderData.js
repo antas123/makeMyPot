@@ -102,3 +102,12 @@ export const PlaceholderData = {
     },
   },
 };
+
+export const FinancialDashboardTitles = {
+  finanacialDashboard: "Explore what happens to your money over time",
+  incomeAndExpensesReport: "Manage your personal finances effectively",
+  netWorthAnalysisReport: "Explore your financial position at the moment",
+  manageYourLoans: "Explore strategies to pay your loan faster",
+  retirementPlanning: "Explore your financial freedom",
+  evaluateAndPlanGoals: "Evaluate and plan your financial goals",
+};
