@@ -9,8 +9,28 @@ import SidepieChart from "./SidepieChart";
 import Barchart from "./Barchart";
 import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 import { Typography } from "@mui/material";
+import {
+  calculateEmi,
+  calculatePrincipalPercentage,
+  loanCalculator,
+} from "../../../utils/Calculations";
+import { getLoansFromLiabilities } from "../../../utils/helpers";
 
-const ManageLoans = () => {
+const ManageLoans = ({ liabilities }) => {
+  // Example usage:
+  const loans = getLoansFromLiabilities(liabilities);
+  console.log("loansi", loans);
+  const loanPrincipal = 500000; // Replace with your loan principal
+  const interestRate = 5; // Replace with your annual interest rate
+  const loanTenureMonths = 120; // Replace with your loan tenure in months
+  const loanEMI = calculateEmi(loanPrincipal, interestRate, loanTenureMonths);
+  const result = loanCalculator(
+    loanEMI,
+    loanPrincipal,
+    interestRate,
+    loanTenureMonths
+  );
+  const totalInterestPaid = result[result.length - 1]?.totalInterestPaid;
   return (
     <>
       <SceneHeader title={FinancialDashboardTitles.manageYourLoans} />
@@ -21,6 +41,7 @@ const ManageLoans = () => {
             width={"60%"}
             text={"Select the loan to evaluate"}
             style={{ backgroundColor: "white" }}
+            data={[...(loans?.map((loan) => loan.name) ?? [])]}
           />
 
           <div
@@ -61,7 +82,12 @@ const ManageLoans = () => {
               }}
             >
               <h3>Break up of total payment</h3>
-              <SidepieChart />
+              <SidepieChart
+                principalPercentage={calculatePrincipalPercentage(
+                  loanPrincipal,
+                  totalInterestPaid
+                )}
+              />
             </div>
           </div>
           <div style={{ display: "flex", flexDirection: "row" }}>
@@ -72,7 +98,7 @@ const ManageLoans = () => {
                 width: "78%",
               }}
             >
-              <Barchart />
+              <Barchart result={result} />
             </div>
             <div
               style={{
@@ -99,7 +125,7 @@ const ManageLoans = () => {
                   Loan EMI
                 </Typography>
                 <Typography sx={{ fontSize: "28px", fontWeight: "bolder" }}>
-                  Rs 55,333
+                  Rs {loanEMI}
                 </Typography>
               </div>
               <div
@@ -117,8 +143,8 @@ const ManageLoans = () => {
                 <Typography sx={{ fontWeight: "400", color: "grey" }}>
                   Total interest payable
                 </Typography>
-                <Typography sx={{ fontSize: "28px", fontWeight: "bolder" }}>
-                  Rs 55,333
+                <Typography sx={{ fontSize: "24px", fontWeight: "bolder" }}>
+                  Rs {totalInterestPaid}
                 </Typography>
               </div>
               <div
@@ -136,8 +162,12 @@ const ManageLoans = () => {
                 <Typography sx={{ fontWeight: "400", color: "grey" }}>
                   Total payment <br /> (Principal + Interest)
                 </Typography>
-                <Typography sx={{ fontSize: "28px", fontWeight: "bolder" }}>
-                  Rs 55,333
+                <Typography sx={{ fontSize: "24px", fontWeight: "bolder" }}>
+                  Rs{" "}
+                  {(
+                    Number(result[result.length - 1]?.totalInterestPaid) +
+                    loanPrincipal
+                  ).toFixed(2)}
                 </Typography>
               </div>
             </div>

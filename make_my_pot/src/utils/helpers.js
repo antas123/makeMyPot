@@ -6,6 +6,8 @@ export const getHeightForComponent = (thoughtCount, component) => {
       return "85%";
     } else if (thoughtCount === 1) {
       return component === "main" ? "69%" : "15%";
+    } else {
+      return component === "main" ? "63%" : "22%";
     }
   } else {
     if (thoughtCount === 1) {
@@ -44,4 +46,14 @@ export const formatAmount = (amount) => {
       2
     )} Cr`;
   }
+};
+
+export const getLoansFromLiabilities = (liabilities) => {
+  let result = [];
+  Object.keys(liabilities).forEach((liability) => {
+    console.log("ueeeeee", liabilities[liability]);
+    let newl = liabilities[liability]?.filter((l) => l.amount !== "");
+    result = [...result, ...newl];
+  });
+  return result;
 };

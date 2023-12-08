@@ -76,3 +76,61 @@ export const calculateDebtToNetWorthRatio = (debt, netWorth) => {
 export const calculateEmergencyFunds = (annualExpense) => {
   return (annualExpense / 12) * 3.5;
 };
+
+export const calculateTotalLiabilities = (liabilityObj = {}) => {
+  let totalAmount = 0;
+  Object.keys(liabilityObj).forEach(
+    (liability) => (totalAmount += Number(liabilityObj[liability]))
+  );
+  return totalAmount;
+};
+
+export const calculateFinancialAssetRatio = (financialAsset, fixedAsset) => {
+  const totalAssets = financialAsset + fixedAsset;
+  if (totalAssets === 0) return 0;
+  return (financialAsset * 100) / totalAssets;
+};
+
+export const calculateEmi = (principal, interestRate, tenureMonths) => {
+  const interestRatePerMonth = interestRate / 1200;
+  const emi =
+    (principal *
+      interestRatePerMonth *
+      Math.pow(1 + interestRatePerMonth, tenureMonths)) /
+    (Math.pow(1 + interestRatePerMonth, tenureMonths) - 1);
+  return emi.toFixed(2);
+};
+
+const interest = (principal, interestRate) => (interestRate * principal) / 1200;
+
+export const loanCalculator = (emi, principal, interestRate, tenureMonths) => {
+  let remainingPrincipal = principal;
+  let totalInterestPaid = 0;
+  const result = [];
+
+  for (let month = 1; month <= tenureMonths; month++) {
+    const interestt = interest(remainingPrincipal, interestRate);
+    totalInterestPaid += interestt;
+
+    const principalPaid = emi - interestt;
+    remainingPrincipal -= principalPaid;
+
+    // Output results at the end of each year
+    if (month % 12 === 0 || month === tenureMonths) {
+      const year = Math.ceil(month / 12);
+      result.push({
+        year,
+        newPrincipal: emi - interestt,
+        remainingPrincipal:
+          remainingPrincipal < 0 ? 0 : remainingPrincipal.toFixed(2),
+        totalInterestPaid: totalInterestPaid.toFixed(2),
+      });
+    }
+  }
+
+  return result;
+};
+
+export const calculatePrincipalPercentage = (principal, interest) => {
+  return ((principal * 100) / (principal + Number(interest))).toFixed(2);
+};

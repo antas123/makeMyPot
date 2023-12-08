@@ -20,41 +20,51 @@ import {
   calculateAnnualExpense,
   calculateDebtToNetWorthRatio,
   calculateEmergencyFunds,
+  calculateFinancialAssetRatio,
   calculateMonthlyDebt,
   calculateTotalAsset,
   calculateTotalIncome,
+  calculateTotalLiabilities,
 } from "../../../utils/Calculations";
 import { formatAmount } from "../../../utils/helpers";
 
-const NetWorthAnalysisReport = ({ appData, internalAppData }) => {
-  const { income, expense, fixedAsset, financialAsset } = appData;
-  const { liabilities } = internalAppData;
+const NetWorthAnalysisReport = ({ appData, internalAppData, apiData }) => {
+  const { income, expense, fixedAsset, liabilities, financialAsset } = appData;
   const annualExpense = calculateAnnualExpense(expense || {});
   const annualIncome = calculateTotalIncome(income || {});
   const totalFixedAssets = calculateTotalAsset(fixedAsset);
   const totalFinancialAssets = calculateTotalAsset(financialAsset);
-  const monthlyDebt = calculateMonthlyDebt(liabilities);
-  const netWorth = totalFinancialAssets + totalFixedAssets + annualIncome;
+  const totalLiabilities = calculateTotalLiabilities(liabilities);
+  const netWorth = totalFinancialAssets + totalFixedAssets - totalLiabilities;
   const debtToNetWorthRatio = calculateDebtToNetWorthRatio(
-    monthlyDebt * 12,
+    totalLiabilities,
     netWorth
   );
   const emergencyFund = calculateEmergencyFunds(annualExpense);
-  console.log(internalAppData);
+  const financialAssetRatio = calculateFinancialAssetRatio(
+    totalFinancialAssets,
+    totalFixedAssets
+  );
+
+  const desiredSalaryRange = apiData?.filter(
+    (d) => d.min <= annualIncome && (d.max ?? Infinity) >= annualIncome
+  );
+  const thoughts = [
+    desiredSalaryRange[0]?.summary,
+    desiredSalaryRange[0]?.comment,
+  ];
 
   return (
     <>
       <SceneHeader title={FinancialDashboardTitles.netWorthAnalysisReport} />
-      <MainContentWrapper thoughtCount={1} component="main">
+      <MainContentWrapper thoughtCount={2} component="main">
         <Typography>
           <Grid container sx={{ height: "100%" }}>
             <Grid item md={4}>
               <StatCard
                 title="Net-Worth"
                 IconComponent={MoneyBagRupeeImage}
-                data={formatAmount(
-                  totalFinancialAssets + totalFixedAssets + annualIncome
-                )}
+                data={formatAmount(netWorth)}
                 content="Difference of what you own and what you owe"
                 color="green"
               />
@@ -73,7 +83,7 @@ const NetWorthAnalysisReport = ({ appData, internalAppData }) => {
               <StatCard
                 title="Total liabilities"
                 IconComponent={HeavyImage}
-                data={formatAmount(monthlyDebt * 12)}
+                data={formatAmount(totalLiabilities)}
                 content="Total commitments require payment"
                 color="orange"
               />
@@ -85,7 +95,7 @@ const NetWorthAnalysisReport = ({ appData, internalAppData }) => {
                 title="Financial assets ratio"
                 IconComponent={AboutImage}
                 content="% of assets can be easily converted to cash"
-                pp={39}
+                pp={financialAssetRatio}
               />
             </Grid>
             <Grid item md={4}>
@@ -132,8 +142,12 @@ const NetWorthAnalysisReport = ({ appData, internalAppData }) => {
           </Grid>
         </Typography>
       </MainContentWrapper>
-      <FooterContentWrapper thoughtCount={1} component="footer">
-        <ThoughtBox />
+      <FooterContentWrapper thoughtCount={2} component="footer">
+        {thoughts?.map((thought) => (
+          <ThoughtBox
+            text={thought?.replace("{{totalIncome}}", `Rs ${annualIncome}`)}
+          />
+        ))}
       </FooterContentWrapper>
     </>
   );

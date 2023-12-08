@@ -287,13 +287,16 @@ function App() {
                   <NetWorthAnalysisReport
                     appData={appUserData}
                     internalAppData={userInternalData}
+                    apiData={[...(globalData?.IncomeClassification || [])]}
                   />
                 )}
               />
               <Route
                 exact
                 path="/financialDashboard/4"
-                element={renderScene(<ManageLoans />)}
+                element={renderScene(
+                  <ManageLoans liabilities={userInternalData.liabilities} />
+                )}
               />
               <Route
                 exact
