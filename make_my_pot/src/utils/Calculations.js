@@ -134,3 +134,13 @@ export const loanCalculator = (emi, principal, interestRate, tenureMonths) => {
 export const calculatePrincipalPercentage = (principal, interest) => {
   return ((principal * 100) / (principal + Number(interest))).toFixed(2);
 };
+
+export const calculateExpenseAtBeginningOfRetirement = (
+  initialExpense,
+  inflation,
+  yearsToRetirement
+) => {
+  const expense =
+    initialExpense * Math.pow(1 + inflation / 100, yearsToRetirement);
+  return expense;
+};
