@@ -11,7 +11,7 @@ const Part1 = () => {
         margin: "auto",
       }}
     >
-      <p style={{ color: "#6B3500", fontFamily: "Roboto", fontSize: "45px" }}>
+      <p style={{ color: "#6B3500", fontSize: "45px", fontWeight: "900" }}>
         Track, Manage, Achieve: <br />
         Your Pot of Financial Prosperity{" "}
       </p>
