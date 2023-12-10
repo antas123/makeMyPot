@@ -95,7 +95,7 @@ function App() {
     }));
   };
 
-  const changeUserInternalDataHandler = () => {};
+  // const changeUserInternalDataHandler = () => {};
 
   const style = {
     position: "absolute",
@@ -131,11 +131,15 @@ function App() {
           </div>
         )}
 
+        <Routes>
+          
+        </Routes>
+
         <div
           style={{
-            display: "flex",
+            display:window.location.pathname === '/home' ? "block" : "flex",
             flexDirection: "row",
-            width: "100vw",
+            width: window.location.pathname === '/home' ? "90vw" : "100vw",
           }}
         >
           {!isHomePage() && (
@@ -191,15 +195,18 @@ function App() {
 
           <div
             style={{
-              flex: "4",
+              // flex: "4",
               height: "90vh",
+              padding:"0",
+              width: window.location.pathname === '/home' ? "100vw" : "90vw",
+              // backgroundColor:"pink"
             }}
           >
             <Routes>
               <Route path="" element={<Navigate to="/signin" replace />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/home" element={renderScene(<Home />)} />
+              <Route path="/home" element={<Home />} />
               <Route
                 exact
                 path="/yourFinancials/1"
@@ -301,7 +308,7 @@ function App() {
               <Route
                 exact
                 path="/financialDashboard/5"
-                element={renderScene(<EvaluateAndPlanGoals />)}
+                element={renderScene(<EvaluateAndPlanGoals  />)}
               />
               <Route
                 exact
