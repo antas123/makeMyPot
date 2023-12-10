@@ -61,9 +61,9 @@ const TableRow4 = ({ subtitle, icon, name, tab, ind }) => {
           />
           <TextCell
             text={subtitle[1]}
-            value={userInternalData[tab][name][ind].maturityYear}
+            value={userInternalData[tab][name][ind].months}
             updateVal={(e) =>
-              updateRowInInternalUserData("maturityYear", e.target.value)
+              updateRowInInternalUserData("months", e.target.value)
             }
           />
           <AmountTable
@@ -79,6 +79,7 @@ const TableRow4 = ({ subtitle, icon, name, tab, ind }) => {
             text={subtitle[3]}
             value={userInternalData[tab][name][ind].amount}
             changeValue={(val) => updateRowInInternalUserData("amount", val)}
+            symbol="%"
           />
           {isLast && (
             <div

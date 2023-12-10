@@ -27,7 +27,7 @@ const TableComponent = ({ gap, heading, or, symbol = [] }) => {
           width={250}
           symbol={symbol[0]}
         />
-        {or}
+        <div style={{ display: "flex", alignItems: "center" }}>or</div>
         <InputtableComponent
           text={"Pre-payment penality if any"}
           width={250}

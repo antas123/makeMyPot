@@ -8,7 +8,7 @@ const StatCard = ({
   IconComponent2 = undefined,
   data,
   content,
-  extraInfo,
+  extraInfo = undefined,
   color,
 }) => {
   // const images = [...IconComponent];
@@ -47,9 +47,14 @@ const StatCard = ({
             </Typography>
           </div>
         </div>
-        <div className={styles.statCardExtraInfo}>
-          <Typography>{extraInfo}</Typography>
-        </div>
+        {extraInfo && (
+          <div className={styles.statCardExtraInfo}>
+            <Typography>{`${extraInfo}`}</Typography>{" "}
+            <span style={{ color: "black", padding: "0 6px" }}>
+              expenses/month
+            </span>
+          </div>
+        )}
       </div>
       <hr />
       <div className={styles.statCardContent}>

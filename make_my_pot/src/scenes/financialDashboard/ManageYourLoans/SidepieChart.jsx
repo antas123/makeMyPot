@@ -1,17 +1,16 @@
 import React from "react";
 import { PieChart, pieArcLabelClasses } from "@mui/x-charts/PieChart";
 
-const data = [
-  { value: 53.7, label: "Principal Loan amount" },
-  { value: 46.3, label: "Total interest" },
-];
-
 const size = {
   width: 400,
   height: 250,
 };
 
-const SidepieChart = () => {
+const SidepieChart = ({ principalPercentage }) => {
+  const data = [
+    { value: principalPercentage, label: "Principal Loan amount" },
+    { value: (100 - principalPercentage).toFixed(2), label: "Total interest" },
+  ];
   return (
     <PieChart
       margin={{ top: 0, bottom: 40, left: 0, right: 0 }}

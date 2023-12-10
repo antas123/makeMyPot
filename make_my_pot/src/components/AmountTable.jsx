@@ -6,6 +6,7 @@ const AmountTable = ({
   text = "Enter the amount...",
   value,
   changeValue,
+  symbol = "Rs",
 }) => {
   return (
     <div
@@ -28,7 +29,7 @@ const AmountTable = ({
           textAlign: "center",
         }}
       >
-        <div style={{ padding: "4px", textAlign: "center" }}>Rs</div>
+        <div style={{ padding: "4px", textAlign: "center" }}>{symbol}</div>
       </Typography>
       <Input
         placeholder={text}

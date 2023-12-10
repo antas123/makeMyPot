@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-function BasicSelect({ text, width, style = {} }) {
+function BasicSelect({ text, width, style = {}, data = ["1", "2", "3"] }) {
   const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
@@ -13,8 +13,8 @@ function BasicSelect({ text, width, style = {} }) {
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl style={{ width: width }} size="small">
+    <Box sx={{ minWidth: 120, padding: "5px 10px" }}>
+      <FormControl style={{ width: width, ...style }} size="small">
         <InputLabel id="demo-simple-select-label">{text}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -29,9 +29,9 @@ function BasicSelect({ text, width, style = {} }) {
             },
           }}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {data?.map((d) => (
+            <MenuItem value={d}>{d}</MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>

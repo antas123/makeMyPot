@@ -10,58 +10,27 @@ import {
 
 ChartJS.register(BarElement, CategoryScale, Tooltip, Legend);
 
-const Barchart = ({ isTrimmed = false }) => {
+const Barchart = ({ isTrimmed = false, result = [] }) => {
   const data = {
-    labels: [
-      "2021",
-      "2022",
-      "2023",
-      "2024",
-      "2025",
-      "2026",
-      "2027",
-      "2028",
-      "2029",
-      "2030",
-      "2031",
-      "2032",
-      "2033",
-      "2034",
-      "2035",
-      "2036",
-      "2037",
-      "2038",
-      "2039",
-      "2040",
-      "2041",
-    ],
+    labels: [...result?.map((res) => res.year)],
     datasets: [
       {
         type: "line",
         label: "Balance",
         borderColor: "#B31312",
         borderWidth: 2,
-        data: [
-          20, 22, 24, 25, 29, 29, 30, 32, 33, 35, 38, 39, 40, 43, 45, 48, 50,
-          53, 55, 59, 60, 65,
-        ],
+        data: [...result?.map((res) => res.remainingPrincipal)],
         yAxisID: "second",
       },
       {
         label: "Principal",
-        data: [
-          3000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000,
-          8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000, 8000,
-        ],
+        data: [...result?.map((res) => res.newPrincipal)],
         borderWidth: 1,
         backgroundColor: "#7A9D54",
       },
       {
         label: "Interest",
-        data: [
-          1200, 2000, 2200, 2500, 2700, 3100, 3500, 3900, 4100, 4500, 4900,
-          5500, 5800, 5900, 6000, 6300, 6500, 6600, 7000, 7100, 7500,
-        ],
+        data: [...result?.map((res) => res.totalInterestPaid)],
         borderWidth: 1,
         backgroundColor: "orange",
       },
@@ -94,6 +63,8 @@ const Barchart = ({ isTrimmed = false }) => {
           display: true,
           text: "Balance",
         },
+        min: 0, // Set your minimum value here
+        max: 90000,
       },
       second: {
         grid: {
@@ -106,6 +77,8 @@ const Barchart = ({ isTrimmed = false }) => {
           display: true,
           text: "EMI Payment/year",
         },
+        min: 0, // Set your minimum value here
+        max: 500000,
       },
     },
   };

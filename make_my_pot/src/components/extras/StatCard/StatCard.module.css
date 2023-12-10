@@ -1,7 +1,7 @@
 .statCardExtraInfo {
   display: flex;
   justify-content: center;
-  margin-top: -5px;
+  margin-top: 0px;
   color: red;
 }
 
@@ -33,6 +33,7 @@
   font-weight: light;
   display: flex;
   align-items: center;
+  margin: 5px 10px;
 }
 
 .statCardInfoSubcontainer {

@@ -11,11 +11,20 @@ import StackedAreas from "./StackedAreas";
 import Barchart from "../ManageYourLoans/Barchart";
 import { FinancialDashboardTitles } from "../../../constants/PlaceholderData";
 import ControlledAccordions from "../../../components/Accordion";
+import {
+  calculateAnnualExpense,
+  calculateExpenseAtBeginningOfRetirement,
+} from "../../../utils/Calculations";
 
 const RetirementPlanning = ({
   changeAppUserData,
   retirementPlanningDetails,
 }) => {
+  const { expensesPostRetirement } = retirementPlanningDetails;
+  const annualExpense = Number(expensesPostRetirement || "") * 12;
+  const expenseOnRetirement =
+    calculateExpenseAtBeginningOfRetirement(1000, 7, 3) + 1000 * 3;
+
   return (
     <>
       <SceneHeader title={FinancialDashboardTitles.retirementPlanning} />
@@ -69,13 +78,13 @@ const RetirementPlanning = ({
             style={{
               display: "flex",
               flexDirection: "row",
-              marginBottom: "70px",
+              marginBottom: "30px",
             }}
           >
             <MiddleSection
               img={moneyBag}
               heading={"Corpus Required"}
-              money={"12,34,55,234"}
+              money={expenseOnRetirement}
             />
             <MiddleSection
               img={finGrow}

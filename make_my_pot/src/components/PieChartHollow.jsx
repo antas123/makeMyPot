@@ -47,7 +47,7 @@ export default function PieChartWithCenterLabel() {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "white",
-        height: "170px",
+        height: "188px",
         padding: "10px",
         margin: "10px",
         marginTop: "15px",

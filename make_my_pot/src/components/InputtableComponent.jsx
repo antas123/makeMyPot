@@ -22,6 +22,7 @@ const InputtableComponent = ({ text, width, symbol }) => {
         sx={{
           border: "1px solid grey",
           borderBottom: "0",
+          padding: "0 20px",
           width: width,
           textAlign: "center",
           padding:"0 30px"

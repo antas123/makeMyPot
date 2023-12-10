@@ -85,6 +85,7 @@ const IncomeAndExpensesReport = ({ appData }) => {
                   title,
                   value: income[title],
                 }))}
+                type="income"
               />
             </Grid>
             <Grid item md={4}>
@@ -112,6 +113,7 @@ const IncomeAndExpensesReport = ({ appData }) => {
                   title,
                   value: expense[title],
                 }))}
+                type="expenses"
               />
             </Grid>
             <Grid item md={4}>
