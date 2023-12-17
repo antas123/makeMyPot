@@ -131,15 +131,11 @@ function App() {
           </div>
         )}
 
-        <Routes>
-          
-        </Routes>
-
         <div
           style={{
-            display:window.location.pathname === '/home' ? "block" : "flex",
+            display: window.location.pathname === "/home" ? "block" : "flex",
             flexDirection: "row",
-            width: window.location.pathname === '/home' ? "90vw" : "100vw",
+            width: window.location.pathname === "/home" ? "90vw" : "100vw",
           }}
         >
           {!isHomePage() && (
@@ -197,13 +193,13 @@ function App() {
             style={{
               // flex: "4",
               height: "90vh",
-              padding:"0",
-              width: window.location.pathname === '/home' ? "100vw" : "90vw",
+              padding: "0",
+              width: window.location.pathname === "/home" ? "100vw" : "90vw",
               // backgroundColor:"pink"
             }}
           >
             <Routes>
-              <Route path="" element={<Navigate to="/signin" replace />} />
+              <Route path="" element={<Navigate to="/home" replace />} />
               <Route path="/signin" element={<Signin />} />
               <Route path="/login" element={<Login />} />
               <Route path="/home" element={<Home />} />
@@ -308,7 +304,7 @@ function App() {
               <Route
                 exact
                 path="/financialDashboard/5"
-                element={renderScene(<EvaluateAndPlanGoals  />)}
+                element={renderScene(<EvaluateAndPlanGoals />)}
               />
               <Route
                 exact

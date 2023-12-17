@@ -1,5 +1,6 @@
 import React from "react";
 import { Typography, Input } from "@mui/material";
+import { formatIndianNumber } from "../utils/helpers";
 
 const AmountTable = ({
   onHead,
@@ -25,7 +26,7 @@ const AmountTable = ({
           border: "1px solid gray",
           alignContent: "center",
           justifyContent: "center",
-          fontSize: "18px",
+          fontSize: "18.5px",
           textAlign: "center",
         }}
       >
@@ -37,14 +38,20 @@ const AmountTable = ({
           width: "max-content",
           padding: "0 20px",
           border: "1px solid gray",
+          borderBottom: "none",
           borderLeft: "none",
-          fontSize: "18px",
+          fontSize: "19px",
           alignContent: "center",
           justifyContent: "center",
           textAlign: "center",
+          outline: "none",
         }}
-        value={value}
-        onChange={(e) => changeValue(e.target.value)}
+        value={symbol === "Rs" ? formatIndianNumber(value) : value}
+        onChange={(e) => {
+          const inputValue = e.target.value;
+          const numericValue = parseFloat(inputValue.replace(/,/g, "")) || 0;
+          changeValue(numericValue.toString());
+        }}
       />
     </div>
   );

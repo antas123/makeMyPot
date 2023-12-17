@@ -76,6 +76,7 @@ const IncomeAndExpensesReport = ({ appData }) => {
                 IconComponent={AboutImage}
                 content="Portion of income going for essentials"
                 pp={essentialExpenseRatio}
+                tab="expenseRatio"
               />
             </Grid>
             <Grid item md={4}>
@@ -94,6 +95,7 @@ const IncomeAndExpensesReport = ({ appData }) => {
                 IconComponent={AboutImage}
                 content="Indicator to build wealth and save future"
                 pp={savingsRatio}
+                tab="savingsRatio"
               />
             </Grid>
           </Grid>
@@ -104,6 +106,7 @@ const IncomeAndExpensesReport = ({ appData }) => {
                 IconComponent={AboutImage}
                 content="Indicator to build wealth and save future"
                 pp={DTIRatio}
+                tab="dtiRatio"
               />
             </Grid>
             <Grid item md={4}>

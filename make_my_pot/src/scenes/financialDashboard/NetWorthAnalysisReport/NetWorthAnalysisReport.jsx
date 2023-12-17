@@ -96,6 +96,7 @@ const NetWorthAnalysisReport = ({ appData, internalAppData, apiData }) => {
                 IconComponent={AboutImage}
                 content="% of assets can be easily converted to cash"
                 pp={financialAssetRatio}
+                tab="financialAssetsRatio"
               />
             </Grid>
             <Grid item md={4}>
@@ -134,6 +135,7 @@ const NetWorthAnalysisReport = ({ appData, internalAppData, apiData }) => {
                 IconComponent={AboutImage}
                 content="Level of debt relative to net worth"
                 pp={debtToNetWorthRatio}
+                tab="debtToNetWorthRatio"
               />
             </Grid>
             <Grid item md={4}>

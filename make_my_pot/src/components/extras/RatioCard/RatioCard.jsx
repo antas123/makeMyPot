@@ -1,16 +1,20 @@
-import { Typography } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 import React from "react";
 import styles from "./RatioCard.module.css";
 import DonutChart from "../../DonutChart";
+import { getTooltipText } from "../../../utils/helpers";
 
-const RatioCard = ({ title, IconComponent, content, pp }) => {
+const RatioCard = ({ title, IconComponent, content, pp, tab }) => {
+  const tooltipContent = getTooltipText(tab, pp);
   return (
     <div className={styles.ratioCardContainer}>
       <div className={styles.ratioCardHeader}>
         <Typography sx={{ fontSize: "18px", fontWeight: "lighter" }}>
           {title}
         </Typography>
-        <img src={IconComponent} alt="ss" />
+        <Tooltip title={tooltipContent} arrow>
+          <img src={IconComponent} alt="ss" />
+        </Tooltip>
       </div>
 
       <div className={styles.ratioCardInfoContainer}>

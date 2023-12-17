@@ -1,3 +1,5 @@
+import { tooltipData } from "../constants/TooltipData";
+
 export const getHeightForComponent = (thoughtCount, component) => {
   const isDashboard = window.location.pathname.includes("financialDashboard");
 
@@ -56,4 +58,19 @@ export const getLoansFromLiabilities = (liabilities) => {
     result = [...result, ...newl];
   });
   return result;
+};
+
+export const formatIndianNumber = (value = "") => {
+  console.log("aaa", value);
+  const numericValue = parseFloat(value?.replace(/,/g, "")) || "";
+  console.log("aaab", numericValue);
+
+  return numericValue.toLocaleString("en-IN");
+};
+
+export const getTooltipText = (tabName, rate) => {
+  const tabArray = tooltipData[tabName];
+  return tabArray.filter(
+    (dataPoint) => dataPoint.min <= rate && (dataPoint.max || Infinity) > rate
+  )[0].text;
 };
