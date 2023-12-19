@@ -5,10 +5,18 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
-function BasicSelect({ text, width, style = {}, data = ["1", "2", "3"] }) {
+function BasicSelect({
+  text,
+  width,
+  style = {},
+  data = ["1", "2", "3"],
+  value = "",
+  changeAppData = () => {},
+}) {
   const [age, setAge] = React.useState("");
 
   const handleChange = (event) => {
+    changeAppData(event.target.value);
     setAge(event.target.value);
   };
 
@@ -19,7 +27,7 @@ function BasicSelect({ text, width, style = {}, data = ["1", "2", "3"] }) {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={value}
           label={text}
           onChange={handleChange}
           sx={{

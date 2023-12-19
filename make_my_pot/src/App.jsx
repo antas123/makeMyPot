@@ -304,7 +304,12 @@ function App() {
               <Route
                 exact
                 path="/financialDashboard/5"
-                element={renderScene(<EvaluateAndPlanGoals />)}
+                element={renderScene(
+                  <EvaluateAndPlanGoals
+                    changeAppUserData={changeAppUserDataHandler}
+                    goalPlanningDetails={appUserData?.goalPlanningDetails || {}}
+                  />
+                )}
               />
               <Route
                 exact
