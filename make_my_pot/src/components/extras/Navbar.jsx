@@ -205,7 +205,7 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption }) => {
                 />
                 <Typography variant="h6" sx={{ ml: 2, display: "block" }}>
                   {" "}
-                  Arush Bhatia{" "}
+                  Antas Sachan{" "}
                 </Typography>
               </IconButton>
             </Tooltip>
