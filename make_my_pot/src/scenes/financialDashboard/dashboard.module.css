@@ -1,0 +1,33 @@
+.lineChartBox {
+  padding: 20px;
+  background-color: #f5f7f8;
+}
+
+/* =========thought============= */
+.thought {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  align-items: center;
+  padding: 0 20px;
+}
+.thoughtBox {
+  padding: 5px 8px;
+  background-color: #f5f7f8;
+}
+.thoughtText {
+  font-size: 14.2px;
+  font-family: sans-serif;
+  color: #9ade7b;
+  width: 100%;
+  margin-left: 20px;
+  text-align: justify;
+  padding: 2px;
+}
+
+/* ====================barchart.jsx=================== */
+/* .barchart{
+  width: 700px;
+  height: 400px;
+} */

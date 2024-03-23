@@ -1,44 +1,55 @@
-import { Container, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import React from "react";
-import { sideBarOptions } from "../../constant";
+import {
+  pageToRoute,
+  sideBarOptions,
+  tabOptionToRoute,
+} from "../../constants/NavigationData";
 import NumberIcon from "../NumberIcon";
+import styles from "./extras.module.css";
+import { Link } from "react-router-dom";
 
-const yourFinancials = [...sideBarOptions.yourFinanicals];
-console.log(yourFinancials);
+const Sidebar = ({ activePage, activeTabOption, setActiveTabOption }) => {
+  const activePageOptions = [...(sideBarOptions[activePage] || [])];
 
-const Sidebar = () => {
   return (
     <div
-      className="m"
       style={{
-        height: "calc(100vh - 100px)",
-        flex: 1,
-        marginTop: "80px",
+        height: "50%",
+        marginTop: "70px",
+        padding: "5px",
       }}
     >
-      <Container>
-        {yourFinancials.map((fin, ind) => (
+      {activePageOptions.map((option, ind) => (
+        <Link
+          to={`${pageToRoute(activePage)}/${ind + 1}`}
+          style={{ textDecoration: "none" }}
+        >
           <div
-            style={{
-              display: "flex",
-              cursor: "pointer",
-            }}
+            key={option}
+            className={`${styles.mainbox} ${
+              ind + 1 === activeTabOption ? styles.activeBox : ""
+            }`}
+            onClick={() => setActiveTabOption(ind + 1)}
           >
-            <NumberIcon number={ind + 1} key={fin} />
-            <Typography
-              variant="p"
-              sx={{
-                color: "black",
-                fontSize: "20px",
-                marginBottom: "10px",
-              }}
-              key={fin}
-            >
-              {fin}
-            </Typography>
+            <div className={styles.menuNumber}>
+              <NumberIcon number={ind + 1} />
+            </div>
+            <div className={styles.menulist}>
+              <Typography
+                variant="p"
+                sx={{
+                  color: "black",
+                  fontSize: "18px",
+                }}
+                key={option}
+              >
+                {option}
+              </Typography>
+            </div>
           </div>
-        ))}
-      </Container>
+        </Link>
+      ))}
     </div>
   );
 };

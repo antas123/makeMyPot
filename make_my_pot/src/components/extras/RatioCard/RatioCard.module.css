@@ -1,0 +1,26 @@
+.ratioCardContent {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1px;
+  font-size: 18px;
+}
+
+.ratioCardContainer {
+  padding: 5px;
+  background-color: white;
+  margin: 10px;
+  margin-top: 15px;
+  height: 188px;
+}
+
+.ratioCardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ratioCardInfoContainer {
+  margin: 0px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
