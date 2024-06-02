@@ -82,7 +82,7 @@ const Navbar = ({
               textDecoration: "none",
             }}
           >
-            MAKEMYPOT
+            FINANCEBOOSTER
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -161,7 +161,7 @@ const Navbar = ({
               textDecoration: "none",
             }}
           >
-            MAKEMYPOT
+            FINANCEBOOSTER
           </Typography>
           <Box
             sx={{
