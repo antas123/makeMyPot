@@ -28,6 +28,10 @@ import RetirementPlanning from "./scenes/financialDashboard/RetirementPlanning/R
 import EvaluateAndPlanGoals from "./scenes/financialDashboard/EvaluateAndPlanGoals/EvaluateAndPlanGoals";
 import Signin from "./scenes/Signin";
 import Login from "./scenes/Login";
+import './App.css';
+import Sip from "./Sip";
+
+
 
 const UserContext = createContext();
 function App() {
@@ -45,6 +49,7 @@ function App() {
   const [userInternalData, setUserInternalData] = useState({
     ...UserInternalData,
   });
+
    
   console.log("uee", userInternalData);
 
@@ -209,6 +214,9 @@ function App() {
               <Route path="/login" element={<Signin getUserName={getUserName} />} />
               <Route path="/signin" element={<Login />} />
               <Route path="/home" element={<Home />} />
+
+              <Route path="/sipcalculator" element={<Sip/>}
+              />
               <Route
                 exact
                 path="/yourFinancials/1"

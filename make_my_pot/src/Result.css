@@ -1,0 +1,22 @@
+/* src/components/Results.css */
+.results {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .results h2 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .result-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .result-item span {
+    font-size: 1rem;
+  }
