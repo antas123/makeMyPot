@@ -17,7 +17,7 @@ import { pageToRoute } from "../../constants/NavigationData";
 const pages = ["Home", "Your financials", "Financial dashboard"];
 const settings = ["Profile", "Logout"];
 
-const Navbar = ({ activePage, updateActivePage, updateTabOption }) => {
+const Navbar = ({ activePage, updateActivePage, updateTabOption, userName }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -205,7 +205,7 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption }) => {
                 />
                 <Typography variant="h6" sx={{ ml: 2, display: "block" }}>
                   {" "}
-                  Antas Sachan{" "}
+                 {userName}
                 </Typography>
               </IconButton>
             </Tooltip>

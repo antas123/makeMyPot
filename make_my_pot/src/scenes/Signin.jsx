@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import LoginHeader from "./LoginHeader";
 import LoginFooter from "./LoginFooter";
 
-const Signin = () => {
+const Signin = ({getUserName}) => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const Signin = () => {
 
       const data = await response.json();
       console.log("Login successful", data);
-
+      getUserName(formData.email)
       // Handle successful login (e.g., redirect to home page)
       navigate("/home");
     } catch (error) {

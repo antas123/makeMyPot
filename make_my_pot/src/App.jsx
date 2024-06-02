@@ -37,6 +37,7 @@ function App() {
   const [activePage, setActivePage] = useState(
     getPageFromPath(window.location.pathname)
   );
+  const [userName, getUserName] = useState('')
   const [activeTabOption, setActiveTabOption] = useState(
     getActiveTabFromPath(window.location.pathname)
   );
@@ -44,7 +45,7 @@ function App() {
   const [userInternalData, setUserInternalData] = useState({
     ...UserInternalData,
   });
-
+   
   console.log("uee", userInternalData);
 
   const initialRender = useRef(true);
@@ -124,6 +125,7 @@ function App() {
         {!isNotAuthenticated() && (
           <div>
             <Navbar
+            userName={userName}
               activePage={activePage}
               updateActivePage={updateActivePageHandler}
               updateTabOption={() => setActiveTabOption(1)}
@@ -204,7 +206,7 @@ function App() {
           >
             <Routes>
               <Route path="" element={<Navigate to="/signin" replace />} />
-              <Route path="/login" element={<Signin />} />
+              <Route path="/login" element={<Signin getUserName={getUserName} />} />
               <Route path="/signin" element={<Login />} />
               <Route path="/home" element={<Home />} />
               <Route
