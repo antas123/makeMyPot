@@ -8,10 +8,11 @@ export const sideBarOptions = {
     "Your liablities",
   ],
   "Financial dashboard": [
-    "Financial dashboard",
+   
     "Income and expenses report",
     "Net worth analysis report",
-    "Manage your loans",
+    "Financial graph",
+    // "Manage your loans",
     "Evaluate and plan goals",
     "Retirement planning",
   ],

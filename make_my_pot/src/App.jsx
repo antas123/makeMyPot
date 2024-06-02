@@ -204,8 +204,8 @@ function App() {
           >
             <Routes>
               <Route path="" element={<Navigate to="/signin" replace />} />
-              <Route path="/signin" element={<Signin />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<Signin />} />
+              <Route path="/signin" element={<Login />} />
               <Route path="/home" element={<Home />} />
               <Route
                 exact
@@ -277,19 +277,19 @@ function App() {
               />
               <Route
                 exact
-                path="/financialDashboard/1"
+                path="/financialDashboard/3"
                 element={renderScene(<FinancialDashboard />)}
               />
               <Route
                 exact
-                path="/financialDashboard/2"
+                path="/financialDashboard/1"
                 element={renderScene(
                   <IncomeAndExpensesReport appData={appUserData} />
                 )}
               />
               <Route
                 exact
-                path="/financialDashboard/3"
+                path="/financialDashboard/2"
                 element={renderScene(
                   <NetWorthAnalysisReport
                     appData={appUserData}
@@ -298,21 +298,21 @@ function App() {
                   />
                 )}
               />
-              <Route
+              {/* <Route
                 exact
                 path="/financialDashboard/4"
                 element={renderScene(
                   <ManageLoans liabilities={userInternalData.liabilities} />
                 )}
-              />
+              /> */}
               <Route
                 exact
-                path="/financialDashboard/5"
+                path="/financialDashboard/4"
                 element={renderScene(<EvaluateAndPlanGoals  />)}
               />
               <Route
                 exact
-                path="/financialDashboard/6"
+                path="/financialDashboard/5"
                 element={renderScene(
                   <RetirementPlanning
                     changeAppUserData={changeAppUserDataHandler}

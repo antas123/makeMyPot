@@ -1,22 +1,53 @@
 import React, { useState } from "react";
-import { Checkbox, TextField } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormControl from "@mui/material/FormControl";
+import { Checkbox, TextField, IconButton, OutlinedInput, InputLabel, InputAdornment, FormControl, Button } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useNavigate } from "react-router-dom";
 import LoginHeader from "./LoginHeader";
 import LoginFooter from "./LoginFooter";
 
 const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("https://make-my-pot-backend-1.onrender.com/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          Email: formData.email,
+          Password: formData.password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      console.log("Login successful", data);
+
+      // Handle successful login (e.g., redirect to home page)
+      navigate("/home");
+    } catch (error) {
+      console.error("Login failed", error);
+      alert("Please sign up");
+    }
   };
 
   return (
@@ -36,7 +67,8 @@ const Signin = () => {
           text2={"Don't have any account"}
           text3={"Sign up now"}
         />
-        <div
+        <form
+          onSubmit={handleSubmit}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -46,7 +78,10 @@ const Signin = () => {
         >
           <TextField
             id="outlined-search"
-            label="Email adderess"
+            name="email"
+            label="Email address"
+            value={formData.email}
+            onChange={handleChange}
             sx={{ width: "70%" }}
           />
           <FormControl sx={{ width: "70%" }} variant="outlined">
@@ -55,7 +90,10 @@ const Signin = () => {
             </InputLabel>
             <OutlinedInput
               id="outlined-adornment-password"
+              name="password"
               type={showPassword ? "text" : "password"}
+              value={formData.password}
+              onChange={handleChange}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -74,8 +112,22 @@ const Signin = () => {
           <div style={{ textAlign: "left", width: "70%", marginTop: "-20px" }}>
             <Checkbox /> remember me
           </div>
-        </div>
-        <LoginFooter text={"Login"} />
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              backgroundColor: "#F9B572",
+              color: "black",
+              width: "70%",
+              "&:hover": {
+                backgroundColor: "#FFE382",
+              },
+            }}
+          >
+            Login
+          </Button>
+        </form>
+        {/* <LoginFooter text={"Login"} /> */}
       </div>
     </>
   );

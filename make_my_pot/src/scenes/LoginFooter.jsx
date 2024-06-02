@@ -2,10 +2,11 @@ import React from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import { Button } from "@mui/material";
 
-const LoginFooter = ({ text }) => {
+const LoginFooter = ({ text,handleSubmit }) => {
   return (
     <div style={{ marginTop: "20px" }}>
       <Button
+      onClick={handleSubmit}
         variant="contained"
         sx={{
           backgroundColor: "#F9B572",
@@ -17,23 +18,6 @@ const LoginFooter = ({ text }) => {
         }}
       >
         {text}
-      </Button>
-      <h4>OR</h4>
-      <Button
-        sx={{
-          width: "70%",
-          color: "black",
-          borderColor: "black",
-          "&:hover": {
-            backgroundColor: "white",
-            color: "grey",
-            border: "1px solid grey",
-          },
-        }}
-        variant="outlined"
-        startIcon={<GoogleIcon />}
-      >
-        Continue with Google
       </Button>
     </div>
   );

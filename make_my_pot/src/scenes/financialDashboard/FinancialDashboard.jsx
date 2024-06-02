@@ -53,14 +53,14 @@ const FinancialDashboard = () => {
         },
       },
 
-      datalabels: {
-        align: "end",
-        anchor: "end",
-        color: "#333",
-        formatter: (value, context) => {
-          return value.toString().replace(/\B(?=(\d{2})+(?!\d))/g, ",") + " Cr";
-        },
-      },
+      // datalabels: {
+      //   align: "end",
+      //   anchor: "end",
+      //   color: "#333",
+      //   formatter: (value, context) => {
+      //     return value.toString().replace(/\B(?=(\d{2})+(?!\d))/g, ",") + " Cr";
+      //   },
+      // },
     },
     elements: {
       line: {
@@ -102,10 +102,7 @@ const FinancialDashboard = () => {
               justifyContent: "space-between",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-              <BasicSelect width={350} text={"Net worth over time"} />
-              <BasicSelect width={250} text={"Select label to view"} />
-            </div>
+            
             <div
               style={{
                 display: "flex",
