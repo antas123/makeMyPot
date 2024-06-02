@@ -14,10 +14,20 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import { pageToRoute } from "../../constants/NavigationData";
 
-const pages = ["Home", "Your financials", "Financial dashboard"];
+const pages = [
+  "Home",
+  "Your financials",
+  "Financial dashboard",
+  "SIP Calculator",
+];
 const settings = ["Profile", "Logout"];
 
-const Navbar = ({ activePage, updateActivePage, updateTabOption, userName }) => {
+const Navbar = ({
+  activePage,
+  updateActivePage,
+  updateTabOption,
+  userName,
+}) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -119,7 +129,9 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption, userName }) => 
                     onClick={() => handleUpdatePageAndTab(page)}
                   >
                     <Link
-                      to={`/${pageToRoute(page)}${page === "Home" ? "" : "/1"}`}
+                      to={`/${pageToRoute(page)}${
+                        ["Home", "SIP Calculator"].includes(page) ? "" : "/1"
+                      }`}
                       style={{
                         textDecoration: "none",
                         color: "black",
@@ -179,7 +191,9 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption, userName }) => 
                   onClick={() => handleUpdatePageAndTab(page)}
                 >
                   <Link
-                    to={`/${pageToRoute(page)}${page === "Home" ? "" : "/1"}`}
+                    to={`/${pageToRoute(page)}${
+                      ["Home", "SIP Calculator"].includes(page) ? "" : "/1"
+                    }`}
                     style={{
                       textDecoration: "none",
                       color: "black",
@@ -205,7 +219,7 @@ const Navbar = ({ activePage, updateActivePage, updateTabOption, userName }) => 
                 />
                 <Typography variant="h6" sx={{ ml: 2, display: "block" }}>
                   {" "}
-                 {userName}
+                  {userName}
                 </Typography>
               </IconButton>
             </Tooltip>
